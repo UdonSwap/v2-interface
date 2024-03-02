@@ -1,10 +1,10 @@
 import { Currency, ETHER, Token } from '@uniswap/sdk'
-import React, { KeyboardEvent, RefObject, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
+import React, { KeyboardEvent, RefObject, useCallback,  useEffect, useMemo, useRef, useState } from 'react'
 import ReactGA from 'react-ga'
 import { useTranslation } from 'react-i18next'
 import { FixedSizeList } from 'react-window'
 import { Text } from 'rebass'
-import { ThemeContext } from 'styled-components'
+// import { ThemeContext } from 'styled-components'
 import { useActiveWeb3React } from '../../hooks'
 import { useAllTokens, useToken } from '../../hooks/Tokens'
 import { useSelectedListInfo } from '../../state/lists/hooks'
@@ -44,7 +44,7 @@ export function CurrencySearch({
 }: CurrencySearchProps) {
   const { t } = useTranslation()
   const { chainId } = useActiveWeb3React()
-  const theme = useContext(ThemeContext)
+  // const theme = useContext(ThemeContext)
 
   const fixedList = useRef<FixedSizeList>()
   const [searchQuery, setSearchQuery] = useState<string>('')
@@ -138,7 +138,7 @@ export function CurrencySearch({
   const selectedListInfo = useSelectedListInfo()
 
   return (
-    <Column style={{ width: '100%', flex: '1 1' }}>
+    <Column style={{ width: '100%', flex: '1 1' ,backgroundColor:"#131118",color:"white"}}>
       <PaddedColumn gap="14px">
         <RowBetween>
           <Text fontWeight={500} fontSize={16}>
@@ -159,11 +159,11 @@ export function CurrencySearch({
         {showCommonBases && (
           <CommonBases chainId={chainId} onSelect={handleCurrencySelect} selectedCurrency={selectedCurrency} />
         )}
-        <RowBetween>
+        <RowBetween >
           <Text fontSize={14} fontWeight={500}>
             Token Name
           </Text>
-          <SortButton ascending={invertSearchOrder} toggleSortOrder={() => setInvertSearchOrder(iso => !iso)} />
+         <SortButton ascending={invertSearchOrder} toggleSortOrder={() => setInvertSearchOrder(iso => !iso)}  />
         </RowBetween>
       </PaddedColumn>
 
@@ -186,8 +186,8 @@ export function CurrencySearch({
       </div>
 
       <Separator />
-      <Card>
-        <RowBetween>
+      <Card style={{borderTop:"1px solid white",borderRadius:"1px"}}>
+        <RowBetween >
           {selectedListInfo.current ? (
             <Row>
               {selectedListInfo.current.logoURI ? (
@@ -197,13 +197,14 @@ export function CurrencySearch({
                   alt={`${selectedListInfo.current.name} list logo`}
                 />
               ) : null}
-              <TYPE.main id="currency-search-selected-list-name">{selectedListInfo.current.name}</TYPE.main>
+              <TYPE.main id="currency-search-selected-list-name" style={{color:"white"}}>{selectedListInfo.current.name}</TYPE.main>
             </Row>
           ) : null}
           <LinkStyledButton
-            style={{ fontWeight: 500, color: theme.text2, fontSize: 16 }}
+            style={{ fontWeight: 500, color: "white", fontSize: 16 }}
             onClick={onChangeList}
             id="currency-search-change-list-button"
+            
           >
             {selectedListInfo.current ? 'Change' : 'Select a list'}
           </LinkStyledButton>

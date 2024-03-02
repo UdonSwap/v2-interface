@@ -149,7 +149,7 @@ export const Spinner = styled.img`
 `
 
 const BackArrowLink = styled(StyledInternalLink)`
-  color: ${({ theme }) => theme.text1};
+  color:white};
 `
 export function BackArrow({ to }: { to: string }) {
   return (

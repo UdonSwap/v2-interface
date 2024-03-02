@@ -9,6 +9,7 @@ const Row = styled(Box)<{ align?: string; padding?: string; border?: string; bor
   padding: ${({ padding }) => padding};
   border: ${({ border }) => border};
   border-radius: ${({ borderRadius }) => borderRadius};
+  color:"white";
 `
 
 export const RowBetween = styled(Row)`

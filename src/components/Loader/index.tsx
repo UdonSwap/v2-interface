@@ -33,6 +33,8 @@ export default function Loader({ size = '16px', stroke, ...rest }: { size?: stri
         strokeLinecap="round"
         strokeLinejoin="round"
       />
+      
     </StyledSVG>
+    
   )
 }

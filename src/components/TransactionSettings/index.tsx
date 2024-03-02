@@ -1,5 +1,5 @@
-import React, { useState, useRef, useContext } from 'react'
-import styled, { ThemeContext } from 'styled-components'
+import React, { useState, useRef} from 'react'
+import styled from 'styled-components'
 
 import QuestionHelper from '../QuestionHelper'
 import { TYPE } from '../../theme'
@@ -19,16 +19,16 @@ enum DeadlineError {
 }
 
 const FancyButton = styled.button`
-  color: ${({ theme }) => theme.text1};
+  color: #FFFFFF;
   align-items: center;
   height: 2rem;
   border-radius: 36px;
   font-size: 12px;
   width: auto;
   min-width: 3rem;
-  border: 1px solid ${({ theme }) => theme.bg3};
+  border: 1px solid #4F4F4F;
   outline: none;
-  background: ${({ theme }) => theme.bg1};
+  background: #221F2A;
   :hover {
     border: 1px solid ${({ theme }) => theme.bg4};
   }
@@ -42,8 +42,8 @@ const Option = styled(FancyButton)<{ active: boolean }>`
   :hover {
     cursor: pointer;
   }
-  background-color: ${({ active, theme }) => active && theme.primary1};
-  color: ${({ active, theme }) => (active ? theme.white : theme.text1)};
+  background-color: ${({ active, theme }) => active && "#9657EB"};
+  color: ${({ active, theme }) => (active ? theme.white : "#FFFFFF")};
 `
 
 const Input = styled.input`
@@ -93,7 +93,7 @@ export interface SlippageTabsProps {
 }
 
 export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, setDeadline }: SlippageTabsProps) {
-  const theme = useContext(ThemeContext)
+  
 
   const inputRef = useRef<HTMLInputElement>()
 
@@ -148,10 +148,10 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
     <AutoColumn gap="md">
       <AutoColumn gap="sm">
         <RowFixed>
-          <TYPE.black fontWeight={400} fontSize={14} color={theme.text2}>
+          <TYPE.black fontWeight={400} fontSize={14} color={"white"}>
             Slippage tolerance
           </TYPE.black>
-          <QuestionHelper text="Your transaction will revert if the price changes unfavorably by more than this percentage." />
+          <QuestionHelper text="Your transaction will revert if the price changes unfavorably by more than this percentage."/>
         </RowFixed>
         <RowBetween>
           <Option
@@ -181,7 +181,7 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
           >
             1%
           </Option>
-          <OptionCustom active={![10, 50, 100].includes(rawSlippage)} warning={!slippageInputIsValid} tabIndex={-1}>
+          <OptionCustom active={![10, 50, 100].includes(rawSlippage)} warning={!slippageInputIsValid} tabIndex={-1} style={{backgroundColor:"white"}}>
             <RowBetween>
               {!!slippageInput &&
               (slippageError === SlippageError.RiskyLow || slippageError === SlippageError.RiskyHigh) ? (
@@ -202,7 +202,7 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
                 onChange={e => parseCustomSlippage(e.target.value)}
                 color={!slippageInputIsValid ? 'red' : ''}
               />
-              %
+              <span style={{color:"black"}}>%</span>
             </RowBetween>
           </OptionCustom>
         </RowBetween>
@@ -225,13 +225,13 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
 
       <AutoColumn gap="sm">
         <RowFixed>
-          <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
+          <TYPE.black fontSize={14} fontWeight={400} style={{color:"white"}}>
             Transaction deadline
           </TYPE.black>
           <QuestionHelper text="Your transaction will revert if it is pending for more than this long." />
         </RowFixed>
         <RowFixed>
-          <OptionCustom style={{ width: '80px' }} tabIndex={-1}>
+          <OptionCustom style={{ width: '80px',backgroundColor:"white" }} tabIndex={-1} >
             <Input
               color={!!deadlineError ? 'red' : undefined}
               onBlur={() => {
@@ -242,7 +242,7 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
               onChange={e => parseCustomDeadline(e.target.value)}
             />
           </OptionCustom>
-          <TYPE.body style={{ paddingLeft: '8px' }} fontSize={14}>
+          <TYPE.body style={{ paddingLeft: '8px',color:"white" }} fontSize={14}>
             minutes
           </TYPE.body>
         </RowFixed>

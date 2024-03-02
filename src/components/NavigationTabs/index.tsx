@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { darken } from 'polished'
+// import { darken } from 'polished'
 import { useTranslation } from 'react-i18next'
 import { NavLink, Link as HistoryLink } from 'react-router-dom'
 
@@ -28,37 +28,38 @@ const StyledNavLink = styled(NavLink).attrs({
   outline: none;
   cursor: pointer;
   text-decoration: none;
-  color: ${({ theme }) => theme.text3};
+  color: #525252;
   font-size: 20px;
+  font-weight: 700;
 
   &.${activeClassName} {
     border-radius: 12px;
-    font-weight: 500;
-    color: ${({ theme }) => theme.text1};
+    font-weight: 700;
+    color: #FFFFFF;
   }
 
-  :hover,
-  :focus {
-    color: ${({ theme }) => darken(0.1, theme.text1)};
-  }
+ s
+  
 `
 
 const ActiveText = styled.div`
   font-weight: 500;
   font-size: 20px;
+  color:white
 `
 
 const StyledArrowLeft = styled(ArrowLeft)`
-  color: ${({ theme }) => theme.text1};
+  color: white;
 `
 
 export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
   const { t } = useTranslation()
   return (
-    <Tabs style={{ marginBottom: '20px' }}>
-      <StyledNavLink id={`swap-nav-link`} to={'/swap'} isActive={() => active === 'swap'}>
+    <Tabs style={{ marginBottom: '20px',borderBottom:"1px solid gray",borderRadius:"10px" }}>
+      <StyledNavLink id={`swap-nav-link`} to={'/swap'} isActive={() => active === 'swap'} >
         {t('swap')}
       </StyledNavLink>
+      
       <StyledNavLink id={`pool-nav-link`} to={'/pool'} isActive={() => active === 'pool'}>
         {t('pool')}
       </StyledNavLink>
@@ -69,7 +70,7 @@ export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
 export function FindPoolTabs() {
   return (
     <Tabs>
-      <RowBetween style={{ padding: '1rem' }}>
+      <RowBetween style={{ padding: '1rem',border:'1px solid gray'}}>
         <HistoryLink to="/pool">
           <StyledArrowLeft />
         </HistoryLink>
@@ -83,7 +84,7 @@ export function FindPoolTabs() {
 export function AddRemoveTabs({ adding }: { adding: boolean }) {
   return (
     <Tabs>
-      <RowBetween style={{ padding: '1rem' }}>
+      <RowBetween style={{ padding: '1rem',borderBottom:'1px solid gray' }}>
         <HistoryLink to="/pool">
           <StyledArrowLeft />
         </HistoryLink>

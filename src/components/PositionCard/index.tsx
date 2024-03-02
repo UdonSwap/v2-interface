@@ -27,6 +27,7 @@ export const FixedHeightRow = styled(RowBetween)`
 
 export const HoverCard = styled(Card)`
   border: 1px solid ${({ theme }) => theme.bg2};
+
   :hover {
     border: 1px solid ${({ theme }) => darken(0.06, theme.bg2)};
   }
@@ -64,7 +65,7 @@ export function MinimalPositionCard({ pair, showUnwrapped = false, border }: Pos
   return (
     <>
       {userPoolBalance && (
-        <GreyCard border={border}>
+        <GreyCard border={border} style={{backgroundColor:"#131118"}} color={"white"}>
           <AutoColumn gap="12px">
             <FixedHeightRow>
               <RowFixed>

@@ -66,7 +66,7 @@ export default function SwapModalFooter({
           </Text>
         </RowBetween>
 
-        <RowBetween>
+        <RowBetween  style={{backgroundColor:"#131118"}}>
           <RowFixed>
             <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
               {trade.tradeType === TradeType.EXACT_INPUT ? 'Minimum received' : 'Maximum sold'}

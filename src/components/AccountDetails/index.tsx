@@ -25,6 +25,7 @@ import { ExternalLink, LinkStyledButton, TYPE } from '../../theme'
 const HeaderRow = styled.div`
   ${({ theme }) => theme.flexRowNoWrap};
   padding: 1rem 1rem;
+
   font-weight: 500;
   color: ${props => (props.color === 'blue' ? ({ theme }) => theme.primary1 : 'inherit')};
   ${({ theme }) => theme.mediaWidth.upToMedium`
@@ -34,6 +35,7 @@ const HeaderRow = styled.div`
 
 const UpperSection = styled.div`
   position: relative;
+  background-color: #FFFFFF;
 
   h5 {
     margin: 0;
@@ -98,7 +100,8 @@ const LowerSection = styled.div`
   padding: 1.5rem;
   flex-grow: 1;
   overflow: auto;
-  background-color: ${({ theme }) => theme.bg2};
+  background-color: #FFFFFF;
+
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 20px;
 
@@ -145,6 +148,7 @@ const AddressLink = styled(ExternalLink)<{ hasENS: boolean; isENS: boolean }>`
 const CloseIcon = styled.div`
   position: absolute;
   right: 1rem;
+  stroke:#000000
   top: 14px;
   &:hover {
     cursor: pointer;
@@ -190,6 +194,7 @@ const WalletAction = styled(ButtonSecondary)`
   margin-left: 8px;
   font-size: 0.825rem;
   padding: 4px 6px;
+ 
   :hover {
     cursor: pointer;
     text-decoration: underline;
@@ -291,11 +296,11 @@ export default function AccountDetails({
 
   return (
     <>
-      <UpperSection>
-        <CloseIcon onClick={toggleWalletModal}>
-          <CloseColor />
+      <UpperSection >
+        <CloseIcon onClick={toggleWalletModal} color='black'>
+          <CloseColor  color='black' />
         </CloseIcon>
-        <HeaderRow>Account</HeaderRow>
+        <HeaderRow style={{color:"#000000",justifyContent:"center"}}>Account</HeaderRow>
         <AccountSection>
           <YourAccount>
             <InfoCard>
@@ -304,7 +309,7 @@ export default function AccountDetails({
                 <div>
                   {connector !== injected && connector !== walletlink && (
                     <WalletAction
-                      style={{ fontSize: '.825rem', fontWeight: 400, marginRight: '8px' }}
+                      style={{ fontSize: '.825rem', fontWeight: 400, marginRight: '8px' ,}}
                       onClick={() => {
                         ;(connector as any).close()
                       }}
@@ -313,7 +318,7 @@ export default function AccountDetails({
                     </WalletAction>
                   )}
                   <WalletAction
-                    style={{ fontSize: '.825rem', fontWeight: 400 }}
+                    style={{ fontSize: '.825rem', fontWeight: 600,backgroundColor:"rgb(255 62 62 / 55%)",color:"#FF3E3E" ,padding:"10px 20px"}}
                     onClick={() => {
                       openOptions()
                     }}

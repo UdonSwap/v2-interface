@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Settings, X } from 'react-feather'
 import styled from 'styled-components'
 import { useOnClickOutside } from '../../hooks/useOnClickOutside'
@@ -6,14 +6,14 @@ import {
   useUserSlippageTolerance,
   useExpertModeManager,
   useUserDeadline,
-  useDarkModeManager
+  // useDarkModeManager
 } from '../../state/user/hooks'
 import TransactionSettings from '../TransactionSettings'
-import { RowFixed, RowBetween } from '../Row'
-import { TYPE } from '../../theme'
-import QuestionHelper from '../QuestionHelper'
-import Toggle from '../Toggle'
-import { ThemeContext } from 'styled-components'
+import {  RowBetween } from '../Row'
+// import { TYPE } from '../../theme'
+// import QuestionHelper from '../QuestionHelper'
+// import Toggle from '../Toggle'
+// import { ThemeContext } from 'styled-components'
 import { AutoColumn } from '../Column'
 import { ButtonError } from '../Button'
 import { useSettingsMenuOpen, useToggleSettingsMenu } from '../../state/application/hooks'
@@ -25,7 +25,7 @@ const StyledMenuIcon = styled(Settings)`
   width: 20px;
 
   > * {
-    stroke: ${({ theme }) => theme.text1};
+    stroke: #FFFFFF;
   }
 `
 
@@ -37,7 +37,7 @@ const StyledCloseIcon = styled(X)`
   }
 
   > * {
-    stroke: ${({ theme }) => theme.text1};
+    stroke: #FFFFFF;
   }
 `
 
@@ -50,7 +50,7 @@ const StyledMenuButton = styled.button`
   margin: 0;
   padding: 0;
   height: 35px;
-  background-color: ${({ theme }) => theme.bg3};
+  background-color: #1C1924;
 
   padding: 0.15rem 0.5rem;
   border-radius: 0.5rem;
@@ -59,7 +59,7 @@ const StyledMenuButton = styled.button`
   :focus {
     cursor: pointer;
     outline: none;
-    background-color: ${({ theme }) => theme.bg4};
+    background-color: #1C1924;
   }
 
   svg {
@@ -126,14 +126,14 @@ export default function SettingsTab() {
   const open = useSettingsMenuOpen()
   const toggle = useToggleSettingsMenu()
 
-  const theme = useContext(ThemeContext)
+  // const theme = useContext(ThemeContext)
   const [userSlippageTolerance, setUserslippageTolerance] = useUserSlippageTolerance()
 
   const [deadline, setDeadline] = useUserDeadline()
 
   const [expertMode, toggleExpertMode] = useExpertModeManager()
 
-  const [darkMode, toggleDarkMode] = useDarkModeManager()
+  // const [darkMode, toggleDarkMode] = useDarkModeManager()
 
   // show confirmation view before turning on
   const [showConfirmation, setShowConfirmation] = useState(false)
@@ -193,7 +193,7 @@ export default function SettingsTab() {
       {open && (
         <MenuFlyout>
           <AutoColumn gap="md" style={{ padding: '1rem' }}>
-            <Text fontWeight={600} fontSize={14}>
+            <Text fontWeight={600} fontSize={14} color={"white"}>
               Transaction Settings
             </Text>
             <TransactionSettings
@@ -202,40 +202,17 @@ export default function SettingsTab() {
               deadline={deadline}
               setDeadline={setDeadline}
             />
-            <Text fontWeight={600} fontSize={14}>
+            {/* <Text fontWeight={600} fontSize={14}>
               Interface Settings
-            </Text>
-            <RowBetween>
+            </Text> */}
+            {/* <RowBetween>
               <RowFixed>
-                <TYPE.black fontWeight={400} fontSize={14} color={theme.text2}>
-                  Toggle Expert Mode
-                </TYPE.black>
-                <QuestionHelper text="Bypasses confirmation modals and allows high slippage trades. Use at your own risk." />
               </RowFixed>
-              <Toggle
-                id="toggle-expert-mode-button"
-                isActive={expertMode}
-                toggle={
-                  expertMode
-                    ? () => {
-                        toggleExpertMode()
-                        setShowConfirmation(false)
-                      }
-                    : () => {
-                        toggle()
-                        setShowConfirmation(true)
-                      }
-                }
-              />
             </RowBetween>
             <RowBetween>
               <RowFixed>
-                <TYPE.black fontWeight={400} fontSize={14} color={theme.text2}>
-                  Toggle Dark Mode
-                </TYPE.black>
               </RowFixed>
-              <Toggle isActive={darkMode} toggle={toggleDarkMode} />
-            </RowBetween>
+            </RowBetween> */}
           </AutoColumn>
         </MenuFlyout>
       )}

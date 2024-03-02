@@ -61,15 +61,15 @@ export default function Pool() {
       <AppBody>
         <SwapPoolTabs active={'pool'} />
         <AutoColumn gap="lg" justify="center">
-          <ButtonPrimary id="join-pool-button" as={Link} style={{ padding: 16 }} to="/add/ETH">
-            <Text fontWeight={500} fontSize={20}>
+          <ButtonPrimary id="join-pool-button" as={Link} style={{ padding: 16,color:"#1C1924",backgroundColor:"#E9E002" }} to="/add/ETH">
+            <Text fontWeight={500} fontSize={20} >
               Add Liquidity
             </Text>
           </ButtonPrimary>
 
           <AutoColumn gap="12px" style={{ width: '100%' }}>
             <RowBetween padding={'0 8px'}>
-              <Text color={theme.text1} fontWeight={500}>
+              <Text color="white" fontWeight={500}>
                 Your Liquidity
               </Text>
               <Question text="When you add liquidity, you are given pool tokens that represent your share. If you don’t see a pool you joined in this list, try importing a pool below." />
@@ -102,9 +102,9 @@ export default function Pool() {
             )}
 
             <div>
-              <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0' }}>
+              <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0', color:"white"}}>
                 {hasV1Liquidity ? 'Uniswap V1 liquidity found!' : "Don't see a pool you joined?"}{' '}
-                <StyledInternalLink id="import-pool-link" to={hasV1Liquidity ? '/migrate/v1' : '/find'}>
+                <StyledInternalLink id="import-pool-link" to={hasV1Liquidity ? '/migrate/v1' : '/find'} style={{color:"#E9E002"}}>
                   {hasV1Liquidity ? 'Migrate now.' : 'Import it.'}
                 </StyledInternalLink>
               </Text>
@@ -114,7 +114,7 @@ export default function Pool() {
       </AppBody>
 
       <div style={{ display: 'flex', alignItems: 'center', marginTop: '1.5rem' }}>
-        <ButtonSecondary as={Link} style={{ width: 'initial' }} to="/migrate/v1">
+        <ButtonSecondary as={Link} style={{ width: 'initial',color:"white" }} to="/migrate/v1">
           Migrate V1 Liquidity
         </ButtonSecondary>
       </div>
