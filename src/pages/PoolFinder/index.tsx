@@ -143,7 +143,9 @@ export default function PoolFinder() {
                 <AutoColumn gap="sm" justify="center">
                   <Text textAlign="center">You don’t have liquidity in this pool yet.</Text>
                   <StyledInternalLink to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`}>
-                    <Text textAlign="center" color="white">Add liquidity.</Text>
+                    <Text textAlign="center" color="white">
+                      Add liquidity.
+                    </Text>
                   </StyledInternalLink>
                 </AutoColumn>
               </LightCard>

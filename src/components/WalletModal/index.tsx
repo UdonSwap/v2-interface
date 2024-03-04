@@ -31,7 +31,7 @@ const CloseIcon = styled.div`
 
 const CloseColor = styled(Close)`
   path {
-    stroke: ${({ theme }) => theme.text4};
+    stroke: #000000;
   }
 `
 
@@ -57,7 +57,7 @@ const ContentWrapper = styled.div`
   padding: 2rem;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-color:"white";
+  color: 'white';
   ${({ theme }) => theme.mediaWidth.upToMedium`padding: 1rem`};
 `
 
@@ -319,7 +319,7 @@ export default function WalletModal({
     return (
       <UpperSection>
         <CloseIcon onClick={toggleWalletModal}>
-          <CloseColor />
+          <CloseColor stroke="#000000" />
         </CloseIcon>
         {walletView !== WALLET_VIEWS.ACCOUNT ? (
           <HeaderRow color="blue">
@@ -328,14 +328,13 @@ export default function WalletModal({
                 setPendingError(false)
                 setWalletView(WALLET_VIEWS.ACCOUNT)
               }}
-              style={{color:"white"}}
             >
               Back
             </HoverText>
           </HeaderRow>
         ) : (
           <HeaderRow>
-            <HoverText >Connect to a wallet</HoverText>
+            <HoverText>Connect to a wallet</HoverText>
           </HeaderRow>
         )}
         <ContentWrapper>
@@ -352,7 +351,7 @@ export default function WalletModal({
           {walletView !== WALLET_VIEWS.PENDING && (
             <Blurb>
               <span>New to Ethereum? &nbsp;</span>{' '}
-              <ExternalLink href="https://ethereum.org/wallets/" style={{color:"#E9E002"}}>Learn more about wallets</ExternalLink>
+              <ExternalLink href="https://ethereum.org/wallets/">Learn more about wallets</ExternalLink>
             </Blurb>
           )}
         </ContentWrapper>
@@ -361,8 +360,8 @@ export default function WalletModal({
   }
 
   return (
-    <Modal isOpen={walletModalOpen} onDismiss={toggleWalletModal} minHeight={false} maxHeight={90} >
-      <Wrapper style={{backgroundColor:"#131118",color:"white"}}>{getModalContent()}</Wrapper>
+    <Modal isOpen={walletModalOpen} onDismiss={toggleWalletModal} minHeight={false} maxHeight={90}>
+      <Wrapper style={{ backgroundColor: '#FFFFFF', color: '#000000' }}>{getModalContent()}</Wrapper>
     </Modal>
   )
 }

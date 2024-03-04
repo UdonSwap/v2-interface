@@ -52,8 +52,7 @@ const Web3StatusError = styled(Web3StatusGeneric)`
   border: 1px solid ${({ theme }) => theme.red1};
   color: ${({ theme }) => theme.white};
   font-weight: 500;
-  :hover,
-  
+  :hover, ;
 `
 
 const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
@@ -93,7 +92,7 @@ const Web3StatusConnected = styled(Web3StatusGeneric)<{ pending?: boolean }>`
     background-color: ${({ pending, theme }) => (pending ? darken(0.05, theme.primary1) : lighten(0.05, theme.bg2))};
 
     :focus {
-      border:none;
+      border: none;
     }
   }
 `
@@ -180,7 +179,12 @@ function Web3StatusInner() {
 
   if (account) {
     return (
-      <Web3StatusConnected id="web3-status-connected" onClick={toggleWalletModal} pending={hasPendingTransactions} style={{backgroundColor:"#1C1924",color:"white",border:"none"}}>
+      <Web3StatusConnected
+        id="web3-status-connected"
+        onClick={toggleWalletModal}
+        pending={hasPendingTransactions}
+        style={{ backgroundColor: '#1C1924', color: 'white', border: 'none' }}
+      >
         {hasPendingTransactions ? (
           <RowBetween>
             <Text>{pending?.length} Pending</Text> <Loader stroke="white" />
@@ -203,7 +207,12 @@ function Web3StatusInner() {
     )
   } else {
     return (
-      <Web3StatusConnect id="connect-wallet" onClick={toggleWalletModal} faded={!account} style={{backgroundColor:"#E9E002"}}>
+      <Web3StatusConnect
+        id="connect-wallet"
+        onClick={toggleWalletModal}
+        faded={!account}
+        style={{ backgroundColor: '#E9E002' }}
+      >
         <Text>{t('Connect to a wallet')}</Text>
       </Web3StatusConnect>
     )

@@ -1,6 +1,6 @@
 import { Currency, Pair } from '@uniswap/sdk'
-import React, { useState, useContext, useCallback } from 'react'
-import styled, { ThemeContext } from 'styled-components'
+import React, { useState, useCallback } from 'react'
+import styled from 'styled-components'
 import { darken } from 'polished'
 import { useCurrencyBalance } from '../../state/wallet/hooks'
 import CurrencySearchModal from '../SearchModal/CurrencySearchModal'
@@ -25,8 +25,8 @@ const CurrencySelect = styled.button<{ selected: boolean }>`
   height: 2.2rem;
   font-size: 20px;
   font-weight: 500;
-  background-color: #9657EB;
-  color:white;
+  background-color: #9657eb;
+  color: white;
   border-radius: 12px;
   box-shadow: ${({ selected }) => (selected ? 'none' : '0px 6px 10px rgba(0, 0, 0, 0.075)')};
   outline: none;
@@ -37,7 +37,7 @@ const CurrencySelect = styled.button<{ selected: boolean }>`
 
   :focus,
   :hover {
-    background-color:#9657EB;
+    background-color: #9657eb;
   }
 `
 
@@ -93,10 +93,10 @@ const StyledTokenName = styled.span<{ active?: boolean }>`
 const StyledBalanceMax = styled.button`
   height: 28px;
   background-color: #382553;
-  border:none;
+  border: none;
   border-radius: 0.4rem;
   font-size: 12px;
-padding:5px 10px;
+  padding: 5px 10px;
   font-weight: 500;
   cursor: pointer;
   margin-right: 0.5rem;
@@ -152,7 +152,7 @@ export default function CurrencyInputPanel({
   const [modalOpen, setModalOpen] = useState(false)
   const { account } = useActiveWeb3React()
   const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
-  const theme = useContext(ThemeContext)
+  // const theme = useContext(ThemeContext)
 
   const handleDismissSearch = useCallback(() => {
     setModalOpen(false)
@@ -164,13 +164,13 @@ export default function CurrencyInputPanel({
         {!hideInput && (
           <LabelRow>
             <RowBetween>
-              <TYPE.body color={theme.text2} fontWeight={500} fontSize={14}>
+              <TYPE.body color={'#8A8F9D'} fontWeight={500} fontSize={14}>
                 {label}
               </TYPE.body>
               {account && (
                 <TYPE.body
                   onClick={onMax}
-                  color={theme.text2}
+                  color={'#8A8F9D'}
                   fontWeight={500}
                   fontSize={14}
                   style={{ display: 'inline', cursor: 'pointer' }}

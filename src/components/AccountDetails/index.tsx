@@ -35,7 +35,7 @@ const HeaderRow = styled.div`
 
 const UpperSection = styled.div`
   position: relative;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 
   h5 {
     margin: 0;
@@ -56,7 +56,7 @@ const UpperSection = styled.div`
 
 const InfoCard = styled.div`
   padding: 1rem;
-  border: 1px solid ${({ theme }) => theme.bg3};
+  border: 1px solid #8a8f9d;
   border-radius: 20px;
   position: relative;
   display: grid;
@@ -100,7 +100,7 @@ const LowerSection = styled.div`
   padding: 1.5rem;
   flex-grow: 1;
   overflow: auto;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 20px;
@@ -148,7 +148,7 @@ const AddressLink = styled(ExternalLink)<{ hasENS: boolean; isENS: boolean }>`
 const CloseIcon = styled.div`
   position: absolute;
   right: 1rem;
-  stroke:#000000
+  stroke: #000000;
   top: 14px;
   &:hover {
     cursor: pointer;
@@ -158,7 +158,7 @@ const CloseIcon = styled.div`
 
 const CloseColor = styled(Close)`
   path {
-    stroke: ${({ theme }) => theme.text4};
+    stroke: #000000;
   }
 `
 
@@ -194,7 +194,7 @@ const WalletAction = styled(ButtonSecondary)`
   margin-left: 8px;
   font-size: 0.825rem;
   padding: 4px 6px;
- 
+
   :hover {
     cursor: pointer;
     text-decoration: underline;
@@ -296,11 +296,11 @@ export default function AccountDetails({
 
   return (
     <>
-      <UpperSection >
-        <CloseIcon onClick={toggleWalletModal} color='black'>
-          <CloseColor  color='black' />
+      <UpperSection>
+        <CloseIcon onClick={toggleWalletModal}>
+          <CloseColor stroke="#000000" />
         </CloseIcon>
-        <HeaderRow style={{color:"#000000",justifyContent:"center"}}>Account</HeaderRow>
+        <HeaderRow style={{ color: '#000000', justifyContent: 'center' }}>Account</HeaderRow>
         <AccountSection>
           <YourAccount>
             <InfoCard>
@@ -309,7 +309,7 @@ export default function AccountDetails({
                 <div>
                   {connector !== injected && connector !== walletlink && (
                     <WalletAction
-                      style={{ fontSize: '.825rem', fontWeight: 400, marginRight: '8px' ,}}
+                      style={{ fontSize: '.825rem', fontWeight: 400, marginRight: '8px' }}
                       onClick={() => {
                         ;(connector as any).close()
                       }}
@@ -318,7 +318,15 @@ export default function AccountDetails({
                     </WalletAction>
                   )}
                   <WalletAction
-                    style={{ fontSize: '.825rem', fontWeight: 600,backgroundColor:"rgb(255 62 62 / 55%)",color:"#FF3E3E" ,padding:"10px 20px"}}
+                    style={{
+                      fontSize: '.825rem',
+                      fontWeight: 600,
+                      backgroundColor: 'rgb(255 62 62 / 55%)',
+                      color: '#FF3E3E',
+                      padding: '10px 20px',
+                      border: 'none',
+                      boxShadow: 'none'
+                    }}
                     onClick={() => {
                       openOptions()
                     }}

@@ -47,7 +47,7 @@ export const SearchInput = styled.input`
   border: none;
   outline: none;
   border-radius: 20px;
-  color: ${({ theme }) => theme.text1};
+  color: white;
   border-style: solid;
   border: 1px solid ${({ theme }) => theme.bg3};
   -webkit-appearance: none;
@@ -55,13 +55,13 @@ export const SearchInput = styled.input`
   font-size: 18px;
 
   ::placeholder {
-    color: ${({ theme }) => theme.text3};
+    color: ACB1C6;
   }
   transition: border 100ms;
   :focus {
-    border: 1px solid ${({ theme }) => theme.primary1};
+    border: 1px solid #ACB1C6 ;
     outline: none;
-  }
+  
 `
 export const Separator = styled.div`
   width: 100%;

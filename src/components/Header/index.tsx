@@ -70,13 +70,11 @@ const AccountElement = styled.div<{ active: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: #2F2A3C;
+  background-color: #2f2a3c;
   border-radius: 12px;
   white-space: nowrap;
   width: 100%;
-  color:white
-
-
+  color: white;
 `
 
 const TestnetWrapper = styled.div`
@@ -91,6 +89,7 @@ const NetworkCard = styled(YellowCard)`
   margin-right: 10px;
   border-radius: 12px;
   padding: 8px 12px;
+  background-color: #1c1924;
 `
 
 const UniIcon = styled.div`
@@ -141,11 +140,13 @@ export default function Header() {
       <RowBetween style={{ alignItems: 'flex-start' }} padding="1rem 1rem 0 1rem">
         <HeaderElement>
           <Title href=".">
-            <UniIcon>
-              {/* <img src={isDark ? LogoDark : Logo} alt="logo" /> */}
-            </UniIcon>
+            <UniIcon>{/* <img src={isDark ? LogoDark : Logo} alt="logo" /> */}</UniIcon>
             <TitleText>
-              <img style={{ marginLeft: '4px', marginTop: '4px',width:"150px" }} src={isDark ? BeatSwapLight : BeatSwap} alt="logo" />
+              <img
+                style={{ marginLeft: '4px', marginTop: '4px', width: '150px' }}
+                src={isDark ? BeatSwapLight : BeatSwap}
+                alt="logo"
+              />
             </TitleText>
           </Title>
         </HeaderElement>

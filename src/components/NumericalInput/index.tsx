@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { escapeRegExp } from '../../utils'
 
 const StyledInput = styled.input<{ error?: boolean; fontSize?: string; align?: string }>`
-  color: white;
+  color: #a6a0bb;
   width: 0;
   position: relative;
   font-weight: 500;

@@ -305,18 +305,23 @@ export default function Swap() {
               onCurrencySelect={handleInputSelect}
               otherCurrency={currencies[Field.OUTPUT]}
               id="swap-currency-input"
-              
             />
-            <AutoColumn justify="space-between" style={{margin:"10px 0px"}}>
-              <AutoRow justify={isExpertMode ? 'space-between' : 'center'} style={{ padding: '0 1rem', borderBottom:"1px solid #525252" }}>
-                <ArrowWrapper clickable style={{position:"absolute", backgroundColor:"#1C1924",borderRadius:"50px",padding:"5px"}}>
+            <AutoColumn justify="space-between" style={{ margin: '10px 0px' }}>
+              <AutoRow
+                justify={isExpertMode ? 'space-between' : 'center'}
+                style={{ padding: '0 1rem', borderBottom: '1px solid #525252', width: '90%', margin: '0 auto' }}
+              >
+                <ArrowWrapper
+                  clickable
+                  style={{ position: 'absolute', backgroundColor: '#1C1924', borderRadius: '50px', padding: '5px' }}
+                >
                   <Repeat
                     size="16"
                     onClick={() => {
                       setApprovalSubmitted(false) // reset 2 step UI for approvals
                       onSwitchTokens()
                     }}
-                    color={currencies[Field.INPUT] && currencies[Field.OUTPUT] ? theme.primary1 : "white"}
+                    color={currencies[Field.INPUT] && currencies[Field.OUTPUT] ? 'white' : 'white'}
                   />
                 </ArrowWrapper>
                 {recipient === null && !showWrap && isExpertMode ? (
@@ -340,7 +345,7 @@ export default function Swap() {
             {recipient !== null && !showWrap ? (
               <>
                 <AutoRow justify="space-between" style={{ padding: '0 1rem' }}>
-                  <ArrowWrapper clickable={false} >
+                  <ArrowWrapper clickable={false}>
                     <Repeat size="16" color={'white'} />
                   </ArrowWrapper>
                   <LinkStyledButton id="remove-recipient-button" onClick={() => onChangeRecipient(null)}>
@@ -382,7 +387,9 @@ export default function Swap() {
           </AutoColumn>
           <BottomGrouping>
             {!account ? (
-              <ButtonLight onClick={toggleWalletModal} style={{backgroundColor:"#E9E002"}}>Connect Wallet</ButtonLight>
+              <ButtonLight onClick={toggleWalletModal} style={{ backgroundColor: '#E9E002' }}>
+                Connect Wallet
+              </ButtonLight>
             ) : showWrap ? (
               <ButtonPrimary disabled={Boolean(wrapInputError)} onClick={onWrap}>
                 {wrapInputError ??
