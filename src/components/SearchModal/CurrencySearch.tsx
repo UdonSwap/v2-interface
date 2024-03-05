@@ -3,8 +3,8 @@ import React, { KeyboardEvent, RefObject, useCallback, useEffect, useMemo, useRe
 import ReactGA from 'react-ga'
 import { useTranslation } from 'react-i18next'
 import { FixedSizeList } from 'react-window'
-import { Text } from 'rebass'
-// import { ThemeContext } from 'styled-components'
+import { Text, Image } from 'rebass'
+import search from '../../assets/images/search.png'
 import { useActiveWeb3React } from '../../hooks'
 import { useAllTokens, useToken } from '../../hooks/Tokens'
 import { useSelectedListInfo } from '../../state/lists/hooks'
@@ -139,7 +139,7 @@ export function CurrencySearch({
 
   return (
     <Column style={{ width: '100%', flex: '1 1', backgroundColor: '#131118', color: 'white' }}>
-      <PaddedColumn gap="14px">
+      <PaddedColumn gap="14px" style={{ position: 'relative' }}>
         <RowBetween>
           <Text fontWeight={500} fontSize={16}>
             Select a token
@@ -156,6 +156,13 @@ export function CurrencySearch({
           onChange={handleInput}
           onKeyDown={handleEnter}
         />
+        <Image
+          src={search}
+          alt="search"
+          backgroundColor={'#9657EB'}
+          padding={'7px'}
+          style={{ borderRadius: '50px', position: 'absolute', top: '67px', right: '40px' }}
+        />
         {showCommonBases && (
           <CommonBases chainId={chainId} onSelect={handleCurrencySelect} selectedCurrency={selectedCurrency} />
         )}
@@ -169,7 +176,7 @@ export function CurrencySearch({
 
       <Separator />
 
-      <div style={{ flex: '1', scrollbarColor: 'white rgb(19, 17, 24)', scrollbarWidth: 'thin' }}>
+      <div style={{ flex: '1' }}>
         <AutoSizer disableWidth>
           {({ height }) => (
             <CurrencyList
@@ -186,7 +193,12 @@ export function CurrencySearch({
       </div>
 
       <Separator />
-      <Card style={{ borderTop: '1px solid white', borderRadius: '1px' }}>
+      <Card
+        style={{
+          borderTop: '1px solid white',
+          borderRadius: '1px'
+        }}
+      >
         <RowBetween>
           {selectedListInfo.current ? (
             <Row>

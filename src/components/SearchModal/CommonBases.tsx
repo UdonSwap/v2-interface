@@ -22,7 +22,7 @@ const BaseWrapper = styled.div<{ disable?: boolean }>`
   }
 
   background-color: ${({ theme, disable }) => disable && theme.bg3};
-  opacity: ${({ disable }) => disable && '0.4'};
+  color: ${({ disable }) => disable && 'black'};
 `
 
 export default function CommonBases({

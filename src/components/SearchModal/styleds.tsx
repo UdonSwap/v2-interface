@@ -20,6 +20,7 @@ export const FadedSpan = styled(RowFixed)`
 export const PaddedColumn = styled(AutoColumn)`
   padding: 20px;
   padding-bottom: 12px;
+  position: relative;
 `
 
 export const MenuItem = styled(RowBetween)`
@@ -40,6 +41,7 @@ export const SearchInput = styled.input`
   position: relative;
   display: flex;
   padding: 16px;
+  padding-right:71px;
   align-items: center;
   width: 100%;
   white-space: nowrap;

@@ -37,7 +37,7 @@ const PopoverContainer = styled.div<{ show: boolean }>`
   visibility: ${props => (props.show ? 'visible' : 'hidden')};
   opacity: ${props => (props.show ? 1 : 0)};
   transition: visibility 150ms linear, opacity 150ms linear;
-  background:#FFFFFFFF;
+  background: #ffffffff;
   border: 1px solid ${({ theme }) => theme.bg3};
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
     0px 24px 32px rgba(0, 0, 0, 0.01);
@@ -66,7 +66,7 @@ const StyledListUrlText = styled.div`
   font-size: 14px;
   overflow: hidden;
   text-overflow: ellipsis;
-  color:white;
+  color: white;
 `
 
 function ListOrigin({ listUrl }: { listUrl: string }) {
@@ -155,7 +155,11 @@ const ListRow = memo(function ListRow({ listUrl, onBack }: { listUrl: string; on
   return (
     <Row key={listUrl} align="center" padding="16px" id={listUrlRowHTMLId(listUrl)}>
       {list.logoURI ? (
-        <ListLogo style={{ marginRight: '1rem',backgroundColor:"white",borderRadius:"50px",padding:"3x" }} logoURI={list.logoURI} alt={`${list.name} list logo`} />
+        <ListLogo
+          style={{ marginRight: '1rem', backgroundColor: 'white', borderRadius: '50px', padding: '3x' }}
+          logoURI={list.logoURI}
+          alt={`${list.name} list logo`}
+        />
       ) : (
         <div style={{ width: '24px', height: '24px', marginRight: '1rem' }} />
       )}
@@ -172,10 +176,10 @@ const ListRow = memo(function ListRow({ listUrl, onBack }: { listUrl: string; on
         <Row
           style={{
             marginTop: '4px',
-            color:"white"
+            color: 'white'
           }}
         >
-          <StyledListUrlText title={listUrl} >
+          <StyledListUrlText title={listUrl}>
             <ListOrigin listUrl={listUrl} />
           </StyledListUrlText>
         </Row>
@@ -187,8 +191,7 @@ const ListRow = memo(function ListRow({ listUrl, onBack }: { listUrl: string; on
             padding: '.8rem .35rem',
             borderRadius: '12px',
             fontSize: '14px',
-            marginRight: '0.5rem',
-           
+            marginRight: '0.5rem'
           }}
           onClick={toggle}
           ref={setReferenceElement}
@@ -214,7 +217,15 @@ const ListRow = memo(function ListRow({ listUrl, onBack }: { listUrl: string; on
         <ButtonPrimary
           disabled={true}
           className="select-button"
-          style={{ width: '5rem', minWidth: '5rem', padding: '0.5rem .35rem', borderRadius: '12px', fontSize: '14px' , backgroundColor:"#FFFFFF",color:"#525252"}}
+          style={{
+            width: '5rem',
+            minWidth: '5rem',
+            padding: '0.5rem .35rem',
+            borderRadius: '12px',
+            fontSize: '14px',
+            backgroundColor: '#FFFFFF',
+            color: '#525252'
+          }}
         >
           Selected
         </ButtonPrimary>
@@ -228,7 +239,7 @@ const ListRow = memo(function ListRow({ listUrl, onBack }: { listUrl: string; on
               padding: '0.5rem .35rem',
               borderRadius: '12px',
               fontSize: '14px',
-              backgroundColor:"#9657EB",
+              backgroundColor: '#9657EB'
             }}
             onClick={selectThisList}
           >
@@ -246,11 +257,16 @@ const AddListButton = styled(ButtonSecondary)`
   margin-left: 1rem;
   border-radius: 12px;
   padding: 10px 18px;
+  position: absolute;
+  right: 30px;
+}
 `
 
 const ListContainer = styled.div`
   flex: 1;
   overflow: auto;
+  scrollbar-color: white rgb(19, 17, 24);
+  scrollbar-width: thin;
 `
 
 export function ListSelect({ onDismiss, onBack }: { onDismiss: () => void; onBack: () => void }) {
@@ -326,7 +342,7 @@ export function ListSelect({ onDismiss, onBack }: { onDismiss: () => void; onBac
   }, [lists])
 
   return (
-    <Column style={{ width: '100%', flex: '1 1' , backgroundColor:"#131118",color:"white"}}>
+    <Column style={{ width: '100%', flex: '1 1', backgroundColor: '#131118', color: 'white' }}>
       <PaddedColumn>
         <RowBetween>
           <div>
@@ -354,9 +370,13 @@ export function ListSelect({ onDismiss, onBack }: { onDismiss: () => void; onBac
             value={listUrlInput}
             onChange={handleInput}
             onKeyDown={handleEnterKey}
-            style={{ height: '2.75rem', borderRadius: 12, padding: '25px 12px',border:"1px solid #ACB1C6" }}
+            style={{ height: '2.75rem', borderRadius: 12, padding: '25px 97px 25px 12px', border: '1px solid #ACB1C6' }}
           />
-          <AddListButton onClick={handleAddList} disabled={!validUrl} style={{backgroundColor:"#FFFFFF"}}>
+          <AddListButton
+            onClick={handleAddList}
+            disabled={!validUrl}
+            style={{ backgroundColor: '#FFFFFF', color: 'white' }}
+          >
             Add
           </AddListButton>
         </Row>
@@ -376,8 +396,10 @@ export function ListSelect({ onDismiss, onBack }: { onDismiss: () => void; onBac
       </ListContainer>
       <Separator />
 
-      <div style={{ padding: '16px', textAlign: 'center',color:"white" }}>
-        <ExternalLink href="https://tokenlists.org" style={{color:"#E9E002"}}>Browse lists</ExternalLink>
+      <div style={{ padding: '16px', textAlign: 'center', color: 'white' }}>
+        <ExternalLink href="https://tokenlists.org" style={{ color: '#E9E002' }}>
+          Browse lists
+        </ExternalLink>
       </div>
     </Column>
   )

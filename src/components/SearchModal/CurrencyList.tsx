@@ -203,6 +203,7 @@ export default function CurrencyList({
       itemCount={itemData.length}
       itemSize={56}
       itemKey={itemKey}
+      style={{ scrollbarColor: 'white rgb(19, 17, 24)', scrollbarWidth: 'thin' }}
     >
       {Row}
     </FixedSizeList>
