@@ -1,10 +1,10 @@
-import { Currency, ETHER, Token } from '@uniswap/sdk'
+import { Currency, ETHER, Token } from 'lampros_dex_sdk'
 import React, { KeyboardEvent, RefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import ReactGA from 'react-ga'
 import { useTranslation } from 'react-i18next'
 import { FixedSizeList } from 'react-window'
-import { Text, Image } from 'rebass'
-import search from '../../assets/images/search.png'
+import { Text } from 'rebass'
+// import search from '../../assets/images/search.png'
 import { useActiveWeb3React } from '../../hooks'
 import { useAllTokens, useToken } from '../../hooks/Tokens'
 import { useSelectedListInfo } from '../../state/lists/hooks'
@@ -156,13 +156,7 @@ export function CurrencySearch({
           onChange={handleInput}
           onKeyDown={handleEnter}
         />
-        <Image
-          src={search}
-          alt="search"
-          backgroundColor={'#9657EB'}
-          padding={'7px'}
-          style={{ borderRadius: '50px', position: 'absolute', top: '67px', right: '40px' }}
-        />
+
         {showCommonBases && (
           <CommonBases chainId={chainId} onSelect={handleCurrencySelect} selectedCurrency={selectedCurrency} />
         )}

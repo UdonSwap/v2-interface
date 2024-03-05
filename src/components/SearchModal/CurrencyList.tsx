@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from '@uniswap/sdk'
+import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from 'lampros_dex_sdk'
 import React, { CSSProperties, MutableRefObject, useCallback, useMemo } from 'react'
 import { FixedSizeList } from 'react-window'
 import { Text } from 'rebass'
@@ -119,26 +119,28 @@ function CurrencyRow({
         </Text>
         <FadedSpan>
           {!isOnSelectedList && customAdded ? (
-            <TYPE.main fontWeight={500}>
+            <TYPE.main fontWeight={500} color={'white'}>
               Added by user
               <LinkStyledButton
                 onClick={event => {
                   event.stopPropagation()
                   if (chainId && currency instanceof Token) removeToken(chainId, currency.address)
                 }}
+                style={{ color: 'red' }}
               >
                 (Remove)
               </LinkStyledButton>
             </TYPE.main>
           ) : null}
           {!isOnSelectedList && !customAdded ? (
-            <TYPE.main fontWeight={500}>
+            <TYPE.main fontWeight={500} color={'white'}>
               Found by address
               <LinkStyledButton
                 onClick={event => {
                   event.stopPropagation()
                   if (currency instanceof Token) addToken(currency)
                 }}
+                style={{ color: 'red' }}
               >
                 (Add)
               </LinkStyledButton>

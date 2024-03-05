@@ -1,4 +1,4 @@
-import { Currency, Percent, Price } from '@uniswap/sdk'
+import { Currency, Percent, Price } from 'lampros_dex_sdk'
 import React from 'react'
 import { Text } from 'rebass'
 // import { ThemeContext } from 'styled-components'
@@ -23,15 +23,18 @@ export function PoolPriceBar({
   return (
     <AutoColumn gap="md">
       <AutoRow justify="space-around" gap="4px">
-        <AutoColumn justify="center" >
-          <TYPE.black color={'white'}  fontSize={12}>{price?.toSignificant(6) ?? '-'}</TYPE.black>
+        <AutoColumn justify="center">
+          <TYPE.black color={'white'} fontSize={12}>
+            {price?.toSignificant(6) ?? '-'}
+          </TYPE.black>
           <Text fontWeight={500} fontSize={14} color={'white'} pt={1}>
             {currencies[Field.CURRENCY_B]?.symbol} per {currencies[Field.CURRENCY_A]?.symbol}
           </Text>
         </AutoColumn>
         <AutoColumn justify="center">
-          <TYPE.black color={'white'}  fontSize={12}
-          >{price?.invert()?.toSignificant(6) ?? '-'}</TYPE.black>
+          <TYPE.black color={'white'} fontSize={12}>
+            {price?.invert()?.toSignificant(6) ?? '-'}
+          </TYPE.black>
           <Text fontWeight={500} fontSize={14} color={'white'} pt={1}>
             {currencies[Field.CURRENCY_A]?.symbol} per {currencies[Field.CURRENCY_B]?.symbol}
           </Text>

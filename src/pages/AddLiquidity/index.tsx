@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { TransactionResponse } from '@ethersproject/providers'
-import { Currency, currencyEquals, ETHER, TokenAmount, WETH } from '@uniswap/sdk'
+import { Currency, currencyEquals, ETHER, TokenAmount, WETH } from 'lampros_dex_sdk'
 import React, { useCallback, useState } from 'react'
 import { Plus } from 'react-feather'
 import ReactGA from 'react-ga'
@@ -306,7 +306,7 @@ export default function AddLiquidity({
     <>
       <AppBody>
         <AddRemoveTabs adding={true} />
-        <Wrapper>
+        <Wrapper style={{ backgroundColor: '#131118' }}>
           <TransactionConfirmationModal
             isOpen={showConfirm}
             onDismiss={handleDismissConfirmation}
@@ -352,8 +352,12 @@ export default function AddLiquidity({
               id="add-liquidity-input-tokena"
               showCommonBases
             />
-            <ColumnCenter style={{borderBottom:"1px solid gray"}}>
-              <Plus size="16" color={'white'} style={{position:"absolute",top:"100",backgroundColor:"#1C1924",borderRadius:"50px"}}/>
+            <ColumnCenter style={{ borderBottom: '1px solid gray' }}>
+              <Plus
+                size="16"
+                color={'white'}
+                style={{ position: 'absolute', top: '100', backgroundColor: '#1C1924', borderRadius: '50px' }}
+              />
             </ColumnCenter>
             <CurrencyInputPanel
               value={formattedAmounts[Field.CURRENCY_B]}
@@ -369,9 +373,9 @@ export default function AddLiquidity({
             />
             {currencies[Field.CURRENCY_A] && currencies[Field.CURRENCY_B] && pairState !== PairState.INVALID && (
               <>
-                <GreyCard padding="0px" borderRadius={'20px'} style={{backgroundColor:"transparent"}}>
-                  <RowBetween padding="10px" backgroundColor="#211F28" borderRadius='5px'>
-                    <TYPE.subHeader fontWeight={500} fontSize={14} color="white" >
+                <GreyCard padding="0px" borderRadius={'20px'} style={{ backgroundColor: 'transparent' }}>
+                  <RowBetween padding="10px" backgroundColor="#211F28" borderRadius="5px">
+                    <TYPE.subHeader fontWeight={500} fontSize={14} color="white">
                       {noLiquidity ? 'Initial prices' : 'Prices'} and pool share
                     </TYPE.subHeader>
                   </RowBetween>{' '}

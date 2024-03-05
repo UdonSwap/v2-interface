@@ -1,4 +1,4 @@
-import { JSBI, Pair, Percent } from '@uniswap/sdk'
+import { JSBI, Pair, Percent } from 'lampros_dex_sdk'
 import { darken } from 'polished'
 import React, { useState } from 'react'
 import { ChevronDown, ChevronUp } from 'react-feather'
@@ -65,7 +65,7 @@ export function MinimalPositionCard({ pair, showUnwrapped = false, border }: Pos
   return (
     <>
       {userPoolBalance && (
-        <GreyCard border={border} style={{backgroundColor:"#131118"}} color={"white"}>
+        <GreyCard border={border} style={{ backgroundColor: '#131118' }} color={'white'}>
           <AutoColumn gap="12px">
             <FixedHeightRow>
               <RowFixed>
@@ -225,7 +225,10 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
             </FixedHeightRow>
 
             <AutoRow justify="center" marginTop={'10px'}>
-              <ExternalLink href={`https://uniswap.info/pair/${pair.liquidityToken.address}`}>
+              <ExternalLink
+                href={`https://uniswap.info/pair/${pair.liquidityToken.address}`}
+                style={{ color: 'rgb(233, 224, 2)' }}
+              >
                 View pool information ↗
               </ExternalLink>
             </AutoRow>

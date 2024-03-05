@@ -7,7 +7,7 @@ const TooltipContainer = styled.div`
   padding: 0.6rem 1rem;
   line-height: 150%;
   font-weight: 400;
-  color: #8a8f9d;
+  color: white;
   background-color: #131118;
 `
 

@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from '@uniswap/sdk'
+import { Currency, ETHER, Token } from 'lampros_dex_sdk'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 

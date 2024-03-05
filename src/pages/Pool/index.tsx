@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react'
 import { ThemeContext } from 'styled-components'
-import { Pair } from '@uniswap/sdk'
+import { Pair } from 'lampros_dex_sdk'
 import { Link } from 'react-router-dom'
 import { SwapPoolTabs } from '../../components/NavigationTabs'
 
@@ -61,8 +61,13 @@ export default function Pool() {
       <AppBody>
         <SwapPoolTabs active={'pool'} />
         <AutoColumn gap="lg" justify="center">
-          <ButtonPrimary id="join-pool-button" as={Link} style={{ padding: 16,color:"#1C1924",backgroundColor:"#E9E002" }} to="/add/ETH">
-            <Text fontWeight={500} fontSize={20} >
+          <ButtonPrimary
+            id="join-pool-button"
+            as={Link}
+            style={{ padding: 16, color: '#1C1924', backgroundColor: '#E9E002' }}
+            to="/add/ETH"
+          >
+            <Text fontWeight={500} fontSize={20}>
               Add Liquidity
             </Text>
           </ButtonPrimary>
@@ -102,9 +107,13 @@ export default function Pool() {
             )}
 
             <div>
-              <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0', color:"white"}}>
+              <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0', color: 'white' }}>
                 {hasV1Liquidity ? 'Uniswap V1 liquidity found!' : "Don't see a pool you joined?"}{' '}
-                <StyledInternalLink id="import-pool-link" to={hasV1Liquidity ? '/migrate/v1' : '/find'} style={{color:"#E9E002"}}>
+                <StyledInternalLink
+                  id="import-pool-link"
+                  to={hasV1Liquidity ? '/migrate/v1' : '/find'}
+                  style={{ color: '#E9E002' }}
+                >
                   {hasV1Liquidity ? 'Migrate now.' : 'Import it.'}
                 </StyledInternalLink>
               </Text>
@@ -114,7 +123,7 @@ export default function Pool() {
       </AppBody>
 
       <div style={{ display: 'flex', alignItems: 'center', marginTop: '1.5rem' }}>
-        <ButtonSecondary as={Link} style={{ width: 'initial',color:"white" }} to="/migrate/v1">
+        <ButtonSecondary as={Link} style={{ width: 'initial', color: 'white' }} to="/migrate/v1">
           Migrate V1 Liquidity
         </ButtonSecondary>
       </div>

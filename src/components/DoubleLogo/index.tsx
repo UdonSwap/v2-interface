@@ -1,12 +1,12 @@
-import { Currency } from '@uniswap/sdk'
+import { Currency } from 'lampros_dex_sdk'
 import React from 'react'
 import styled from 'styled-components'
 import CurrencyLogo from '../CurrencyLogo'
 
 const Wrapper = styled.div<{ margin: boolean; sizeraw: number }>`
   position: relative;
+  flex-direction: row-reverse;
   display: flex;
-  flex-direction: row;
   margin-right: ${({ sizeraw, margin }) => margin && (sizeraw / 3 + 8).toString() + 'px'};
 `
 
@@ -22,6 +22,7 @@ const HigherLogo = styled(CurrencyLogo)`
 `
 const CoveredLogo = styled(CurrencyLogo)<{ sizeraw: number }>`
   position: absolute;
+
   left: ${({ sizeraw }) => (sizeraw / 2).toString() + 'px'};
 `
 
@@ -33,7 +34,7 @@ export default function DoubleCurrencyLogo({
 }: DoubleCurrencyLogoProps) {
   return (
     <Wrapper sizeraw={size} margin={margin}>
-      {currency0 && <HigherLogo currency={currency0} size={size.toString() + 'px'} />}
+      {currency0 && <HigherLogo currency={currency0} size={size.toString() + 'px'} style={{ padding: ' 3px' }} />}
       {currency1 && <CoveredLogo currency={currency1} size={size.toString() + 'px'} sizeraw={size} />}
     </Wrapper>
   )

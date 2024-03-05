@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Pair, Token, Trade } from '@uniswap/sdk'
+import { Currency, CurrencyAmount, Pair, Token, Trade } from 'lampros_dex_sdk'
 import flatMap from 'lodash.flatmap'
 import { useMemo } from 'react'
 

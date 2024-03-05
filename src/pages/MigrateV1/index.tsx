@@ -1,4 +1,4 @@
-import { JSBI, Token } from '@uniswap/sdk'
+import { JSBI, Token } from 'lampros_dex_sdk'
 import React, { useCallback, useContext, useMemo, useState, useEffect } from 'react'
 import { ThemeContext } from 'styled-components'
 import { AutoColumn } from '../../components/Column'
@@ -67,9 +67,9 @@ export default function MigrateV1() {
   const isLoading = Object.keys(V1Exchanges)?.length === 0 || V1LiquidityBalancesLoading
 
   return (
-    <BodyWrapper style={{ padding: 24,color:"white" }}>
+    <BodyWrapper style={{ padding: 24, color: 'white' }}>
       <AutoColumn gap="16px">
-        <AutoRow style={{ alignItems: 'center', justifyContent: 'space-between',stroke:'white' }} gap="8px">
+        <AutoRow style={{ alignItems: 'center', justifyContent: 'space-between', stroke: 'white' }} gap="8px">
           <BackArrow to="/pool" />
           <TYPE.mediumHeader>Migrate V1 Liquidity</TYPE.mediumHeader>
           <div>
@@ -77,7 +77,7 @@ export default function MigrateV1() {
           </div>
         </AutoRow>
 
-        <TYPE.body style={{ marginBottom: 8, fontWeight: 400 ,color:"white"}}>
+        <TYPE.body style={{ marginBottom: 8, fontWeight: 400, color: 'white' }}>
           For each pool shown below, click migrate to remove your liquidity from Uniswap V1 and deposit it into Uniswap
           V2.
         </TYPE.body>
@@ -106,7 +106,7 @@ export default function MigrateV1() {
             {allV1PairsWithLiquidity?.length > 0 ? (
               <>{allV1PairsWithLiquidity}</>
             ) : (
-              <EmptyState message="No V1 Liquidity found."/>
+              <EmptyState message="No V1 Liquidity found." />
             )}
           </>
         )}
