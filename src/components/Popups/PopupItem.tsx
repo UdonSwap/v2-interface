@@ -1,7 +1,7 @@
-import React, { useCallback, useContext, useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { X } from 'react-feather'
 import { useSpring } from 'react-spring/web'
-import styled, { ThemeContext } from 'styled-components'
+import styled from 'styled-components'
 import { animated } from 'react-spring'
 import { PopupContent } from '../../state/application/actions'
 import { useRemovePopup } from '../../state/application/hooks'
@@ -21,7 +21,8 @@ export const Popup = styled.div`
   display: inline-block;
   width: 100%;
   padding: 1em;
-  background-color: ${({ theme }) => theme.bg1};
+  background-color: rgb(28, 25, 36);
+  color: white;
   position: relative;
   border-radius: 10px;
   padding: 20px;
@@ -66,7 +67,7 @@ export default function PopupItem({
     }
   }, [removeAfterMs, removeThisPopup])
 
-  const theme = useContext(ThemeContext)
+  // const theme = useContext(ThemeContext)
 
   let popupContent
   if ('txn' in content) {
@@ -89,7 +90,7 @@ export default function PopupItem({
 
   return (
     <Popup>
-      <StyledClose color={theme.text2} onClick={removeThisPopup} />
+      <StyledClose color={'white'} onClick={removeThisPopup} />
       {popupContent}
       {removeAfterMs !== null ? <AnimatedFader style={faderStyle} /> : null}
     </Popup>

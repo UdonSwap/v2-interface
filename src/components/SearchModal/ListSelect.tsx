@@ -257,8 +257,8 @@ const AddListButton = styled(ButtonSecondary)`
   margin-left: 1rem;
   border-radius: 12px;
   padding: 10px 18px;
-  position: absolute;
-  right: 30px;
+  // position: absolute;
+  // right: 30px;
 }
 `
 
@@ -370,12 +370,12 @@ export function ListSelect({ onDismiss, onBack }: { onDismiss: () => void; onBac
             value={listUrlInput}
             onChange={handleInput}
             onKeyDown={handleEnterKey}
-            style={{ height: '2.75rem', borderRadius: 12, padding: '25px 97px 25px 12px', border: '1px solid #ACB1C6' }}
+            style={{ height: '2.75rem', borderRadius: 12, padding: '12', border: '1px solid #ACB1C6' }}
           />
           <AddListButton
             onClick={handleAddList}
             disabled={!validUrl}
-            style={{ backgroundColor: '#FFFFFF', color: 'white' }}
+            style={{ backgroundColor: '#FFFFFF', color: 'black' }}
           >
             Add
           </AddListButton>

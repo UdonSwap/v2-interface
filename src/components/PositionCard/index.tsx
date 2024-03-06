@@ -65,7 +65,11 @@ export function MinimalPositionCard({ pair, showUnwrapped = false, border }: Pos
   return (
     <>
       {userPoolBalance && (
-        <GreyCard border={border} style={{ backgroundColor: '#131118' }} color={'white'}>
+        <GreyCard
+          border={border}
+          style={{ backgroundColor: '#131118', minWidth: '25rem', border: '1px solid #323232' }}
+          color={'white'}
+        >
           <AutoColumn gap="12px">
             <FixedHeightRow>
               <RowFixed>

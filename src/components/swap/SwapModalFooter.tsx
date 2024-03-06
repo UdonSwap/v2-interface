@@ -1,8 +1,8 @@
 import { Trade, TradeType } from 'lampros_dex_sdk'
-import React, { useContext, useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { Repeat } from 'react-feather'
 import { Text } from 'rebass'
-import { ThemeContext } from 'styled-components'
+// import { ThemeContext } from 'styled-components'
 import { Field } from '../../state/swap/actions'
 import { TYPE } from '../../theme'
 import {
@@ -32,7 +32,7 @@ export default function SwapModalFooter({
   disabledConfirm: boolean
 }) {
   const [showInverted, setShowInverted] = useState<boolean>(false)
-  const theme = useContext(ThemeContext)
+  // const theme = useContext(ThemeContext)
   const slippageAdjustedAmounts = useMemo(() => computeSlippageAdjustedAmounts(trade, allowedSlippage), [
     allowedSlippage,
     trade
@@ -44,13 +44,13 @@ export default function SwapModalFooter({
     <>
       <AutoColumn gap="0px" style={{ backgroundColor: '#131118' }}>
         <RowBetween align="center">
-          <Text fontWeight={400} fontSize={14} color={theme.text2}>
+          <Text fontWeight={400} fontSize={14} color={'white'}>
             Price
           </Text>
           <Text
             fontWeight={500}
             fontSize={14}
-            color={theme.text1}
+            color={'white'}
             style={{
               justifyContent: 'center',
               alignItems: 'center',
@@ -74,19 +74,19 @@ export default function SwapModalFooter({
             <QuestionHelper text="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed." />
           </RowFixed>
           <RowFixed>
-            <TYPE.black fontSize={14}>
+            <TYPE.black fontSize={14} color={'white'}>
               {trade.tradeType === TradeType.EXACT_INPUT
                 ? slippageAdjustedAmounts[Field.OUTPUT]?.toSignificant(4) ?? '-'
                 : slippageAdjustedAmounts[Field.INPUT]?.toSignificant(4) ?? '-'}
             </TYPE.black>
-            <TYPE.black fontSize={14} marginLeft={'4px'}>
+            <TYPE.black fontSize={14} marginLeft={'4px'} color={'white'}>
               {trade.tradeType === TradeType.EXACT_INPUT
                 ? trade.outputAmount.currency.symbol
                 : trade.inputAmount.currency.symbol}
             </TYPE.black>
           </RowFixed>
         </RowBetween>
-        <RowBetween style={{ backgroundColor: '#131118' }}>
+        <RowBetween style={{ backgroundColor: '#131118', color: 'white' }}>
           <RowFixed>
             <TYPE.black color={'white'} fontSize={14} fontWeight={400}>
               Price Impact
@@ -102,7 +102,7 @@ export default function SwapModalFooter({
             </TYPE.black>
             <QuestionHelper text="A portion of each trade (0.30%) goes to liquidity providers as a protocol incentive." />
           </RowFixed>
-          <TYPE.black fontSize={14}>
+          <TYPE.black fontSize={14} color={'white'}>
             {realizedLPFee ? realizedLPFee?.toSignificant(6) + ' ' + trade.inputAmount.currency.symbol : '-'}
           </TYPE.black>
         </RowBetween>

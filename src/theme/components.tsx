@@ -67,7 +67,7 @@ export const LinkStyledButton = styled.button<{ disabled?: boolean }>`
 export const StyledInternalLink = styled(Link)`
   text-decoration: none;
   cursor: pointer;
-  color: ${({ theme }) => theme.primary1};
+  color: #e9e002;
   font-weight: 500;
 
   :hover {
@@ -87,7 +87,7 @@ export const StyledInternalLink = styled(Link)`
 const StyledLink = styled.a`
   text-decoration: none;
   cursor: pointer;
-  color: ${({ theme }) => theme.primary1};
+  color: #9657eb;
   font-weight: 500;
 
   :hover {
@@ -108,6 +108,7 @@ const StyledLink = styled.a`
  * Outbound link that handles firing google analytics events
  */
 export function ExternalLink({
+  color = 'whhite',
   target = '_blank',
   href,
   rel = 'noopener noreferrer',

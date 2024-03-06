@@ -19,6 +19,7 @@ const Wrapper = styled.div`
 `
 const Section = styled(AutoColumn)`
   padding: 24px;
+  color: white;
 `
 
 const BottomSection = styled(Section)`
@@ -56,7 +57,7 @@ function ConfirmationPendingContent({ onDismiss, pendingText }: { onDismiss: () 
               {pendingText}
             </Text>
           </AutoColumn>
-          <Text fontSize={12} color="#565A69" textAlign="center">
+          <Text fontSize={12} color="#8A8F9D" textAlign="center">
             Confirm this transaction in your wallet
           </Text>
         </AutoColumn>

@@ -1,5 +1,5 @@
 import { Token } from 'lampros_dex_sdk'
-import { transparentize } from 'polished'
+// import { transparentize } from 'polished'
 import React, { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { useActiveWeb3React } from '../../hooks'
@@ -14,9 +14,10 @@ import { AlertTriangle } from 'react-feather'
 import { ButtonError } from '../Button'
 
 const Wrapper = styled.div<{ error: boolean }>`
-  background: ${({ theme }) => transparentize(0.6, theme.bg3)};
+  background: rgb(28, 25, 36);
   padding: 0.75rem;
   border-radius: 20px;
+  color: white;
 `
 
 const WarningContainer = styled.div`
@@ -27,10 +28,11 @@ const WarningContainer = styled.div`
   border: 1px solid #f3841e;
   border-radius: 20px;
   overflow: auto;
+  color: white;
 `
 
 const StyledWarningIcon = styled(AlertTriangle)`
-  stroke: ${({ theme }) => theme.red2};
+  stroke: #e9e002;
 `
 
 interface TokenWarningCardProps {
@@ -74,7 +76,9 @@ function TokenWarningCard({ token }: TokenWarningCardProps) {
           </TYPE.main>
           {chainId && (
             <ExternalLink style={{ fontWeight: 400 }} href={getEtherscanLink(chainId, token.address, 'token')}>
-              <TYPE.blue title={token.address}>{shortenAddress(token.address)} (View on Etherscan)</TYPE.blue>
+              <TYPE.blue title={token.address} color={'white'}>
+                {shortenAddress(token.address)} (View on Etherscan)
+              </TYPE.blue>
             </ExternalLink>
           )}
         </AutoColumn>

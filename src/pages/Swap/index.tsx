@@ -396,8 +396,10 @@ export default function Swap() {
                   (wrapType === WrapType.WRAP ? 'Wrap' : wrapType === WrapType.UNWRAP ? 'Unwrap' : null)}
               </ButtonPrimary>
             ) : noRoute && userHasSpecifiedInputOutput ? (
-              <GreyCard style={{ textAlign: 'center' }}>
-                <TYPE.main mb="4px">Insufficient liquidity for this trade.</TYPE.main>
+              <GreyCard style={{ textAlign: 'center', backgroundColor: '#2f2a3c' }}>
+                <TYPE.main mb="4px" color={'#1c1924'}>
+                  Insufficient liquidity for this trade.
+                </TYPE.main>
               </GreyCard>
             ) : showApproveFlow ? (
               <RowBetween>

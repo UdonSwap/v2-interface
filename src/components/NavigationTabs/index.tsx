@@ -35,17 +35,18 @@ const StyledNavLink = styled(NavLink).attrs({
   &.${activeClassName} {
     border-radius: 12px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: #ffffff;
   }
-
- s
-  
+  :hover,
+  :focus {
+    color: #ffffff;
+  }
 `
 
 const ActiveText = styled.div`
   font-weight: 500;
   font-size: 20px;
-  color:white
+  color: white;
 `
 
 const StyledArrowLeft = styled(ArrowLeft)`
@@ -55,11 +56,11 @@ const StyledArrowLeft = styled(ArrowLeft)`
 export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
   const { t } = useTranslation()
   return (
-    <Tabs style={{ marginBottom: '20px',borderBottom:"1px solid gray",borderRadius:"10px" }}>
-      <StyledNavLink id={`swap-nav-link`} to={'/swap'} isActive={() => active === 'swap'} >
+    <Tabs style={{ marginBottom: '20px', borderBottom: '1px solid gray', borderRadius: '10px' }}>
+      <StyledNavLink id={`swap-nav-link`} to={'/swap'} isActive={() => active === 'swap'}>
         {t('swap')}
       </StyledNavLink>
-      
+
       <StyledNavLink id={`pool-nav-link`} to={'/pool'} isActive={() => active === 'pool'}>
         {t('pool')}
       </StyledNavLink>
@@ -70,7 +71,7 @@ export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
 export function FindPoolTabs() {
   return (
     <Tabs>
-      <RowBetween style={{ padding: '1rem',border:'1px solid gray'}}>
+      <RowBetween style={{ padding: '1rem', border: '1px solid gray' }}>
         <HistoryLink to="/pool">
           <StyledArrowLeft />
         </HistoryLink>
@@ -84,7 +85,7 @@ export function FindPoolTabs() {
 export function AddRemoveTabs({ adding }: { adding: boolean }) {
   return (
     <Tabs>
-      <RowBetween style={{ padding: '1rem',borderBottom:'1px solid gray' }}>
+      <RowBetween style={{ padding: '1rem', borderBottom: '1px solid gray' }}>
         <HistoryLink to="/pool">
           <StyledArrowLeft />
         </HistoryLink>

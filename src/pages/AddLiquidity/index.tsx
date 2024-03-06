@@ -237,11 +237,11 @@ export default function AddLiquidity({
           />
         </RowFlat>
         <Row>
-          <Text fontSize="24px">
+          <Text fontSize="24px" color={'white'}>
             {currencies[Field.CURRENCY_A]?.symbol + '/' + currencies[Field.CURRENCY_B]?.symbol + ' Pool Tokens'}
           </Text>
         </Row>
-        <TYPE.italic fontSize={12} textAlign="left" padding={'8px 0 0 0 '}>
+        <TYPE.italic fontSize={12} textAlign="left" padding={'8px 0 0 0 '} color={'#8A8F9D'}>
           {`Output is estimated. If the price changes by more than ${allowedSlippage /
             100}% your transaction will revert.`}
         </TYPE.italic>

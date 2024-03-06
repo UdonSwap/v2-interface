@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { darken, lighten } from 'polished'
+import { darken } from 'polished'
 
 import { RowBetween } from '../Row'
 import { ChevronDown } from 'react-feather'
@@ -39,18 +39,13 @@ const Base = styled(RebassButton)<{
 `
 
 export const ButtonPrimary = styled(Base)`
-  background-color: ${({ theme }) => theme.primary1};
-  color: white;
+  background-color: #e9e002;
+  color: #000000;
   &:focus {
-    box-shadow: 0 0 0 1pt ${({ theme }) => darken(0.05, theme.primary1)};
-    background-color: ${({ theme }) => darken(0.05, theme.primary1)};
   }
   &:hover {
-    background-color: ${({ theme }) => darken(0.05, theme.primary1)};
   }
   &:active {
-    box-shadow: 0 0 0 1pt ${({ theme }) => darken(0.1, theme.primary1)};
-    background-color: ${({ theme }) => darken(0.1, theme.primary1)};
   }
   &:disabled {
     background-color: #2f2a3c;
@@ -65,20 +60,15 @@ export const ButtonPrimary = styled(Base)`
 `
 
 export const ButtonLight = styled(Base)`
-  background-color: ${({ theme }) => theme.primary5};
-  color: ${({ theme }) => theme.primaryText1};
+  background-color: rgb(233, 224, 2);
+  color: #000000;
   font-size: 16px;
   font-weight: 500;
   &:focus {
-    box-shadow: 0 0 0 1pt ${({ theme, disabled }) => !disabled && darken(0.03, theme.primary5)};
-    background-color: ${({ theme, disabled }) => !disabled && darken(0.03, theme.primary5)};
   }
   &:hover {
-    background-color: ${({ theme, disabled }) => !disabled && darken(0.03, theme.primary5)};
   }
   &:active {
-    box-shadow: 0 0 0 1pt ${({ theme, disabled }) => !disabled && darken(0.05, theme.primary5)};
-    background-color: ${({ theme, disabled }) => !disabled && darken(0.05, theme.primary5)};
   }
   :disabled {
     opacity: 0.4;
@@ -221,9 +211,9 @@ export const ButtonWhite = styled(Base)`
 `
 
 const ButtonConfirmedStyle = styled(Base)`
-  background-color: ${({ theme }) => lighten(0.5, theme.green1)};
-  color: ${({ theme }) => theme.green1};
-  border: 1px solid ${({ theme }) => theme.green1};
+  background-color: #211e2b;
+  color: #9657eb;
+  border: 1px solid #9657eb;
 
   &:disabled {
     opacity: 50%;

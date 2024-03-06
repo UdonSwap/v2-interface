@@ -186,6 +186,7 @@ const IconWrapper = styled.div<{ size?: number }>`
 
 const TransactionListWrapper = styled.div`
   ${({ theme }) => theme.flexColumnNoWrap};
+  color: #9657eb;
 `
 
 const WalletAction = styled(ButtonSecondary)`
@@ -409,7 +410,9 @@ export default function AccountDetails({
         <LowerSection>
           <AutoRow mb={'1rem'} style={{ justifyContent: 'space-between' }}>
             <TYPE.body>Recent Transactions</TYPE.body>
-            <LinkStyledButton onClick={clearAllTransactionsCallback}>(clear all)</LinkStyledButton>
+            <LinkStyledButton onClick={clearAllTransactionsCallback} color="#9657eb">
+              (clear all)
+            </LinkStyledButton>
           </AutoRow>
           {renderTransactions(pendingTransactions)}
           {renderTransactions(confirmedTransactions)}

@@ -22,7 +22,7 @@ export function PoolPriceBar({
   // const theme = useContext(ThemeContext)
   return (
     <AutoColumn gap="md">
-      <AutoRow justify="space-around" gap="4px">
+      <AutoRow justify="space-between" gap="4px">
         <AutoColumn justify="center">
           <TYPE.black color={'white'} fontSize={12}>
             {price?.toSignificant(6) ?? '-'}
