@@ -2,9 +2,8 @@ import { ChainId } from 'lampros_dex_sdk'
 import React from 'react'
 import { isMobile } from 'react-device-detect'
 import { Text } from 'rebass'
-
 import styled from 'styled-components'
-import BeatSwap from '../../assets/images/BeatSwapLogo.png'
+import Udonswap from '../../assets/images/UdonSwapLogo.png'
 import BeatSwapLight from '../../assets/images/BeatSwapLightLogo.png'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
@@ -145,8 +144,8 @@ export default function Header() {
             <UniIcon>{/* <img src={isDark ? LogoDark : Logo} alt="logo" /> */}</UniIcon>
             <TitleText>
               <img
-                style={{ marginLeft: '4px', marginTop: '4px', width: '150px' }}
-                src={isDark ? BeatSwapLight : BeatSwap}
+                style={{ marginLeft: '4px', width: '200px' }}
+                src={isDark ? BeatSwapLight : Udonswap}
                 alt="logo"
               />
             </TitleText>
