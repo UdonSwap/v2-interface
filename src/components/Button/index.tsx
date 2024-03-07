@@ -41,10 +41,14 @@ const Base = styled(RebassButton)<{
 export const ButtonPrimary = styled(Base)`
   background-color: #e9e002;
   color: #000000;
+  font-size: 20px;
   &:focus {
   }
   &:hover {
+    box-shadow: 0px 0px 14px 0px rgba(233, 224, 2, 0.62);
+    // text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
+
   &:active {
   }
   &:disabled {
@@ -67,6 +71,9 @@ export const ButtonLight = styled(Base)`
   &:focus {
   }
   &:hover {
+    box-shadow: 0px 0px 14px 0px rgba(233, 224, 2, 0.62);
+    // text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-weight: 700;
   }
   &:active {
   }
@@ -105,14 +112,15 @@ export const ButtonSecondary = styled(Base)`
   color: white;
   font-size: 16px;
   border-radius: 8px;
+
   padding: ${({ padding }) => (padding ? padding : '10px')};
 
   &:focus {
-    box-shadow: 0 0 0 1pt ${({ theme }) => theme.primary4};
     background-color: ${({ theme }) => theme.primary4};
   }
   &:hover {
     background-color: ${({ theme }) => theme.primary4};
+    box-shadow: 0 0 0 1pt ${({ theme }) => theme.primary4};
   }
   &:active {
     box-shadow: 0 0 0 1pt ${({ theme }) => theme.primary4};
@@ -148,18 +156,17 @@ export const ButtonPink = styled(Base)`
 `
 
 export const ButtonOutlined = styled(Base)`
-  border: 1px solid ${({ theme }) => theme.bg2};
-  background-color: transparent;
-  color: ${({ theme }) => theme.text1};
+  background-color: rgb(150, 87, 235);
+  color: white;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.075) 0px 6px 10px;
 
   &:focus {
     box-shadow: 0 0 0 1px ${({ theme }) => theme.bg4};
   }
   &:hover {
-    box-shadow: 0 0 0 1px ${({ theme }) => theme.bg4};
   }
   &:active {
-    box-shadow: 0 0 0 1px ${({ theme }) => theme.bg4};
   }
   &:disabled {
     opacity: 50%;

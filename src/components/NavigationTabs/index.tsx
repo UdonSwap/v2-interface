@@ -47,6 +47,7 @@ const ActiveText = styled.div`
   font-weight: 500;
   font-size: 20px;
   color: white;
+  border: none;
 `
 
 const StyledArrowLeft = styled(ArrowLeft)`
@@ -71,7 +72,7 @@ export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
 export function FindPoolTabs() {
   return (
     <Tabs>
-      <RowBetween style={{ padding: '1rem', border: '1px solid gray' }}>
+      <RowBetween style={{ padding: '1rem', borderBottom: '1px solid gray', marginBottom: '30px' }}>
         <HistoryLink to="/pool">
           <StyledArrowLeft />
         </HistoryLink>

@@ -69,7 +69,7 @@ export default function PoolFinder() {
   }, [setShowSearch])
 
   const prerequisiteMessage = (
-    <LightCard padding="45px 10px">
+    <LightCard padding="20px 10px">
       <Text textAlign="center">
         {!account ? 'Connect to a wallet to find pools' : 'Select a token to find your liquidity.'}
       </Text>
@@ -101,7 +101,7 @@ export default function PoolFinder() {
         </ButtonDropdownLight>
 
         <ColumnCenter>
-          <Plus size="16" color="#888D9B" />
+          <Plus size="16" color="#FFFFFF" />
         </ColumnCenter>
 
         <ButtonDropdownLight
@@ -128,7 +128,7 @@ export default function PoolFinder() {
           <ColumnCenter
             style={{ justifyItems: 'center', backgroundColor: '', padding: '12px 0px', borderRadius: '12px' }}
           >
-            <Text textAlign="center" fontWeight={500}>
+            <Text textAlign="center" fontWeight={500} color={'white'}>
               Pool Found!
             </Text>
           </ColumnCenter>
@@ -153,7 +153,9 @@ export default function PoolFinder() {
           ) : validPairNoLiquidity ? (
             <LightCard padding="45px 10px">
               <AutoColumn gap="sm" justify="center">
-                <Text textAlign="center">No pool found.</Text>
+                <Text textAlign="center" color={'white'}>
+                  No pool found.
+                </Text>
                 <StyledInternalLink to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`}>
                   Create pool.
                 </StyledInternalLink>
@@ -162,7 +164,7 @@ export default function PoolFinder() {
           ) : pairState === PairState.INVALID ? (
             <LightCard padding="45px 10px">
               <AutoColumn gap="sm" justify="center">
-                <Text textAlign="center" fontWeight={500}>
+                <Text textAlign="center" fontWeight={500} color={'white'}>
                   Invalid pair.
                 </Text>
               </AutoColumn>

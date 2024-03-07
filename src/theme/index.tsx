@@ -200,6 +200,49 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+.effect {
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: $link-text-color;
+  text-transform: capitalize;
+  padding: 20px 0px;
+  width: 150px;
+  border-radius: $border-radius;
+  overflow: hidden;
+}
+.effect.effect5 {
+  transition: all 0.2s linear 0s;
+  
+  &:before {
+    content: "\f054";
+    font-family: FontAwesome;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    height: 100%;
+    width: 30px;
+    background-color: rgba($overlay-color,0.3);
+    border-radius: 0 50% 50% 0;
+    transform: scale(0,1);
+    transform-origin: left center;
+    transition: all 0.2s linear 0s;
+  }
+  
+   &:hover {
+    text-indent: 30px;
+    
+    &:before {
+      transform: scale(1,1);
+      text-indent: 0;
+    }
+  }
+}
 `
 
 export const ThemedGlobalStyle = createGlobalStyle`

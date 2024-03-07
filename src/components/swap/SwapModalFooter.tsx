@@ -61,7 +61,7 @@ export default function SwapModalFooter({
           >
             {formatExecutionPrice(trade, showInverted)}
             <StyledBalanceMaxMini onClick={() => setShowInverted(!showInverted)}>
-              <Repeat size={14} />
+              <Repeat size={14} color="white" />
             </StyledBalanceMaxMini>
           </Text>
         </RowBetween>
