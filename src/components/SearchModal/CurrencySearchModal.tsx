@@ -46,7 +46,7 @@ export default function CurrencySearchModal({
       category: 'Lists',
       action: 'Change Lists'
     })
-    setListView(false)
+    setListView(true)
   }, [])
   
 
@@ -55,7 +55,7 @@ export default function CurrencySearchModal({
 
   return (
     <Modal isOpen={isOpen} onDismiss={onDismiss} maxHeight={90} minHeight={listView ? 40 : noListSelected ? 0 : 80}>
-      
+     
         <CurrencySearch
           isOpen={isOpen}
           onDismiss={onDismiss}
