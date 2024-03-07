@@ -4,12 +4,13 @@ import { Pair } from 'lampros_dex_sdk'
 import { Link } from 'react-router-dom'
 import { SwapPoolTabs } from '../../components/NavigationTabs'
 
-import Question from '../../components/QuestionHelper'
+// import Question from '../../components/QuestionHelper'
 import FullPositionCard from '../../components/PositionCard'
 import { useUserHasLiquidityInAllTokens } from '../../data/V1'
 import { useTokenBalancesWithLoadingIndicator } from '../../state/wallet/hooks'
 import { StyledInternalLink, TYPE } from '../../theme'
 import { Text } from 'rebass'
+import { ButtonSecondary } from '../../components/Button'
 import { LightCard } from '../../components/Card'
 import { RowBetween } from '../../components/Row'
 import { ButtonPrimary } from '../../components/Button'
@@ -77,7 +78,10 @@ export default function Pool() {
               <Text color="white" fontWeight={500}>
                 Your Liquidity
               </Text>
-              <Question text="When you add liquidity, you are given pool tokens that represent your share. If you don’t see a pool you joined in this list, try importing a pool below." />
+
+              <StyledInternalLink to={'allpool'} style={{ textDecoration: 'none' }}>
+                <ButtonSecondary>Pools</ButtonSecondary>
+              </StyledInternalLink>
             </RowBetween>
 
             {!account ? (
