@@ -213,8 +213,8 @@ body {
   background-position: 0 -30vh;
   background-repeat: no-repeat;
   background: #000000;
-  // background-image: linear-gradient(to left, transparent 12px, #6665652b 1px);
-  // background-size: 2.5rem 2.5rem;
-  // background-position: center center;
+  background-image: linear-gradient(to left, transparent 12px, #6665652b 1px);
+  background-size: 2.5rem 2.5rem;
+  background-position: center center;
 }
 `

@@ -8,7 +8,7 @@ import { Text } from 'rebass'
 import { useActiveWeb3React } from '../../hooks'
 import { useAllTokens, useToken } from '../../hooks/Tokens'
 import { useSelectedListInfo } from '../../state/lists/hooks'
-import { CloseIcon, LinkStyledButton, TYPE } from '../../theme'
+import { CloseIcon, TYPE } from '../../theme'
 import { isAddress } from '../../utils'
 import Card from '../Card'
 import Column from '../Column'
@@ -208,13 +208,13 @@ export function CurrencySearch({
               </TYPE.main>
             </Row>
           ) : null}
-          <LinkStyledButton
+          {/* <LinkStyledButton
             style={{ fontWeight: 500, color: 'white', fontSize: 16 }}
             onClick={onChangeList}
-            id="currency-search-change-list-button"
+            // id="currency-search-change-list-button"
           >
             {selectedListInfo.current ? 'Change' : 'Select a list'}
-          </LinkStyledButton>
+          </LinkStyledButton> */}
         </RowBetween>
       </Card>
     </Column>
