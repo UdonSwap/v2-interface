@@ -7,14 +7,14 @@ import { Text } from 'rebass'
 // import search from '../../assets/images/search.png'
 import { useActiveWeb3React } from '../../hooks'
 import { useAllTokens, useToken } from '../../hooks/Tokens'
-import { useSelectedListInfo } from '../../state/lists/hooks'
-import { CloseIcon, TYPE } from '../../theme'
+// import { useSelectedListInfo } from '../../state/lists/hooks'
+import { CloseIcon } from '../../theme'
 import { isAddress } from '../../utils'
-import Card from '../Card'
+// import Card from '../Card'
 import Column from '../Column'
-import ListLogo from '../ListLogo'
+// import ListLogo from '../ListLogo'
 import QuestionHelper from '../QuestionHelper'
-import Row, { RowBetween } from '../Row'
+import { RowBetween } from '../Row'
 import CommonBases from './CommonBases'
 import CurrencyList from './CurrencyList'
 import { filterTokens } from './filtering'
@@ -135,7 +135,7 @@ export function CurrencySearch({
     [filteredSortedTokens, handleCurrencySelect, searchQuery]
   )
 
-  const selectedListInfo = useSelectedListInfo()
+  // const selectedListInfo = useSelectedListInfo()
 
   return (
     <Column style={{ width: '100%', flex: '1 1', backgroundColor: '#131118', color: 'white' }}>
@@ -187,7 +187,7 @@ export function CurrencySearch({
       </div>
 
       <Separator />
-      <Card
+      {/* <Card
         style={{
           borderTop: '1px solid white',
           borderRadius: '1px'
@@ -208,15 +208,15 @@ export function CurrencySearch({
               </TYPE.main>
             </Row>
           ) : null}
-          {/* <LinkStyledButton
+          <LinkStyledButton
             style={{ fontWeight: 500, color: 'white', fontSize: 16 }}
             onClick={onChangeList}
             // id="currency-search-change-list-button"
           >
             {selectedListInfo.current ? 'Change' : 'Select a list'}
-          </LinkStyledButton> */}
+          </LinkStyledButton>
         </RowBetween>
-      </Card>
+      </Card> */}
     </Column>
   )
 }
