@@ -15,7 +15,7 @@ export default function ListIntroduction({ onSelectList }: { onSelectList: () =>
 
   return (
     <Column style={{ width: '100%', flex: '1 1' }}>
-      <PaddedColumn style={{backgroundColor:"white"}}>
+      <PaddedColumn style={{ backgroundColor: 'white' }}>
         <AutoColumn gap="14px">
           <img
             style={{ width: '120px', margin: '0 auto' }}
@@ -30,7 +30,11 @@ export default function ListIntroduction({ onSelectList }: { onSelectList: () =>
           <Text style={{ marginBottom: '8px', textAlign: 'center' }}>
             Uniswap now supports token lists. You can add your own custom lists via IPFS, HTTPS and ENS.{' '}
           </Text>
-          <ButtonPrimary onClick={onSelectList} id="list-introduction-choose-a-list" style={{backgroundColor:"#E9E002",color:"#000000",border:"none"}}>
+          <ButtonPrimary
+            onClick={onSelectList}
+            id="list-introduction-choose-a-list"
+            style={{ backgroundColor: '#E9E002', color: '#000000', border: 'none' }}
+          >
             Choose a list
           </ButtonPrimary>
           <OutlineCard style={{ marginBottom: '8px', padding: '1rem' }}>
