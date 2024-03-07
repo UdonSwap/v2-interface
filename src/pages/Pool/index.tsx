@@ -10,7 +10,7 @@ import { useUserHasLiquidityInAllTokens } from '../../data/V1'
 import { useTokenBalancesWithLoadingIndicator } from '../../state/wallet/hooks'
 import { StyledInternalLink, TYPE } from '../../theme'
 import { Text } from 'rebass'
-import { ButtonSecondary } from '../../components/Button'
+import Question from '../../components/QuestionHelper'
 import { LightCard } from '../../components/Card'
 import { RowBetween } from '../../components/Row'
 import { ButtonPrimary } from '../../components/Button'
@@ -79,9 +79,7 @@ export default function Pool() {
                 Your Liquidity
               </Text>
 
-              <StyledInternalLink to={'allpool'} style={{ textDecoration: 'none' }}>
-                <ButtonSecondary>Pools</ButtonSecondary>
-              </StyledInternalLink>
+              <Question text="When you add liquidity, you are given pool tokens that represent your share. If you don’t see a pool you joined in this list, try importing a pool below." />
             </RowBetween>
 
             {!account ? (
@@ -119,6 +117,11 @@ export default function Pool() {
                   style={{ color: '#E9E002' }}
                 >
                   {hasV1Liquidity ? 'Migrate now.' : 'Import it.'}
+                </StyledInternalLink>
+              </Text>
+              <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0', color: 'white' }}>
+                <StyledInternalLink id="import-pool-link" to={'allpool'} style={{ color: '#E9E002' }}>
+                  Top Pools↗
                 </StyledInternalLink>
               </Text>
             </div>
