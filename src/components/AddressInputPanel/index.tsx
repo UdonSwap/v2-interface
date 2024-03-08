@@ -106,7 +106,7 @@ export default function AddressInputPanel({
                   href={getEtherscanLink(chainId, name ?? address, 'address')}
                   style={{ fontSize: '14px', color: 'white' }}
                 >
-                  (View on Etherscan)
+                  (View on Mode Explorer)
                 </ExternalLink>
               )}
             </RowBetween>
