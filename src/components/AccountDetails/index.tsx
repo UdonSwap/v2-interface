@@ -8,7 +8,6 @@ import { shortenAddress } from '../../utils'
 import { AutoRow } from '../Row'
 import Copy from './Copy'
 import Transaction from './Transaction'
-
 import { SUPPORTED_WALLETS } from '../../constants'
 import { ReactComponent as Close } from '../../assets/images/x.svg'
 import { getEtherscanLink } from '../../utils'
@@ -308,8 +307,6 @@ export default function AccountDetails({
               <AccountGroupingRow>
                 {formatConnectorName()}
                 <div>
-                  
-                  
                   <WalletAction
                     style={{
                       fontSize: '.825rem',
@@ -321,7 +318,9 @@ export default function AccountDetails({
                       boxShadow: 'none'
                     }}
                     onClick={() => {
-                      openOptions()
+                      if (connector) {
+                        deactivate(); // Disconnect the current connector
+                      }
                     }}
                   >
                     Disconnect

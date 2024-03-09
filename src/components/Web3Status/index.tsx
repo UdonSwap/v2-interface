@@ -159,10 +159,32 @@ function StatusIcon({ connector }: { connector: AbstractConnector }) {
   }
   return null
 }
-
+interface Ethereum {
+  request: (args: { method: string; params?: any[] }) => Promise<any>;
+  // Add other properties or methods if needed
+}
 function Web3StatusInner() {
   const { t } = useTranslation()
   const { account, connector, error } = useWeb3React()
+  function switchNetwork() {
+    // Check if window.ethereum is defined
+    if (window.ethereum) {
+      // Explicitly define the type of ethereum object
+      const ethereum = window.ethereum as Ethereum;
+  
+      const chainId = "0x397"; // Replace with the chain ID of the target network
+  
+      // Request to switch the network
+      ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId }],
+      });
+    } else {
+      // Handle the case where window.ethereum is undefined
+      console.error("window.ethereum is not available.");
+    }
+  }
+
 
   const { ENSName } = useENSName(account ?? undefined)
 
@@ -202,7 +224,7 @@ function Web3StatusInner() {
     )
   } else if (error) {
     return (
-      <Web3StatusError onClick={toggleWalletModal}>
+      <Web3StatusError onClick={switchNetwork}>
         <NetworkIcon />
         <Text>{error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error'}</Text>
       </Web3StatusError>
