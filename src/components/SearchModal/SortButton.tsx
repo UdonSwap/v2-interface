@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { RowFixed } from '../Row'
 
 export const FilterWrapper = styled(RowFixed)`
-  padding: 8px;
+  padding: 4px 10px;
   background-color: #1e1b25;
   color: white;
   border-radius: 8px;

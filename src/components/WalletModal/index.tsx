@@ -57,7 +57,6 @@ const ContentWrapper = styled.div`
   padding: 2rem;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  color: 'white';
   ${({ theme }) => theme.mediaWidth.upToMedium`padding: 1rem`};
 `
 

@@ -16,7 +16,7 @@ export const Button = styled.button.attrs<{ warning: boolean }, { backgroundColo
   border: none;
   outline: none;
   background-color: ${({ backgroundColor }) => backgroundColor};
-  color: ${({ theme }) => theme.white};
+  color: ${({ theme }) => '#000000'};
   width: 100%;
 
   :hover,

@@ -14,7 +14,7 @@ export const ClickableText = styled(Text)`
 export const MaxButton = styled.button<{ width: string }>`
   padding: 0.5rem 1rem;
   background-color: #211e2b;
-  border: 1px solid #9657eb;
+  border: 1px solid #FFFFFF;
   border-radius: 25px;
   font-size: 1rem;
   ${({ theme }) => theme.mediaWidth.upToSmall`
@@ -26,7 +26,8 @@ export const MaxButton = styled.button<{ width: string }>`
   overflow: hidden;
   color: white;
   :hover {
-    border: 1px solid #ffffff;
+    border: 1px solid #9657EB;
+    color:#9657EB;
   }
   :focus {
     outline: none;

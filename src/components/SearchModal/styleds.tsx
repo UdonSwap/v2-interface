@@ -54,10 +54,10 @@ export const SearchInput = styled.input`
   border: 1px solid ${({ theme }) => theme.bg3};
   -webkit-appearance: none;
 
-  font-size: 18px;
+  font-size: 15px;
 
   ::placeholder {
-    color: ACB1C6;
+    color: rgba(172, 177, 198, 1);
   }
   transition: border 100ms;
   :focus {

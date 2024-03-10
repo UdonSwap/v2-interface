@@ -19,14 +19,14 @@ const InputRow = styled.div<{ selected: boolean }>`
   align-items: center;
   padding: ${({ selected }) => (selected ? '0.75rem 0.5rem 0.75rem 1rem' : '0.75rem 0.75rem 0.75rem 1rem')};
 `
-
 const CurrencySelect = styled.button<{ selected: boolean }>`
   align-items: center;
   height: 2.2rem;
   font-size: 20px;
   font-weight: 500;
-  background-color: #9657eb;
-  color: white;
+  background-color: ${({ selected, theme }) => (selected ? theme.bg1 : theme.primary1)};
+  color: ${({ selected, theme }) => (selected ? theme.text1 : '#9657EB'
+    )};
   border-radius: 12px;
   box-shadow: ${({ selected }) => (selected ? 'none' : '0px 6px 10px rgba(0, 0, 0, 0.075)')};
   outline: none;
@@ -37,7 +37,17 @@ const CurrencySelect = styled.button<{ selected: boolean }>`
 
   :focus,
   :hover {
-    background-color: #9657eb;
+    background-color: ${({ selected, theme }) => (selected ? theme.bg2 : '#9657EB')};
+    color: ${({ selected, theme }) => (selected ? theme.text1 : '#FFFFFF'
+    )};
+    svg path {
+      stroke:#FFFFFF; 
+    }
+span {
+  color: ${({ selected, theme }) => (selected ? '#FFFFFF' : '#FFFFFF'
+  )};
+}
+    
   }
 `
 
@@ -64,10 +74,10 @@ const StyledDropDown = styled(DropDown)<{ selected: boolean }>`
   margin: 0 0.25rem 0 0.5rem;
   height: 35%;
 
-  path {
-    stroke: white;
-    stroke-width: 1.5px;
-  }
+    path {
+      stroke: ${({ selected, theme }) => (selected ? theme.white:'#9657EB')};
+      stroke-width: 1.5px;
+  }  
 `
 
 const InputPanel = styled.div<{ hideInput?: boolean }>`
@@ -87,7 +97,8 @@ const Container = styled.div<{ hideInput: boolean }>`
 const StyledTokenName = styled.span<{ active?: boolean }>`
   ${({ active }) => (active ? '  margin: 0 0.25rem 0 0.75rem;' : '  margin: 0 0.25rem 0 0.25rem;')}
   font-size:  ${({ active }) => (active ? '20px' : '16px')};
-
+  color:  ${({ active }) => (active ? '#FFFFFF' : '#9657EB')};
+ 
 `
 
 const StyledBalanceMax = styled.button`
@@ -164,7 +175,7 @@ export default function CurrencyInputPanel({
         {!hideInput && (
           <LabelRow>
             <RowBetween>
-              <TYPE.body color={'#8A8F9D'} fontWeight={500} fontSize={14}>
+              <TYPE.body color={'#FFFFFF'} fontWeight={500} fontSize={14}>
                 {label}
               </TYPE.body>
               {account && (

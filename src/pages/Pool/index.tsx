@@ -65,7 +65,7 @@ export default function Pool() {
           <ButtonPrimary
             id="join-pool-button"
             as={Link}
-            style={{ padding: 16, color: '#1C1924', backgroundColor: '#E9E002' }}
+            // style={{ padding: 16, color: '#1C1924', backgroundColor: '#E9E002' }}
             to="/add/ETH"
           >
             <Text fontWeight={500} fontSize={20}>

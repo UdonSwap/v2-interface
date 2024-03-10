@@ -387,7 +387,7 @@ export default function Swap() {
           </AutoColumn>
           <BottomGrouping>
             {!account ? (
-              <ButtonLight onClick={toggleWalletModal} style={{ backgroundColor: '#E9E002' }}>
+              <ButtonLight onClick={toggleWalletModal}>
                 Connect Wallet
               </ButtonLight>
             ) : showWrap ? (
@@ -396,8 +396,8 @@ export default function Swap() {
                   (wrapType === WrapType.WRAP ? 'Wrap' : wrapType === WrapType.UNWRAP ? 'Unwrap' : null)}
               </ButtonPrimary>
             ) : noRoute && userHasSpecifiedInputOutput ? (
-              <GreyCard style={{ textAlign: 'center', backgroundColor: '#2f2a3c' }}>
-                <TYPE.main mb="4px" color={'#1c1924'}>
+              <GreyCard style={{ textAlign: 'center', backgroundColor: '#FFFFFF' }}>
+                <TYPE.main mb="4px" color={'#C5C5C5'}>
                   Insufficient liquidity for this trade.
                 </TYPE.main>
               </GreyCard>

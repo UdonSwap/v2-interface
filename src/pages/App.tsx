@@ -22,12 +22,14 @@ import { RedirectOldRemoveLiquidityPathStructure } from './RemoveLiquidity/redir
 import Swap from './Swap'
 import { RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
 import AllPool from './AllPool'
+import Footer from '../components/Footer'
 
 const AppWrapper = styled.div`
   display: flex;
   flex-flow: column;
   align-items: flex-start;
   overflow-x: hidden;
+  min-height:100vh;
 `
 
 const HeaderWrapper = styled.div`
@@ -36,11 +38,16 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
 `
 
+const FooterWrapper = styled.div`
+  ${({ theme }) => theme.flexRowNoWrap}
+  width: 100%;
+  justify-content: space-between;
+`
 const BodyWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-top: 160px;
+  padding-top: 140px;
   align-items: center;
   flex: 1;
   overflow-y: auto;
@@ -87,6 +94,7 @@ export default function App() {
               </Switch>
             </Web3ReactManager>
           </BodyWrapper>
+          <FooterWrapper><Footer/></FooterWrapper>
         </AppWrapper>
       </HashRouter>
     </Suspense>

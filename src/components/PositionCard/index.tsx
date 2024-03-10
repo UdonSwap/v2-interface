@@ -1,5 +1,5 @@
 import { JSBI, Pair, Percent } from 'lampros_dex_sdk'
-import { darken } from 'polished'
+// import { darken } from 'polished'
 import React, { useState } from 'react'
 import { ChevronDown, ChevronUp } from 'react-feather'
 import { Link } from 'react-router-dom'
@@ -26,10 +26,10 @@ export const FixedHeightRow = styled(RowBetween)`
 `
 
 export const HoverCard = styled(Card)`
-  border: 1px solid ${({ theme }) => theme.bg2};
+  border: 1px solid #9657EB;
 
   :hover {
-    border: 1px solid ${({ theme }) => darken(0.06, theme.bg2)};
+    
   }
 `
 
@@ -168,9 +168,9 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
           </RowFixed>
           <RowFixed>
             {showMore ? (
-              <ChevronUp size="20" style={{ marginLeft: '10px' }} />
+              <ChevronUp size="20" style={{ marginLeft: '10px', stroke:"#9657EB"}} />
             ) : (
-              <ChevronDown size="20" style={{ marginLeft: '10px' }} />
+              <ChevronDown size="20" style={{ marginLeft: '10px', stroke:"#9657EB" }} />
             )}
           </RowFixed>
         </FixedHeightRow>

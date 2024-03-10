@@ -35,7 +35,7 @@ const StyledNavLink = styled(NavLink).attrs({
   &.${activeClassName} {
     border-radius: 12px;
     font-weight: 700;
-    color: #ffffff;
+    color: #9657EB;
   }
   :hover,
   :focus {

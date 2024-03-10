@@ -4,7 +4,7 @@ import { animated, useTransition, useSpring } from 'react-spring'
 import { DialogOverlay, DialogContent } from '@reach/dialog'
 import { isMobile } from 'react-device-detect'
 import '@reach/dialog/styles.css'
-import { transparentize } from 'polished'
+// import { transparentize } from 'polished'
 import { useGesture } from 'react-use-gesture'
 
 const AnimatedDialogOverlay = animated(DialogOverlay)
@@ -14,12 +14,12 @@ const StyledDialogOverlay = styled(AnimatedDialogOverlay)`
     z-index: 2;
     background-color: transparent;
     overflow: hidden;
-
+    backdrop-filter: blur(5px);
     display: flex;
     align-items: center;
     justify-content: center;
+    background: rgba(150, 87, 235, 0.13);
 
-    background-color: rgb(0 0 0 / 72%);
   }
 `
 
@@ -33,9 +33,9 @@ const StyledDialogContent = styled(({ minHeight, maxHeight, mobile, isOpen, ...r
 })`
   &[data-reach-dialog-content] {
     margin: 0 0 2rem 0;
-    border: 1px solid ${({ theme }) => theme.bg1};
-    background-color: #131118;
-    box-shadow: 0 4px 8px 0 ${({ theme }) => transparentize(0.95, theme.shadow1)};
+    border: 0.5px solid rgba(151, 71, 255, 1);
+    background: rgba(150, 87, 235, 0.13);
+    box-shadow: 0px 4px 41 0px rgba(151, 71, 255, 0.33);
     padding: 0px;
     width: 50vw;
     color: white;

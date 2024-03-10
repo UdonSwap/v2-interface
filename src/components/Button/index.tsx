@@ -39,21 +39,21 @@ const Base = styled(RebassButton)<{
 `
 
 export const ButtonPrimary = styled(Base)`
-  background-color: #e9e002;
+  background-color: #FFFFFF;
   color: #000000;
   font-size: 20px;
   &:focus {
   }
   &:hover {
     box-shadow: 0px 0px 14px 0px rgba(233, 224, 2, 0.62);
-    // text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background-color: #e9e002;
   }
 
   &:active {
   }
   &:disabled {
-    background-color: #2f2a3c;
-    color: #1c1924;
+    background-color: #FFFFFF;
+    color: #C5C5C5;
     font-weight: '600';
     cursor: auto;
     box-shadow: none;
@@ -64,18 +64,21 @@ export const ButtonPrimary = styled(Base)`
 `
 
 export const ButtonLight = styled(Base)`
-  background-color: rgb(233, 224, 2);
-  color: #000000;
+  background-color: ${({ theme }) => theme.primary5};
+  color: ${({ theme }) => '#000000'};
   font-size: 16px;
   font-weight: 500;
   &:focus {
+    box-shadow: 0 0 0 1pt ${({ theme, disabled }) => !disabled && darken(0.03, theme.primary5)};
+    background-color: ${({ theme, disabled }) => !disabled && darken(0.03, theme.primary5)};
   }
   &:hover {
-    box-shadow: 0px 0px 14px 0px rgba(233, 224, 2, 0.62);
-    // text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    font-weight: 700;
+    background-color: ${({ theme, disabled }) => !disabled && '#FEF100'};
+    color: ${({ theme }) => '#000000'};
   }
   &:active {
+    box-shadow: 0 0 0 1pt ${({ theme, disabled }) => !disabled && darken(0.05, theme.primary5)};
+    background-color: ${({ theme, disabled }) => !disabled && darken(0.05, theme.primary5)};
   }
   :disabled {
     opacity: 0.4;
@@ -109,18 +112,19 @@ export const ButtonGray = styled(Base)`
 
 export const ButtonSecondary = styled(Base)`
   background-color: ${({ theme }) => theme.primary5};
-  color: white;
+  color: #9657EB;
   font-size: 16px;
   border-radius: 8px;
 
   padding: ${({ padding }) => (padding ? padding : '10px')};
 
   &:focus {
-    background-color: ${({ theme }) => theme.primary4};
+    // background-color: ${({ theme }) => theme.primary4};
   }
   &:hover {
-    background-color: ${({ theme }) => theme.primary4};
-    box-shadow: 0 0 0 1pt ${({ theme }) => theme.primary4};
+    background-color:#9657EB;
+    // box-shadow: 0 0 0 1pt ${({ theme }) => theme.primary4};
+    color: #FFFFFF;
   }
   &:active {
     box-shadow: 0 0 0 1pt ${({ theme }) => theme.primary4};
