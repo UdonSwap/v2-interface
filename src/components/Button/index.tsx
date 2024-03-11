@@ -75,6 +75,7 @@ export const ButtonLight = styled(Base)`
   &:hover {
     background-color: ${({ theme, disabled }) => !disabled && '#FEF100'};
     color: ${({ theme }) => '#000000'};
+    box-shadow: 0px 0px 14px 0px rgba(233, 224, 2, 0.62);
   }
   &:active {
     box-shadow: 0 0 0 1pt ${({ theme, disabled }) => !disabled && darken(0.05, theme.primary5)};

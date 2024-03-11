@@ -13,46 +13,46 @@ function Footer() {
         <div className="f-sec1">
           <div>
             <h2>Resources</h2>
-            <Link to={''} className="footerlink">
+            <Link to={''} className="footerlink" target="_blank">
               <div className="sec-link">Audit</div>
             </Link>
-            <Link to={''} className="footerlink">
+            <Link to={''} className="footerlink" target="_blank">
               <div className="sec-link">Contracts</div>
             </Link>
-            <Link to={''} className="footerlink">
+            <Link to={''} className="footerlink" target="_blank">
               <div className="sec-link">Documentation</div>
             </Link>
-            <Link to={''} className="footerlink">
+            <Link to={''} className="footerlink" target="_blank">
               <div className="sec-link">Leaderboard</div>
             </Link>
           </div>
           <div>
             <h2>Tools</h2>
-            <Link to={''} className="footerlink">
+            <Link to={''} className="footerlink" target="_blank">
               <div className="sec-link">Mode Bridge</div>
             </Link>
-            <Link to={''} className="footerlink">
+            <Link to={''} className="footerlink" target="_blank">
               <div className="sec-link">Symbiosis</div>
             </Link>
-            <Link to={''} className="footerlink">
+            <Link to={''} className="footerlink" target="_blank">
               <div className="sec-link">Defil lama</div>
             </Link>
-            <Link to={''} className="footerlink">
+            <Link to={''} className="footerlink" target="_blank">
               <div className="sec-link">Leaderboard</div>
             </Link>
           </div>
           <div>
             <h2>Social</h2>
-            <Link to={''} className="footerlink">
+            <Link to={''} className="footerlink" target="_blank">
               <div className="sec-link">Discord</div>
             </Link>
-            <Link to={''} className="footerlink">
+            <Link to={''} className="footerlink" target="_blank">
               <div className="sec-link">X</div>
             </Link>
-            <Link to={''} className="footerlink">
+            <Link to={''} className="footerlink" target="_blank">
               <div className="sec-link">Telegram</div>
             </Link>
-            <Link to={''} className="footerlink">
+            <Link to={''} className="footerlink" target="_blank">
               <div className="sec-link">Blog</div>
             </Link>
           </div>

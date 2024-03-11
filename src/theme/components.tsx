@@ -71,7 +71,7 @@ export const StyledInternalLink = styled(Link)`
   font-weight: 500;
 
   :hover {
-    text-decoration: underline;
+    text-decoration: none;
   }
 
   :focus {

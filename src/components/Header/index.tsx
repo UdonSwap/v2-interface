@@ -4,9 +4,8 @@ import { isMobile } from 'react-device-detect'
 import { Text } from 'rebass'
 import styled from 'styled-components'
 import Udonswap from '../../assets/images/UdonSwapLogo.png'
-import BeatSwapLight from '../../assets/images/BeatSwapLightLogo.png'
 import { useActiveWeb3React } from '../../hooks'
-import { useDarkModeManager } from '../../state/user/hooks'
+// import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
 
 import { YellowCard } from '../Card'
@@ -134,7 +133,7 @@ export default function Header() {
   const { account, chainId } = useActiveWeb3React()
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
-  const [isDark] = useDarkModeManager()
+  // const [isDark] = useDarkModeManager()
 
   return (
     <HeaderFrame>
@@ -143,11 +142,7 @@ export default function Header() {
           <Title href="https://beatswap-eta.vercel.app/">
             <UniIcon>{/* <img src={isDark ? LogoDark : Logo} alt="logo" /> */}</UniIcon>
             <TitleText>
-              <img
-                style={{ marginLeft: '4px', width: '200px' }}
-                src={isDark ? BeatSwapLight : Udonswap}
-                alt="logo"
-              />
+              <img style={{ marginLeft: '4px', width: '200px' }} src={Udonswap} alt="logo" />
             </TitleText>
           </Title>
         </HeaderElement>
