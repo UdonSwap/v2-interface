@@ -5,11 +5,11 @@ import { useOnClickOutside } from '../../hooks/useOnClickOutside'
 import {
   useUserSlippageTolerance,
   useExpertModeManager,
-  useUserDeadline,
+  useUserDeadline
   // useDarkModeManager
 } from '../../state/user/hooks'
 import TransactionSettings from '../TransactionSettings'
-import {  RowBetween } from '../Row'
+import { RowBetween } from '../Row'
 // import { TYPE } from '../../theme'
 // import QuestionHelper from '../QuestionHelper'
 // import Toggle from '../Toggle'
@@ -25,7 +25,13 @@ const StyledMenuIcon = styled(Settings)`
   width: 20px;
 
   > * {
-    stroke: #FFFFFF;
+    stroke: #ffffff;
+  }
+
+  &:hover {
+    > * {
+      stroke: #e9e002;
+    }
   }
 `
 
@@ -37,7 +43,7 @@ const StyledCloseIcon = styled(X)`
   }
 
   > * {
-    stroke: #FFFFFF;
+    stroke: #ffffff;
   }
 `
 
@@ -50,7 +56,7 @@ const StyledMenuButton = styled.button`
   margin: 0;
   padding: 0;
   height: 35px;
-  background-color: #1C1924;
+  background-color: #1c1924;
 
   padding: 0.15rem 0.5rem;
   border-radius: 0.5rem;
@@ -59,7 +65,7 @@ const StyledMenuButton = styled.button`
   :focus {
     cursor: pointer;
     outline: none;
-    background-color: #1C1924;
+    background-color: #1c1924;
   }
 
   svg {
@@ -193,7 +199,7 @@ export default function SettingsTab() {
       {open && (
         <MenuFlyout>
           <AutoColumn gap="md" style={{ padding: '1rem' }}>
-            <Text fontWeight={600} fontSize={14} color={"white"}>
+            <Text fontWeight={600} fontSize={14} color={'white'}>
               Transaction Settings
             </Text>
             <TransactionSettings

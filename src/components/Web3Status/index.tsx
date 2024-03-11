@@ -52,7 +52,11 @@ const Web3StatusError = styled(Web3StatusGeneric)`
   border: 1px solid ${({ theme }) => theme.red1};
   color: ${({ theme }) => theme.white};
   font-weight: 500;
-  :hover, ;
+  :hover {
+    background-color: #fef100;
+    color: #000000;
+    border: none;
+  }
 `
 
 const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
@@ -75,7 +79,7 @@ const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
     css`
       background-color: ${({ theme }) => theme.primary5};
       border: none;
-      color: ${({ theme }) =>'#000000'};
+      color: ${({ theme }) => '#000000'};
 
       :hover,
       :focus {
@@ -90,7 +94,9 @@ const Web3StatusConnected = styled(Web3StatusGeneric)<{ pending?: boolean }>`
   border: 1px solid ${({ pending, theme }) => (pending ? theme.primary1 : theme.bg3)};
   color: ${({ pending, theme }) => (pending ? theme.white : theme.text1)};
   font-weight: 500;
-  :hover,
+  :hover {
+    color: #e9e002;
+  }
   :focus {
     background-color: ${({ pending, theme }) => (pending ? darken(0.05, theme.primary1) : lighten(0.05, theme.bg2))};
 
@@ -161,7 +167,7 @@ function StatusIcon({ connector }: { connector: AbstractConnector }) {
   return null
 }
 interface Ethereum {
-  request: (args: { method: string; params?: any[] }) => Promise<any>;
+  request: (args: { method: string; params?: any[] }) => Promise<any>
   // Add other properties or methods if needed
 }
 function Web3StatusInner() {
@@ -171,21 +177,20 @@ function Web3StatusInner() {
     // Check if window.ethereum is defined
     if (window.ethereum) {
       // Explicitly define the type of ethereum object
-      const ethereum = window.ethereum as Ethereum;
-  
-      const chainId = "0x397"; // Replace with the chain ID of the target network
-  
+      const ethereum = window.ethereum as Ethereum
+
+      const chainId = '0x397' // Replace with the chain ID of the target network
+
       // Request to switch the network
       ethereum.request({
-        method: "wallet_switchEthereumChain",
-        params: [{ chainId }],
-      });
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId }]
+      })
     } else {
       // Handle the case where window.ethereum is undefined
-      console.error("window.ethereum is not available.");
+      console.error('window.ethereum is not available.')
     }
   }
-
 
   const { ENSName } = useENSName(account ?? undefined)
 
@@ -232,12 +237,7 @@ function Web3StatusInner() {
     )
   } else {
     return (
-      <Web3StatusConnect
-        id="connect-wallet"
-        onClick={toggleWalletModal}
-        faded={!account}
-       
-      >
+      <Web3StatusConnect id="connect-wallet" onClick={toggleWalletModal} faded={!account}>
         <Text>{t('Connect to a wallet')}</Text>
       </Web3StatusConnect>
     )
