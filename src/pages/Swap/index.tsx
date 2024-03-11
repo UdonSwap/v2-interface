@@ -45,7 +45,17 @@ import AppBody from '../AppBody'
 import { ClickableText } from '../Pool/styleds'
 import Loader from '../../components/Loader'
 
+// custom import
+// import { ethers } from 'ethers'
+// import { fetch } from 'node-fetch'
+
+// const USDCapiUrl = 'https://min-api.cryptocompare.com/data/price?fsym=USDC&tsyms=USD'
+// const USDTapiUrl = 'https://min-api.cryptocompare.com/data/price?fsym=USDT&tsyms=USD'
+// const WBTCapiUrl = 'https://min-api.cryptocompare.com/data/price?fsym=WBTC&tsyms=USD'
+
 export default function Swap() {
+  const ETHapiUrl = process.env.REACT_APP_USDCAPIURL
+  console.log('eth api url', ETHapiUrl)
   const loadedUrlParams = useDefaultsFromURLSearch()
 
   // token warning stuff
@@ -122,8 +132,14 @@ export default function Swap() {
   const isValid = !swapInputError
   const dependentField: Field = independentField === Field.INPUT ? Field.OUTPUT : Field.INPUT
 
+  // usestate to store the user input
+  const [enteredValue, setEnteredValue] = useState<string>('')
+
   const handleTypeInput = useCallback(
     (value: string) => {
+      setEnteredValue(value)
+      console.log('field input...', Field.INPUT)
+
       onUserInput(Field.INPUT, value)
     },
     [onUserInput]
@@ -175,6 +191,11 @@ export default function Swap() {
       setApprovalSubmitted(true)
     }
   }, [approval, approvalSubmitted])
+
+  // function to get the dollar value
+
+  // const getDollarPrice = async () => {}
+  useEffect(() => {}, [enteredValue])
 
   const maxAmountInput: CurrencyAmount | undefined = maxAmountSpend(currencyBalances[Field.INPUT])
   const atMaxAmountInput = Boolean(maxAmountInput && parsedAmounts[Field.INPUT]?.equalTo(maxAmountInput))
@@ -254,8 +275,12 @@ export default function Swap() {
     setSwapState({ tradeToConfirm: trade, swapErrorMessage, txHash, attemptingTxn, showConfirm })
   }, [attemptingTxn, showConfirm, swapErrorMessage, trade, txHash])
 
+  // usestate for selected input token
+  // const [inputTokenAddress, setInputTokenAddress] = useState<string>('0x4200000000000000000000000000000000000006')
   const handleInputSelect = useCallback(
     inputCurrency => {
+      // setInputTokenAddress(inputCurrency['address'])
+      console.log('input currency', inputCurrency)
       setApprovalSubmitted(false) // reset 2 step UI for approvals
       onCurrencySelection(Field.INPUT, inputCurrency)
     },
@@ -306,6 +331,7 @@ export default function Swap() {
               otherCurrency={currencies[Field.OUTPUT]}
               id="swap-currency-input"
             />
+            {/* <div style={{ color: 'white' }}>$Value {enteredValue}</div> */}
             <AutoColumn justify="space-between" style={{ margin: '10px 0px' }}>
               <AutoRow
                 justify={isExpertMode ? 'space-between' : 'center'}
@@ -387,9 +413,7 @@ export default function Swap() {
           </AutoColumn>
           <BottomGrouping>
             {!account ? (
-              <ButtonLight onClick={toggleWalletModal}>
-                Connect Wallet
-              </ButtonLight>
+              <ButtonLight onClick={toggleWalletModal}>Connect Wallet</ButtonLight>
             ) : showWrap ? (
               <ButtonPrimary disabled={Boolean(wrapInputError)} onClick={onWrap}>
                 {wrapInputError ??

@@ -3,14 +3,14 @@ import styled from 'styled-components'
 
 export const BodyWrapper = styled.div`
   position: relative;
-  max-width: 420px;
+  max-width: 460px;
   width: 100%;
   background-color: #131118;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
     0px 24px 32px rgba(0, 0, 0, 0.01);
   border-radius: 30px;
   padding: 1rem;
-  border:0.5px solid #131118;
+  border: 0.5px solid #131118;
 `
 
 /**

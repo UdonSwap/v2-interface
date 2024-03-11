@@ -39,7 +39,7 @@ const Base = styled(RebassButton)<{
 `
 
 export const ButtonPrimary = styled(Base)`
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #000000;
   font-size: 20px;
   &:focus {
@@ -52,8 +52,8 @@ export const ButtonPrimary = styled(Base)`
   &:active {
   }
   &:disabled {
-    background-color: #FFFFFF;
-    color: #C5C5C5;
+    background-color: #ffffff;
+    color: #c5c5c5;
     font-weight: '600';
     cursor: auto;
     box-shadow: none;

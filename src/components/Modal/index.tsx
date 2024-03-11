@@ -19,7 +19,6 @@ const StyledDialogOverlay = styled(AnimatedDialogOverlay)`
     align-items: center;
     justify-content: center;
     background: rgba(150, 87, 235, 0.13);
-
   }
 `
 
@@ -43,7 +42,7 @@ const StyledDialogContent = styled(({ minHeight, maxHeight, mobile, isOpen, ...r
 
     align-self: ${({ mobile }) => (mobile ? 'flex-end' : 'center')};
 
-    max-width: 420px;
+    max-width: 460px;
     ${({ maxHeight }) =>
       maxHeight &&
       css`
