@@ -67,7 +67,7 @@ export const ButtonLight = styled(Base)`
   background-color: #ffffff;
   color: #000000;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 700;
   border: 1px solid transparent;
 
   &:hover {

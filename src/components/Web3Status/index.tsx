@@ -60,30 +60,33 @@ const Web3StatusError = styled(Web3StatusGeneric)`
 `
 
 const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
-  background-color: ${({ theme }) => theme.primary4};
+  background-color: #ffffff;
   border: none;
-  color: ${({ theme }) => theme.primaryText1};
-  font-weight: 500;
+  color: #000000;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 10px 20px;
 
-  :hover,
-  :focus {
+  :hover {
     border: none;
-    background-color: ${({ theme }) => '#FEF100'};
+    background-color: #fef100;
     box-shadow: 0px 0px 7px 0px rgba(233, 224, 2, 0.62);
-    // text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     font-weight: 700;
+    color: #000000;
   }
 
   ${({ faded }) =>
     faded &&
     css`
-      background-color: ${({ theme }) => theme.primary5};
+      background-color: #ffffff;
       border: none;
-      color: ${({ theme }) => '#000000'};
+      color: #000000;
 
-      :hover,
-      :focus {
+      :hover {
         border: none;
+        background-color: #fef100;
+        box-shadow: 0px 0px 7px 0px rgba(233, 224, 2, 0.62);
+        font-weight: 700;
         color: #000000;
       }
     `}
@@ -111,9 +114,9 @@ const Text = styled.p`
   text-overflow: ellipsis;
   white-space: nowrap;
   margin: 0 0.5rem 0 0.25rem;
-  font-size: 1rem;
+  font-size: 16px;
   width: fit-content;
-  font-weight: 500;
+  font-weight: 700;
 `
 
 const NetworkIcon = styled(Activity)`
