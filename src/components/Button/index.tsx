@@ -64,32 +64,17 @@ export const ButtonPrimary = styled(Base)`
 `
 
 export const ButtonLight = styled(Base)`
-  background-color: ${({ theme }) => theme.primary5};
-  color: ${({ theme }) => '#000000'};
+  background-color: #ffffff;
+  color: #000000;
   font-size: 16px;
   font-weight: 500;
-  &:focus {
-    box-shadow: 0 0 0 1pt ${({ theme, disabled }) => !disabled && darken(0.03, theme.primary5)};
-    background-color: ${({ theme, disabled }) => !disabled && darken(0.03, theme.primary5)};
-  }
+  border: 1px solid transparent;
+
   &:hover {
-    background-color: ${({ theme, disabled }) => !disabled && '#FEF100'};
-    color: ${({ theme }) => '#000000'};
+    background-color: #fef100;
+    color: #000000;
     box-shadow: 0px 0px 14px 0px rgba(233, 224, 2, 0.62);
-  }
-  &:active {
-    box-shadow: 0 0 0 1pt ${({ theme, disabled }) => !disabled && darken(0.05, theme.primary5)};
-    background-color: ${({ theme, disabled }) => !disabled && darken(0.05, theme.primary5)};
-  }
-  :disabled {
-    opacity: 0.4;
-    :hover {
-      cursor: auto;
-      background-color: ${({ theme }) => theme.primary5};
-      box-shadow: none;
-      border: 1px solid transparent;
-      outline: none;
-    }
+    font-weight: 700;
   }
 `
 
