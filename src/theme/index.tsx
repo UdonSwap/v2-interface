@@ -30,64 +30,49 @@ const mediaWidthTemplates: { [width in keyof typeof MEDIA_WIDTHS]: typeof css } 
   {}
 ) as any
 
-const white = '#FFFFFF'
-const black = '#000000'
+// const white = '#FFFFFF'
+// const black = '#000000'
 
-export function colors(darkMode: boolean): Colors {
-  return {
-    // base
-    white,
-    black,
-
-    // text
-    text1: darkMode ? '' : '#000000',
-    text2: darkMode ? '' : '#565A69',
-    text3: darkMode ? '' : '#888D9B',
-    text4: darkMode ? '' : '#C3C5CB',
-    text5: darkMode ? '' : '#EDEEF2',
-
-    // backgrounds / greys
-    bg1: darkMode ? '' : 'transparent',
-    bg2: darkMode ? '' : 'transparent',
-    bg3: darkMode ? '' : 'rgba(172, 177, 198, 1)',
-    bg4: darkMode ? '' : '#CED0D9',
-    bg5: darkMode ? '' : '#888D9B',
-
-    //specialty colors
-    modalBG: darkMode ? '' : 'rgba(0,0,0,0.3)',
-    advancedBG: darkMode ? '' : 'rgba(255,255,255,0.6)',
-
-    //primary colors
-    primary1: darkMode ? '' : '#FFFFFF',
-    primary2: darkMode ? '' : '#FF8CC3',
-    primary3: darkMode ? '' : '#FF99C9',
-    primary4: darkMode ? '' : '',
-    primary5: darkMode ? '' : '#FFFFFF',
-
-    // color text
-    primaryText1: darkMode ? 'f' : '#D9D9D9',
-
-    // secondary colors
-    secondary1: darkMode ? '' : '#ff007a',
-    secondary2: darkMode ? '' : '#9657EB',
-    secondary3: darkMode ? '' : '#FDEAF1',
-
-    // other
-    red1: '#FF6871',
-    red2: '#F82D3A',
-    green1: '#27AE60',
-    yellow1: '#FFE270',
-    yellow2: '#FF3E3E'
-
-    // dont wanna forget these blue yet
-    // blue4: darkMode ? '#153d6f70' : '#C4D9F8',
-    // blue5: darkMode ? '#153d6f70' : '#EBF4FF',
-  }
+const constantColors: Colors = {
+  white: '#FFFFFF',
+  black: '#000000',
+  text1: '#000000',
+  text2: '#565A69',
+  text3: '#888D9B',
+  text4: '#C3C5CB',
+  text5: '#EDEEF2',
+  bg1: 'transparent',
+  bg2: 'transparent',
+  bg3: 'rgba(172, 177, 198, 1)',
+  bg4: '#CED0D9',
+  bg5: '#888D9B',
+  modalBG: 'rgba(0,0,0,0.3)',
+  advancedBG: 'rgba(255,255,255,0.6)',
+  primary1: '#FFFFFF',
+  primary2: '#FFFFFF',
+  primary3: '#FF99C9',
+  primary4: '',
+  primary5: '#FFFFFF',
+  primaryText1: '#D9D9D9',
+  secondary1: '#FFFFFF',
+  secondary2: '#9657EB',
+  secondary3: '#FDEAF1',
+  red1: '#FF6871',
+  red2: '#F82D3A',
+  green1: '#27AE60',
+  yellow1: '#FFE270',
+  yellow2: '#FF3E3E'
 }
 
+// Always return the constant colors
+export function colors(darkMode: boolean): Colors {
+  return constantColors
+}
+
+// Always return the constant theme
 export function theme(darkMode: boolean): DefaultTheme {
   return {
-    ...colors(darkMode),
+    ...constantColors,
 
     grids: {
       sm: 8,
@@ -95,13 +80,10 @@ export function theme(darkMode: boolean): DefaultTheme {
       lg: 24
     },
 
-    //shadows
-    shadow1: darkMode ? '' : '#2F80ED',
+    shadow1: '#2F80ED',
 
-    // media queries
     mediaWidth: mediaWidthTemplates,
 
-    // css snippets
     flexColumnNoWrap: css`
       display: flex;
       flex-flow: column nowrap;
