@@ -35,7 +35,7 @@ const StyledNavLink = styled(NavLink).attrs({
   &.${activeClassName} {
     border-radius: 12px;
     font-weight: 700;
-    color: #9657EB;
+    color: #9657eb;
   }
   :hover,
   :focus {
@@ -63,7 +63,7 @@ export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
       </StyledNavLink>
 
       <StyledNavLink id={`pool-nav-link`} to={'/pool'} isActive={() => active === 'pool'}>
-        {t('pool')}
+        {t('Liquidity')}
       </StyledNavLink>
     </Tabs>
   )

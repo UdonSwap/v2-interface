@@ -9,7 +9,7 @@ const Row = styled(Box)<{ align?: string; padding?: string; border?: string; bor
   padding: ${({ padding }) => padding};
   border: ${({ border }) => border};
   border-radius: ${({ borderRadius }) => borderRadius};
-  color:"white";
+  color: 'white';
 `
 
 export const RowBetween = styled(Row)`
@@ -29,6 +29,9 @@ export const AutoRow = styled(Row)<{ gap?: string; justify?: string }>`
   & > * {
     margin: ${({ gap }) => gap} !important;
   }
+`
+export const AutoRowPage = styled(Row)<{ gap?: string; justify?: string }>`
+  display: block;
 `
 
 export const RowFixed = styled(Row)<{ gap?: string; justify?: string }>`

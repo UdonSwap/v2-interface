@@ -3,7 +3,6 @@ import { ThemeContext } from 'styled-components'
 import { Pair } from 'lampros_dex_sdk'
 import { Link } from 'react-router-dom'
 import { SwapPoolTabs } from '../../components/NavigationTabs'
-
 // import Question from '../../components/QuestionHelper'
 import FullPositionCard from '../../components/PositionCard'
 import { useUserHasLiquidityInAllTokens } from '../../data/V1'
@@ -117,11 +116,6 @@ export default function Pool() {
                   style={{ color: '#E9E002' }}
                 >
                   {hasV1Liquidity ? 'Migrate now.' : 'Import it.'}
-                </StyledInternalLink>
-              </Text>
-              <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0', color: 'white' }}>
-                <StyledInternalLink id="import-pool-link" to={'allpool'} style={{ color: '#E9E002' }}>
-                  Top Pools↗
                 </StyledInternalLink>
               </Text>
             </div>

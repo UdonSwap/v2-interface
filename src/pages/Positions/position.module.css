@@ -1,0 +1,21 @@
+.liqmain {
+  color: white;
+}
+.liqmain h1 {
+  letter-spacing: 1px;
+}
+.posMain {
+  max-width: 900px;
+  width: 100%;
+  color: white;
+}
+.title {
+  text-align: center;
+}
+
+@media screen and (max-width: 769px) and (min-width: 426px) {
+  .posMain {
+    max-width: 900px;
+    width: 90%;
+  }
+}

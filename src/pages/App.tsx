@@ -23,13 +23,14 @@ import Swap from './Swap'
 import { RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
 import AllPool from './AllPool'
 import Footer from '../components/Footer'
+import Positions from './Positions'
 
 const AppWrapper = styled.div`
   display: flex;
   flex-flow: column;
   align-items: flex-start;
   overflow-x: hidden;
-  min-height:100vh;
+  min-height: 100vh;
 `
 
 const HeaderWrapper = styled.div`
@@ -80,7 +81,8 @@ export default function App() {
                 <Route exact strict path="/send" component={RedirectPathToSwapOnly} />
                 <Route exact strict path="/find" component={PoolFinder} />
                 <Route exact strict path="/pool" component={Pool} />
-                <Route exact strict path="/allpool" component={AllPool} />
+                <Route exact strict path="/positions" component={Positions} />
+                <Route exact strict path="/liquidity" component={AllPool} />
                 <Route exact strict path="/create" component={RedirectToAddLiquidity} />
                 <Route exact path="/add" component={AddLiquidity} />
                 <Route exact path="/add/:currencyIdA" component={RedirectOldAddLiquidityPathStructure} />
@@ -94,7 +96,9 @@ export default function App() {
               </Switch>
             </Web3ReactManager>
           </BodyWrapper>
-          <FooterWrapper><Footer/></FooterWrapper>
+          <FooterWrapper>
+            <Footer />
+          </FooterWrapper>
         </AppWrapper>
       </HashRouter>
     </Suspense>

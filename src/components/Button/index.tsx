@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { darken } from 'polished'
-
 import { RowBetween } from '../Row'
 import { ChevronDown } from 'react-feather'
 import { Button as RebassButton, ButtonProps } from 'rebass/styled-components'
@@ -54,7 +53,7 @@ export const ButtonPrimary = styled(Base)`
   &:disabled {
     background-color: #ffffff;
     color: #c5c5c5;
-    font-weight: '600';
+    font-weight: 600;
     cursor: auto;
     box-shadow: none;
     border: 1px solid transparent;
@@ -62,7 +61,23 @@ export const ButtonPrimary = styled(Base)`
     opacity: ${({ altDisabledStyle }) => (altDisabledStyle ? '0.7' : '1')};
   }
 `
-
+export const ButtonHeader = styled(Base)`
+   {
+    background: #1c1924;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0px 5px;
+  }
+  &:hover {
+    box-shadow: 0px 0px 14px 0px rgba(233, 224, 2, 0.62);
+    background: #fef100;
+    color: #000000;
+  }
+`
 export const ButtonLight = styled(Base)`
   background-color: #ffffff;
   color: #000000;
@@ -103,6 +118,32 @@ export const ButtonSecondary = styled(Base)`
   border-radius: 8px;
 
   padding: ${({ padding }) => (padding ? padding : '10px')};
+
+  &:focus {
+    // background-color: ${({ theme }) => theme.primary4};
+  }
+  &:hover {
+    background-color:#9657EB;
+    // box-shadow: 0 0 0 1pt ${({ theme }) => theme.primary4};
+    color: #FFFFFF;
+  }
+  &:active {
+    box-shadow: 0 0 0 1pt ${({ theme }) => theme.primary4};
+    background-color: ${({ theme }) => theme.primary4};
+  }
+  &:disabled {
+    background-color: ${({ theme }) => theme.primary5};
+    opacity: 50%;
+    cursor: auto;
+  }
+`
+export const ButtonSecondaryPage = styled(Base)`
+  background-color: ${({ theme }) => theme.primary5};
+  color: #9657EB;
+  font-size: 30px;
+  border-radius: 8px;
+
+  padding: 0;
 
   &:focus {
     // background-color: ${({ theme }) => theme.primary4};

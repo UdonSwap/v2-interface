@@ -1,7 +1,7 @@
 import { JSBI, Pair, Percent } from 'lampros_dex_sdk'
 // import { darken } from 'polished'
 import React, { useState } from 'react'
-import { ChevronDown, ChevronUp } from 'react-feather'
+import positioncard from './positioncard.module.css'
 import { Link } from 'react-router-dom'
 import { Text } from 'rebass'
 import styled from 'styled-components'
@@ -12,8 +12,8 @@ import { useTokenBalance } from '../../state/wallet/hooks'
 // import { ExternalLink } from '../../theme'
 import { currencyId } from '../../utils/currencyId'
 import { unwrappedToken } from '../../utils/wrappedCurrency'
-import { ButtonSecondary } from '../Button'
-
+import { ButtonSecondaryPage } from '../Button'
+// import { AutoRowPage } from '../Row'
 import Card, { GreyCard } from '../Card'
 import { AutoColumn } from '../Column'
 import CurrencyLogo from '../CurrencyLogo'
@@ -23,6 +23,7 @@ import { Dots } from '../swap/styleds'
 
 export const FixedHeightRow = styled(RowBetween)`
   height: 24px;
+  display: block;
 `
 
 export const HoverCard = styled(Card)`
@@ -129,13 +130,11 @@ export function MinimalPositionCard({ pair, showUnwrapped = false, border }: Pos
   )
 }
 
-export default function FullPositionCard({ pair, border }: PositionCardProps) {
+export default function FullPositionCardPage({ pair, border }: PositionCardProps) {
   const { account } = useActiveWeb3React()
 
   const currency0 = unwrappedToken(pair.token0)
   const currency1 = unwrappedToken(pair.token1)
-
-  const [showMore, setShowMore] = useState(false)
 
   const userPoolBalance = useTokenBalance(account ?? undefined, pair.liquidityToken)
   const totalPoolTokens = useTotalSupply(pair.liquidityToken)
@@ -158,88 +157,63 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
       : [undefined, undefined]
 
   return (
-    <HoverCard border={border}>
-      <AutoColumn gap="12px">
-        <FixedHeightRow onClick={() => setShowMore(!showMore)} style={{ cursor: 'pointer' }}>
-          <RowFixed>
-            <DoubleCurrencyLogo currency0={currency0} currency1={currency1} margin={true} size={20} />
-            <Text fontWeight={500} fontSize={20}>
-              {!currency0 || !currency1 ? <Dots>Loading</Dots> : `${currency0.symbol}/${currency1.symbol}`}
-            </Text>
-          </RowFixed>
-          <RowFixed>
-            {showMore ? (
-              <ChevronUp size="20" style={{ marginLeft: '10px', stroke: '#9657EB' }} />
-            ) : (
-              <ChevronDown size="20" style={{ marginLeft: '10px', stroke: '#9657EB' }} />
-            )}
-          </RowFixed>
-        </FixedHeightRow>
-        {showMore && (
-          <AutoColumn gap="8px">
-            <FixedHeightRow>
-              <RowFixed>
-                <Text fontSize={16} fontWeight={500}>
-                  Pooled {currency0.symbol}:
-                </Text>
-              </RowFixed>
-              {token0Deposited ? (
-                <RowFixed>
-                  <Text fontSize={16} fontWeight={500} marginLeft={'6px'}>
-                    {token0Deposited?.toSignificant(6)}
-                  </Text>
-                  <CurrencyLogo size="20px" style={{ marginLeft: '8px' }} currency={currency0} />
-                </RowFixed>
-              ) : (
-                '-'
-              )}
-            </FixedHeightRow>
+    <div className={positioncard.posMain}>
+      <div className={positioncard.PosSec1}>
+        <DoubleCurrencyLogo currency0={currency0} currency1={currency1} margin={true} size={20} />
+        <Text fontWeight={500} fontSize={20}>
+          {!currency0 || !currency1 ? <Dots>Loading</Dots> : `${currency0.symbol}/${currency1.symbol}`}
+        </Text>
+      </div>
 
-            <FixedHeightRow>
-              <RowFixed>
-                <Text fontSize={16} fontWeight={500}>
-                  Pooled {currency1.symbol}:
-                </Text>
-              </RowFixed>
-              {token1Deposited ? (
-                <RowFixed>
-                  <Text fontSize={16} fontWeight={500} marginLeft={'6px'}>
-                    {token1Deposited?.toSignificant(6)}
-                  </Text>
-                  <CurrencyLogo size="20px" style={{ marginLeft: '8px' }} currency={currency1} />
-                </RowFixed>
-              ) : (
-                '-'
-              )}
-            </FixedHeightRow>
-            <FixedHeightRow>
-              <Text fontSize={16} fontWeight={500}>
-                Your pool tokens:
+      <div>
+        <div className={positioncard.bFlex}>
+          <Text fontSize={16} fontWeight={500}>
+            {currency0.symbol}:
+          </Text>
+          {token0Deposited ? (
+            <RowFixed>
+              <Text fontSize={16} fontWeight={500} marginLeft={'6px'}>
+                {token0Deposited?.toSignificant(6)}
               </Text>
-              <Text fontSize={16} fontWeight={500}>
-                {userPoolBalance ? userPoolBalance.toSignificant(4) : '-'}
+              <CurrencyLogo size="20px" style={{ marginLeft: '8px' }} currency={currency0} />
+            </RowFixed>
+          ) : (
+            '-'
+          )}
+        </div>
+        <div className={positioncard.bFlex}>
+          <Text fontSize={16} fontWeight={500}>
+            {currency1.symbol}:
+          </Text>
+          {token1Deposited ? (
+            <RowFixed>
+              <Text fontSize={16} fontWeight={500} marginLeft={'6px'}>
+                {token1Deposited?.toSignificant(6)}
               </Text>
-            </FixedHeightRow>
-            <FixedHeightRow>
-              <Text fontSize={16} fontWeight={500}>
-                Your pool share:
-              </Text>
-              <Text fontSize={16} fontWeight={500}>
-                {poolTokenPercentage ? poolTokenPercentage.toFixed(2) + '%' : '-'}
-              </Text>
-            </FixedHeightRow>
+              <CurrencyLogo size="20px" style={{ marginLeft: '8px' }} currency={currency1} />
+            </RowFixed>
+          ) : (
+            '-'
+          )}
+        </div>
+      </div>
 
-            <RowBetween marginTop="10px">
-              <ButtonSecondary as={Link} to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`} width="48%">
-                Add
-              </ButtonSecondary>
-              <ButtonSecondary as={Link} width="48%" to={`/remove/${currencyId(currency0)}/${currencyId(currency1)}`}>
-                Remove
-              </ButtonSecondary>
-            </RowBetween>
-          </AutoColumn>
-        )}
-      </AutoColumn>
-    </HoverCard>
+      <div>
+        <div style={{ fontSize: '16px', padding: '3px 0px' }}>
+          Tokens: <span style={{ color: 'green' }}>{userPoolBalance ? userPoolBalance.toSignificant(4) : '-'}</span>
+        </div>
+        <div style={{ fontSize: '16px', padding: '3px 0px' }}>
+          Share: {poolTokenPercentage ? poolTokenPercentage.toFixed(2) + '%' : '-'}
+        </div>
+      </div>
+      <div className={positioncard.BtnFlex}>
+        <ButtonSecondaryPage as={Link} to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`} width="50px">
+          +
+        </ButtonSecondaryPage>
+        <ButtonSecondaryPage as={Link} width="50px" to={`/remove/${currencyId(currency0)}/${currencyId(currency1)}`}>
+          −
+        </ButtonSecondaryPage>
+      </div>
+    </div>
   )
 }

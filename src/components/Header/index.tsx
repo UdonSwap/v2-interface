@@ -3,11 +3,12 @@ import React from 'react'
 import { isMobile } from 'react-device-detect'
 import { Text } from 'rebass'
 import styled from 'styled-components'
+import { ButtonHeader } from '../Button'
 import Udonswap from '../../assets/images/UdonSwapLogo.png'
 import { useActiveWeb3React } from '../../hooks'
 // import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
-
+import { Link } from 'react-router-dom'
 import { YellowCard } from '../Card'
 import Settings from '../Settings'
 // import Menu from '../Menu'
@@ -60,7 +61,7 @@ const TitleText = styled(Row)`
   width: fit-content;
   white-space: nowrap;
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    display: none;
+    width:200px;
   `};
 `
 
@@ -115,7 +116,7 @@ const HeaderControls = styled.div`
 
 const BalanceText = styled(Text)`
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    display: none;
+    display: block;
   `};
 `
 
@@ -161,7 +162,13 @@ export default function Header() {
             </AccountElement>
           </HeaderElement>
           <HeaderElementWrap>
-            {/* <VersionSwitch /> */}
+            <ButtonHeader as={Link} to={`/liquidity`}>
+              Pools
+            </ButtonHeader>
+
+            <ButtonHeader as={Link} to={`/positions`}>
+              Postions
+            </ButtonHeader>
             <Settings />
             {/* <Menu /> */}
           </HeaderElementWrap>
