@@ -107,6 +107,7 @@
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "lampros_dex_sdk": "^3.0.3",
+    "lottie-react": "^2.4.0",
     "node-fetch": "^3.3.2"
   }
 }

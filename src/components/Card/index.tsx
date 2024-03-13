@@ -7,7 +7,7 @@ const Card = styled(Box)<{ padding?: string; border?: string; borderRadius?: str
   width: 100%;
   border-radius: 16px;
   padding: 1.25rem;
-  background-color: #18151e;
+  background-color: transparent;
   padding: ${({ padding }) => padding};
   border-radius: ${({ borderRadius }) => borderRadius};
   color: white;

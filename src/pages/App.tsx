@@ -24,6 +24,11 @@ import { RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
 import AllPool from './AllPool'
 import Footer from '../components/Footer'
 import Positions from './Positions'
+import animationData from "../animationData.json"
+import {useState,useEffect} from 'react'
+import Lottie from 'lottie-react';
+import main from "../main.module.css"
+
 
 const AppWrapper = styled.div`
   display: flex;
@@ -63,8 +68,28 @@ const BodyWrapper = styled.div`
 `
 
 export default function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000); // Example: Set loading to false after 3 seconds
+    }, []);
   return (
-    <Suspense fallback={null}>
+    
+      <React.Fragment>
+    {loading ? (
+       <div  className={main.loading}>
+        <Lottie 
+        animationData={animationData} 
+        loop={true}
+        autoplay={true}
+        style={{width:"300px",height:"300px"}}
+        />
+        </div>
+
+    ) : (
+      <Suspense fallback={null}>
       <HashRouter>
         <Route component={GoogleAnalyticsReporter} />
         <Route component={DarkModeQueryParamReader} />
@@ -102,5 +127,7 @@ export default function App() {
         </AppWrapper>
       </HashRouter>
     </Suspense>
-  )
+    )}
+  </React.Fragment>
+  );
 }
