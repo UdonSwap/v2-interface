@@ -3,18 +3,19 @@ import React from 'react'
 import { isMobile } from 'react-device-detect'
 import { Text } from 'rebass'
 import styled from 'styled-components'
-import { ButtonHeader } from '../Button'
+// import { ButtonHeader } from '../Button'
 import Udonswap from '../../assets/images/UdonSwapLogo.png'
 import { useActiveWeb3React } from '../../hooks'
 // import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { YellowCard } from '../Card'
 import Settings from '../Settings'
 // import Menu from '../Menu'
 
 import Row, { RowBetween } from '../Row'
 import Web3Status from '../Web3Status'
+import ToggleHeader from '../ToggleHeader'
 // import VersionSwitch from './VersionSwitch'
 
 const HeaderFrame = styled.div`
@@ -36,16 +37,17 @@ const HeaderFrame = styled.div`
 const HeaderElement = styled.div`
   display: flex;
   align-items: center;
+  margin-top:10px;
 `
 
-const HeaderElementWrap = styled.div`
-  display: flex;
-  align-items: center;
+// const HeaderElementWrap = styled.div`
+//   display: flex;
+//   align-items: center;
 
-  ${({ theme }) => theme.mediaWidth.upToSmall`
-    margin-top: 0.5rem;
-`};
-`
+//   ${({ theme }) => theme.mediaWidth.upToSmall`
+//     margin-top: 0.5rem;
+// `};
+// `
 
 const Title = styled.a`
   display: flex;
@@ -120,6 +122,7 @@ const BalanceText = styled(Text)`
   `};
 `
 
+
 const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
   [ChainId.MAINNET]: null,
   [ChainId.RINKEBY]: 'Rinkeby',
@@ -139,13 +142,16 @@ export default function Header() {
   return (
     <HeaderFrame>
       <RowBetween style={{ alignItems: 'flex-start' }} padding="1rem 1rem 0 1rem">
-        <HeaderElement>
+        <div>
           <Title href="https://beatswap-eta.vercel.app/">
             <UniIcon>{/* <img src={isDark ? LogoDark : Logo} alt="logo" /> */}</UniIcon>
             <TitleText>
               <img style={{ marginLeft: '4px', width: '200px' }} src={Udonswap} alt="logo" />
             </TitleText>
           </Title>
+        </div>
+        <HeaderElement>
+          <ToggleHeader/>
         </HeaderElement>
         <HeaderControls>
           <HeaderElement>
@@ -161,17 +167,9 @@ export default function Header() {
               <Web3Status />
             </AccountElement>
           </HeaderElement>
-          <HeaderElementWrap>
-            <ButtonHeader as={Link} to={`/liquidity`}>
-              Pools
-            </ButtonHeader>
-
-            <ButtonHeader as={Link} to={`/positions`}>
-              Postions
-            </ButtonHeader>
+          <HeaderElement>
             <Settings />
-            {/* <Menu /> */}
-          </HeaderElementWrap>
+          </HeaderElement>
         </HeaderControls>
       </RowBetween>
     </HeaderFrame>

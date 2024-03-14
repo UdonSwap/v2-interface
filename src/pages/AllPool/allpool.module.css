@@ -59,14 +59,14 @@
 }
 .button {
   color: #221f2a;
-  background-color: #fff;
-  /* border-radius: 45px;
-  padding: 10px 22px; */
-  border-radius: 10vw;
-  padding: 10px 2vw;
-  font-weight: 700;
-  cursor: pointer;
-  border: none;
+    background-color: #fff;
+    border-radius: 10vw;
+    padding: 12px 2vw;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    letter-spacing: 0.5px;
 }
 .button:hover {
   background-color: #e9e002;
