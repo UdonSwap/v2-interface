@@ -30,6 +30,9 @@ const ButtonHeader = styled(NavLink)`
         color:#e9e002;
         /* Additional active styles if needed */
     }
+    &:hover {
+        color: #e9e002;
+    }
    
 `
 
@@ -42,7 +45,7 @@ const ButtonHeaderBorder = styled(ButtonHeader)`
 
 export default function ToggleHeader() {
     return (
-        <HeaderElementWrap>
+        <HeaderElementWrap style={{ margin: '0px auto' }}>
             <ButtonHeaderBorder exact activeClassName="active" to="/swap">
                 Swap
             </ButtonHeaderBorder>

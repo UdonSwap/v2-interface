@@ -142,7 +142,7 @@ export default function Header() {
   return (
     <HeaderFrame>
       <RowBetween style={{ alignItems: 'flex-start' }} padding="1rem 1rem 0 1rem">
-        <div>
+        <div style={{ width: '33.33%' }}>
           <Title href="https://beatswap-eta.vercel.app/">
             <UniIcon>{/* <img src={isDark ? LogoDark : Logo} alt="logo" /> */}</UniIcon>
             <TitleText>
@@ -150,10 +150,10 @@ export default function Header() {
             </TitleText>
           </Title>
         </div>
-        <HeaderElement>
+        <HeaderElement style={{ width: '33.33%' }}>
           <ToggleHeader/>
         </HeaderElement>
-        <HeaderControls>
+        <HeaderControls style={{ width: '33.33%', justifyContent: 'flex-end' }}>
           <HeaderElement>
             <TestnetWrapper>
               {!isMobile && chainId && NETWORK_LABELS[chainId] && <NetworkCard>{NETWORK_LABELS[chainId]}</NetworkCard>}

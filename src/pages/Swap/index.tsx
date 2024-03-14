@@ -44,18 +44,15 @@ import { computeTradePriceBreakdown, warningSeverity } from '../../utils/prices'
 import AppBody from '../AppBody'
 import { ClickableText } from '../Pool/styleds'
 import Loader from '../../components/Loader'
+import dotenv from 'dotenv'
+import axios from 'axios'
+dotenv.config()
 
-// custom import
-// import { ethers } from 'ethers'
-// import { fetch } from 'node-fetch'
 
-// const USDCapiUrl = 'https://min-api.cryptocompare.com/data/price?fsym=USDC&tsyms=USD'
-// const USDTapiUrl = 'https://min-api.cryptocompare.com/data/price?fsym=USDT&tsyms=USD'
-// const WBTCapiUrl = 'https://min-api.cryptocompare.com/data/price?fsym=WBTC&tsyms=USD'
 
 export default function Swap() {
-  const ETHapiUrl = process.env.REACT_APP_USDCAPIURL
-  console.log('eth api url', ETHapiUrl)
+  
+
   const loadedUrlParams = useDefaultsFromURLSearch()
 
   // token warning stuff
@@ -138,7 +135,6 @@ export default function Swap() {
   const handleTypeInput = useCallback(
     (value: string) => {
       setEnteredValue(value)
-      console.log('field input...', Field.INPUT)
 
       onUserInput(Field.INPUT, value)
     },
@@ -193,9 +189,54 @@ export default function Swap() {
   }, [approval, approvalSubmitted])
 
   // function to get the dollar value
+  const [token0Symbol, setToken0Symbol] = useState('ETH')
+  const [token0Address, setToke0Address] = useState('0x4200000000000000000000000000000000000006')
+  const [token0DollarPrice, setToken0DollarPrice] = useState<number>()
 
-  // const getDollarPrice = async () => {}
-  useEffect(() => {}, [enteredValue])
+  const getDollarPrice = async () => {
+    const api_url = process.env.REACT_APP_ETHAPIURL
+    let ethPriceDollar:number
+    if (api_url) {
+      const response = await fetch(api_url)
+      const data = await response.json()
+      ethPriceDollar = data.USD
+
+      if (token0Symbol == 'ETH' || token0Symbol == 'WETH') {
+      
+        setToken0DollarPrice(Number(enteredValue) * ethPriceDollar)
+      } else {
+       
+        const graphURL =
+          'https://api.goldsky.com/api/public/project_clth71vucl2l701uu07ha0im7/subgraphs/udonswap/0.0.1/gn'
+        const tokenId = token0Address.toLowerCase()
+      
+        const priceQuery = `
+      query MyQuery{
+        token(id: "${tokenId}") {
+          derivedETH
+        }
+      }`
+        axios({
+          url: graphURL,
+          method: 'post',
+          data: {
+            query: priceQuery
+          }
+        }).then(result => {
+         
+          const derivedETH = result.data.data.token.derivedETH
+         
+
+          const tokenEth = Number(enteredValue)*derivedETH
+          setToken0DollarPrice(tokenEth * ethPriceDollar)
+        })
+        
+      }
+    }
+  }
+  useEffect(() => {
+    getDollarPrice()
+  }, [enteredValue])
 
   const maxAmountInput: CurrencyAmount | undefined = maxAmountSpend(currencyBalances[Field.INPUT])
   const atMaxAmountInput = Boolean(maxAmountInput && parsedAmounts[Field.INPUT]?.equalTo(maxAmountInput))
@@ -280,7 +321,14 @@ export default function Swap() {
   const handleInputSelect = useCallback(
     inputCurrency => {
       // setInputTokenAddress(inputCurrency['address'])
-      console.log('input currency', inputCurrency)
+   
+      if (inputCurrency.symbol === 'ETH' || inputCurrency.symbol === 'WETH') {
+        setToken0Symbol(inputCurrency.symbol)
+        setToke0Address('0x4200000000000000000000000000000000000006')
+      } else {
+        setToken0Symbol(inputCurrency.symbol)
+        setToke0Address(inputCurrency.address)
+      }
       setApprovalSubmitted(false) // reset 2 step UI for approvals
       onCurrencySelection(Field.INPUT, inputCurrency)
     },
@@ -331,7 +379,7 @@ export default function Swap() {
               otherCurrency={currencies[Field.OUTPUT]}
               id="swap-currency-input"
             />
-            {/* <div style={{ color: 'white' }}>$Value {enteredValue}</div> */}
+            <div style={{ color: '#8A8F9D',padding:"0 0.75rem 0 1rem",fontSize:"14px"}}>{token0DollarPrice === 0 ? '-' : '$ ' + token0DollarPrice}</div>
             <AutoColumn justify="space-between" style={{ margin: '10px 0px' }}>
               <AutoRow
                 justify={isExpertMode ? 'space-between' : 'center'}
@@ -346,6 +394,7 @@ export default function Swap() {
                     onClick={() => {
                       setApprovalSubmitted(false) // reset 2 step UI for approvals
                       onSwitchTokens()
+                     
                     }}
                     color={currencies[Field.INPUT] && currencies[Field.OUTPUT] ? 'white' : 'white'}
                   />
@@ -398,7 +447,7 @@ export default function Swap() {
                     </RowBetween>
                   )}
                   {allowedSlippage !== INITIAL_ALLOWED_SLIPPAGE && (
-                    <RowBetween align="center" style={{backgroundColor:"transparent"}}>
+                    <RowBetween align="center" style={{ backgroundColor: 'transparent' }}>
                       <ClickableText fontWeight={500} fontSize={14} color={theme.text2} onClick={toggleSettings}>
                         Slippage Tolerance
                       </ClickableText>

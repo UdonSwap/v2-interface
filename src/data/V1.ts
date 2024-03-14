@@ -94,7 +94,7 @@ export function useUserHasLiquidityInAllTokens(): boolean | undefined {
     [balances]
   )
 }
-
+ 
 /**
  * Returns the trade to execute on V1 to go between input and output token
  */

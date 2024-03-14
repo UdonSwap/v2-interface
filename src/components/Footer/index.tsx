@@ -28,32 +28,32 @@ function Footer() {
           </div>
           <div>
             <h2>Tools</h2>
-            <Link to={''} className="footerlink" target="_blank">
+            <Link to='https://app.mode.network/' className="footerlink" target="_blank">
               <div className="sec-link">Mode Bridge</div>
             </Link>
-            <Link to={''} className="footerlink" target="_blank">
+            <Link to='https://symbiosis.finance/swap-and-bridge-mode' className="footerlink" target="_blank">
               <div className="sec-link">Symbiosis</div>
             </Link>
-            <Link to={''} className="footerlink" target="_blank">
-              <div className="sec-link">Defil lama</div>
+            <Link to='https://defillama.com/chain/Mode' className="footerlink" target="_blank">
+              <div className="sec-link">Defillama</div>
             </Link>
-            <Link to={''} className="footerlink" target="_blank">
-              <div className="sec-link">Leaderboard</div>
+            <Link to='https://faucet.modedomains.xyz/' className="footerlink" target="_blank">
+              <div className="sec-link">Faucet</div>
             </Link>
           </div>
           <div>
             <h2>Social</h2>
-            <Link to={''} className="footerlink" target="_blank">
+            <Link to='https://discord.gg/K9wMF5vWfN' className="footerlink" target="_blank">
               <div className="sec-link">Discord</div>
             </Link>
-            <Link to={''} className="footerlink" target="_blank">
+            <Link to='https://mirror.xyz/0xC99C6ec8f5096B1E8D984aF857F9267A4041864F' className="footerlink" target="_blank">
               <div className="sec-link">X</div>
             </Link>
-            <Link to={''} className="footerlink" target="_blank">
+            <Link to='https://t.me/udonswap' className="footerlink" target="_blank">
               <div className="sec-link">Telegram</div>
             </Link>
-            <Link to={''} className="footerlink" target="_blank">
-              <div className="sec-link">Blog</div>
+            <Link to='https://twitter.com/Udonswap1' className="footerlink" target="_blank">
+              <div className="sec-link">Twitter</div>
             </Link>
           </div>
         </div>
