@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { TransactionResponse } from '@ethersproject/providers'
 import { Currency, currencyEquals, ETHER, TokenAmount, WETH } from 'lampros_dex_sdk'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import { Plus } from 'react-feather'
 import ReactGA from 'react-ga'
 import { RouteComponentProps } from 'react-router-dom'
@@ -25,7 +25,7 @@ import { ApprovalState, useApproveCallback } from '../../hooks/useApproveCallbac
 import { useWalletModalToggle } from '../../state/application/hooks'
 import { Field } from '../../state/mint/actions'
 import { useDerivedMintInfo, useMintActionHandlers, useMintState } from '../../state/mint/hooks'
-
+import axios from 'axios'
 import { useTransactionAdder } from '../../state/transactions/hooks'
 import { useIsExpertMode, useUserDeadline, useUserSlippageTolerance } from '../../state/user/hooks'
 import { TYPE } from '../../theme'
@@ -114,6 +114,99 @@ export default function AddLiquidity({
     },
     {}
   )
+  // function to get the dollar value
+  const [token0Symbol, setToken0Symbol] = useState('ETH')
+  const [token0Address, setToke0Address] = useState('0x4200000000000000000000000000000000000006')
+  const [token0DollarPrice, setToken0DollarPrice] = useState<number>()
+
+  const [token1Symbol, setToken1Symbol] = useState('ETH')
+  const [token1Address, setToke1Address] = useState('0x4200000000000000000000000000000000000006')
+  const [token1DollarPrice, setToken1DollarPrice] = useState<number>()
+
+  const getDollarPriceToken0 = async () => {
+    const api_url = process.env.REACT_APP_ETHAPIURL
+    let ethPriceDollar: number
+    console.log('token 0 selected', token0Symbol)
+
+    if (api_url) {
+      const response = await fetch(api_url)
+      const data = await response.json()
+      ethPriceDollar = data.USD
+
+      if (token0Symbol === 'ETH' || token0Symbol === 'WETH') {
+        setToken0DollarPrice(Number(formattedAmounts[Field.CURRENCY_A]) * ethPriceDollar)
+      } else {
+        const graphURL =
+          'https://api.goldsky.com/api/public/project_clth71vucl2l701uu07ha0im7/subgraphs/udonswap/0.0.1/gn'
+        const tokenId = token0Address.toLowerCase()
+
+        const priceQuery = `
+           query MyQuery {
+             token(id: "${tokenId}") {
+               derivedETH
+             }
+           }
+         `
+        axios({
+          url: graphURL,
+          method: 'post',
+          data: {
+            query: priceQuery
+          }
+        }).then(result => {
+          const derivedETH = result.data.data.token.derivedETH
+          const tokenEth = Number(formattedAmounts[Field.CURRENCY_A]) * derivedETH
+          setToken0DollarPrice(tokenEth * ethPriceDollar)
+        })
+      }
+    }
+  }
+
+  useEffect(() => {
+    getDollarPriceToken0()
+    getDollarPriceToken1()
+  }, [formattedAmounts[Field.CURRENCY_A], token0Symbol, token0Address, formattedAmounts[Field.CURRENCY_B]])
+
+  const getDollarPriceToken1 = async () => {
+    const api_url = process.env.REACT_APP_ETHAPIURL
+    let ethPriceDollar: number
+    console.log('token 1 selected', token1Symbol)
+    if (api_url) {
+      const response = await fetch(api_url)
+      const data = await response.json()
+      ethPriceDollar = data.USD
+      if (token1Symbol == 'ETH' || token1Symbol == 'WETH') {
+        console.log('inside if')
+        console.log('price eth ', Number(formattedAmounts[Field.CURRENCY_B]) * ethPriceDollar)
+        setToken1DollarPrice(Number(formattedAmounts[Field.CURRENCY_B]) * ethPriceDollar)
+      } else {
+        console.log('inside else')
+        const graphURL =
+          'https://api.goldsky.com/api/public/project_clth71vucl2l701uu07ha0im7/subgraphs/udonswap/0.0.1/gn'
+        const tokenId = token1Address.toLowerCase()
+
+        const priceQuery = `
+     query MyQuery{
+       token(id: "${tokenId}") {
+         derivedETH
+       }
+     }`
+        axios({
+          url: graphURL,
+          method: 'post',
+          data: {
+            query: priceQuery
+          }
+        }).then(result => {
+          const derivedETH = result.data.data.token.derivedETH
+
+          const tokenEth = Number(formattedAmounts[Field.CURRENCY_B]) * derivedETH
+          console.log('price other token', Number(formattedAmounts[Field.CURRENCY_B]) * derivedETH)
+          setToken1DollarPrice(tokenEth * ethPriceDollar)
+        })
+      }
+    }
+  }
 
   // check whether the user has approved the router on the tokens
   const [approvalA, approveACallback] = useApproveCallback(parsedAmounts[Field.CURRENCY_A], ROUTER_ADDRESS)
@@ -268,18 +361,37 @@ export default function AddLiquidity({
 
   const handleCurrencyASelect = useCallback(
     (currencyA: Currency) => {
+      console.log('Inside handleCurrencyASelect')
+      if (currencyA.symbol === 'ETH' || currencyA.symbol === 'WETH') {
+        setToken0Symbol(currencyA.symbol)
+        setToke0Address('0x4200000000000000000000000000000000000006')
+      } else {
+        setToken0Symbol(String(currencyA.symbol))
+        setToke0Address(String(currencyA.address))
+      }
+
       const newCurrencyIdA = currencyId(currencyA)
+      console.log('select a ...............', newCurrencyIdA, currencyIdB)
       if (newCurrencyIdA === currencyIdB) {
         history.push(`/add/${currencyIdB}/${currencyIdA}`)
       } else {
         history.push(`/add/${newCurrencyIdA}/${currencyIdB}`)
       }
+      
     },
     [currencyIdB, history, currencyIdA]
   )
   const handleCurrencyBSelect = useCallback(
     (currencyB: Currency) => {
+      if (currencyB.symbol === 'ETH' || currencyB.symbol === 'WETH') {
+        setToken1Symbol(currencyB.symbol)
+        setToke1Address('0x4200000000000000000000000000000000000006')
+      } else {
+        setToken1Symbol(String(currencyB.symbol))
+        setToke1Address(String(currencyB.address))
+      }
       const newCurrencyIdB = currencyId(currencyB)
+
       if (currencyIdA === newCurrencyIdB) {
         if (currencyIdB) {
           history.push(`/add/${currencyIdB}/${newCurrencyIdB}`)
@@ -352,11 +464,14 @@ export default function AddLiquidity({
               id="add-liquidity-input-tokena"
               showCommonBases
             />
+            <div style={{ color: '#8A8F9D', padding: '0 0.75rem 0 1rem', fontSize: '14px' }}>
+              {token0DollarPrice === 0 ? '-' : '$ ' + token0DollarPrice}
+            </div>
             <ColumnCenter style={{ borderBottom: '1px solid gray' }}>
               <Plus
                 size="16"
                 color={'white'}
-                style={{ position: 'absolute', top: '100', backgroundColor: '#1C1924', borderRadius: '50px' }}
+                style={{ position: 'absolute', backgroundColor: '#1C1924', borderRadius: '50px' }}
               />
             </ColumnCenter>
             <CurrencyInputPanel
@@ -371,6 +486,9 @@ export default function AddLiquidity({
               id="add-liquidity-input-tokenb"
               showCommonBases
             />
+            <div style={{ color: '#8A8F9D', padding: '0 0.75rem 0 1rem', fontSize: '14px' }}>
+              {token1DollarPrice === 0 ? '-' : '$ ' + token1DollarPrice}
+            </div>
             {currencies[Field.CURRENCY_A] && currencies[Field.CURRENCY_B] && pairState !== PairState.INVALID && (
               <>
                 <GreyCard padding="0px" borderRadius={'20px'} style={{ backgroundColor: 'transparent' }}>
