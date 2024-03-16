@@ -1,7 +1,7 @@
 import { AbstractConnector } from '@web3-react/abstract-connector'
 import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core'
 // import { darken, lighten } from 'polished'
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect } from 'react'
 import { Activity } from 'react-feather'
 import { useTranslation } from 'react-i18next'
 import styled, { css } from 'styled-components'
@@ -174,7 +174,15 @@ interface Ethereum {
 }
 function Web3StatusInner() {
   const { t } = useTranslation()
-  const { account, connector, error } = useWeb3React()
+  const { account, connector, error, activate } = useWeb3React()
+  useEffect(() => {
+    // Check if error is due to UnsupportedChainIdError
+    if (error instanceof UnsupportedChainIdError) {
+      // Switch network automatically
+      switchNetwork()
+    }
+  }, [error])
+
   function switchNetwork() {
     // Check if window.ethereum is defined
     if (window.ethereum) {
@@ -184,10 +192,17 @@ function Web3StatusInner() {
       const chainId = '0x397' // Replace with the chain ID of the target network
 
       // Request to switch the network
-      ethereum.request({
-        method: 'wallet_switchEthereumChain',
-        params: [{ chainId }]
-      })
+      ethereum
+        .request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId }]
+        })
+        .then(() => {
+          activate(injected)
+        })
+        .catch(error => {
+          console.error('Error switching network:', error)
+        })
     } else {
       // Handle the case where window.ethereum is undefined
       console.error('window.ethereum is not available.')
@@ -227,7 +242,7 @@ function Web3StatusInner() {
     )
   } else if (error) {
     return (
-      <Web3StatusError onClick={switchNetwork}>
+      <Web3StatusError>
         <NetworkIcon />
         <Text>{error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error'}</Text>
       </Web3StatusError>

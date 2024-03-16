@@ -184,16 +184,14 @@ export default function Swap() {
   }, [approval, approvalSubmitted])
 
   // function to get the dollar value
-  const [token0Symbol, setToken0Symbol] = useState('ETH')
-  const [token0Address, setToke0Address] = useState('0x4200000000000000000000000000000000000006')
   const [token0DollarPrice, setToken0DollarPrice] = useState<number>()
 
-  const [token1Symbol, setToken1Symbol] = useState('ETH')
-  const [token1Address, setToke1Address] = useState('0x4200000000000000000000000000000000000006')
   const [token1DollarPrice, setToken1DollarPrice] = useState<number>()
 
   const getDollarPriceToken0 = async () => {
-    console.log('entered token 0', token0Symbol)
+    console.log("token0....",currencies[Field.INPUT]);
+    console.log(loadedInputCurrency);
+    
     const api_url = process.env.REACT_APP_ETHAPIURL
     let ethPriceDollar: number
     if (api_url) {
@@ -201,13 +199,15 @@ export default function Swap() {
       const data = await response.json()
       ethPriceDollar = data.USD
 
-      if (token0Symbol === 'ETH' || token0Symbol === 'WETH') {
+      if (currencies[Field.INPUT]?.symbol === 'ETH' || currencies[Field.INPUT]?.symbol === 'WETH') {
         setToken0DollarPrice(Number(formattedAmounts[Field.INPUT]) * ethPriceDollar)
       } else {
         const graphURL =
           'https://api.goldsky.com/api/public/project_clth71vucl2l701uu07ha0im7/subgraphs/udonswap/0.0.1/gn'
-        const tokenId = token0Address.toLowerCase()
+        const tokenId = currencies[Field.INPUT]?.address?.toLowerCase()
 
+        console.log(tokenId);
+        
         const priceQuery = `
             query MyQuery {
               token(id: "${tokenId}") {
@@ -222,7 +222,7 @@ export default function Swap() {
             query: priceQuery
           }
         }).then(result => {
-          const derivedETH = result.data.data.token.derivedETH
+          const derivedETH = result?.data?.data?.token?.derivedETH
           const tokenEth = Number(formattedAmounts[Field.INPUT]) * derivedETH
           setToken0DollarPrice(tokenEth * ethPriceDollar)
         })
@@ -231,21 +231,26 @@ export default function Swap() {
   }
 
   useEffect(() => {
+
     getDollarPriceToken0()
     getDollarPriceToken1()
-  }, [formattedAmounts[Field.INPUT], token0Symbol, token0Address, formattedAmounts[Field.OUTPUT]])
+    console.log(formattedAmounts[Field.INPUT]);
+    console.log(currencies[Field.INPUT]);
+    
+    
+  }, [formattedAmounts[Field.INPUT], formattedAmounts[Field.OUTPUT]])
 
   const getDollarPriceToken1 = async () => {
-    console.log('entered token 1', token1Symbol)
+    console.log("token1....",currencies[Field.OUTPUT]);
+    
     const api_url = process.env.REACT_APP_ETHAPIURL
     let ethPriceDollar: number
-    console.log('entered value', formattedAmounts[Field.OUTPUT])
     if (api_url) {
       const response = await fetch(api_url)
       const data = await response.json()
       ethPriceDollar = data.USD
       console.log('ethPriceDollar', ethPriceDollar)
-      if (token1Symbol == 'ETH' || token1Symbol == 'WETH') {
+      if (currencies[Field.OUTPUT]?.symbol == 'ETH' || currencies[Field.OUTPUT]?.symbol == 'WETH') {
         console.log('inside if')
         console.log('price eth ', Number(formattedAmounts[Field.OUTPUT]) * ethPriceDollar)
         setToken1DollarPrice(Number(formattedAmounts[Field.OUTPUT]) * ethPriceDollar)
@@ -253,7 +258,7 @@ export default function Swap() {
         console.log('inside else')
         const graphURL =
           'https://api.goldsky.com/api/public/project_clth71vucl2l701uu07ha0im7/subgraphs/udonswap/0.0.1/gn'
-        const tokenId = token1Address.toLowerCase()
+        const tokenId = currencies[Field.OUTPUT]?.address?.toLowerCase()
 
         const priceQuery = `
       query MyQuery{
@@ -268,7 +273,7 @@ export default function Swap() {
             query: priceQuery
           }
         }).then(result => {
-          const derivedETH = result.data.data.token.derivedETH
+          const derivedETH = result?.data?.data?.token?.derivedETH
 
           const tokenEth = Number(formattedAmounts[Field.OUTPUT]) * derivedETH
           console.log('price other token', Number(formattedAmounts[Field.OUTPUT]) * derivedETH)
@@ -359,14 +364,6 @@ export default function Swap() {
   // usestate for selected input token
   const handleInputSelect = useCallback(
     inputCurrency => {
-      if (inputCurrency.symbol === 'ETH' || inputCurrency.symbol === 'WETH') {
-        setToken0Symbol(inputCurrency.symbol)
-        setToke0Address('0x4200000000000000000000000000000000000006')
-      } else {
-        setToken0Symbol(inputCurrency.symbol)
-        setToke0Address(inputCurrency.address)
-      }
-
       setApprovalSubmitted(false) // reset 2 step UI for approvals
       onCurrencySelection(Field.INPUT, inputCurrency)
     },
@@ -379,14 +376,6 @@ export default function Swap() {
 
   const handleOutputSelect = useCallback(
     outputCurrency => {
-      if (outputCurrency.symbol === 'ETH' || outputCurrency.symbol === 'WETH') {
-        setToken1Symbol(outputCurrency.symbol)
-        setToke1Address('0x4200000000000000000000000000000000000006')
-      } else {
-        setToken1Symbol(outputCurrency.symbol)
-        setToke1Address(outputCurrency.address)
-      }
-
       onCurrencySelection(Field.OUTPUT, outputCurrency)
 
       // onUserInput(Field.OUTPUT, '0')

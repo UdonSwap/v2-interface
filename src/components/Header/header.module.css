@@ -1,0 +1,94 @@
+.logo {
+    margin-left: 4px;
+    width: 200px;
+  }
+  .menu {
+    display: none;
+  }
+  .toggleitems {
+    display: none;
+  }
+  .flex {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 110px;
+    right: 20px;
+  }
+  .hidden {
+    display: none;
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  @media screen and (max-width: 768px) and (min-width: 601px) {
+    .modebutton {
+      margin-left: 75px;
+      margin-top: 8px;
+    }
+    .center {
+      display: none;
+    }
+    .menu {
+      display: flex;
+      flex: 1 1 0%;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .imgmenu {
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
+      object-fit: contain;
+    }
+  }
+  
+  @media screen and (max-width: 601px) {
+    .modebutton {
+      margin-left: 75px;
+      margin-top: 8px;
+    }
+    .center {
+      display: none;
+    }
+    .menu {
+      display: flex;
+      flex: 1 1 0%;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .imgmenu {
+      width: 20px;
+      height: 20px;
+      margin-left: 5px;
+      object-fit: contain;
+    }
+    .flex {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 130px;
+      right: 20px;
+    }
+    @media screen and (max-width: 500px) {
+      .toggleMenuMain {
+        display: flex;
+        flex-direction: column;
+      }
+      .logo {
+        width: 28vw;
+        margin-top: 10px;
+      }
+      .flex {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 130px;
+        width: 30vw;
+        /* right: -58px; */
+        right: 40px;
+      }
+    }
+  }
