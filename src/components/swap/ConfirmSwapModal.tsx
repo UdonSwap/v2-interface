@@ -1,4 +1,4 @@
-import { currencyEquals, Trade } from 'lampros_dex_sdk'
+import { currencyEquals, Trade } from 'udonswap-v2'
 import React, { useCallback, useMemo } from 'react'
 import TransactionConfirmationModal, {
   ConfirmationModalContent,

@@ -1,4 +1,4 @@
-import { Trade } from 'lampros_dex_sdk'
+import { Trade } from 'udonswap-v2'
 import React, { Fragment, memo, useContext } from 'react'
 import { ChevronRight } from 'react-feather'
 import { Flex } from 'rebass'

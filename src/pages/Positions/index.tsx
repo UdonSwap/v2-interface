@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react'
 import { ThemeContext } from 'styled-components'
-import { Pair } from 'lampros_dex_sdk'
+import { Pair } from 'udonswap-v2'
 // import Question from '../../components/QuestionHelper'
 import FullPositionCardPage from '../../components/PositionCardPage'
 import { useTokenBalancesWithLoadingIndicator } from '../../state/wallet/hooks'

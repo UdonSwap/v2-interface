@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { TransactionResponse } from '@ethersproject/providers'
-import { Currency, currencyEquals, ETHER, TokenAmount, WETH } from 'lampros_dex_sdk'
+import { Currency, currencyEquals, ETHER, TokenAmount, WETH } from 'udonswap-v2'
 import React, { useCallback, useState, useEffect } from 'react'
 import { Plus } from 'react-feather'
 import ReactGA from 'react-ga'

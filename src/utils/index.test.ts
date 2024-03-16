@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { AddressZero } from '@ethersproject/constants'
-import { TokenAmount, Token, ChainId, Percent, JSBI } from 'lampros_dex_sdk'
+import { TokenAmount, Token, ChainId, Percent, JSBI } from 'udonswap-v2'
 
 import {
   getEtherscanLink,

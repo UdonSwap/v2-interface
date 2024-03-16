@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Fraction, Percent } from 'lampros_dex_sdk'
+import { Currency, CurrencyAmount, Fraction, Percent } from 'udonswap-v2'
 import React from 'react'
 import { Text } from 'rebass'
 import { ButtonPrimary } from '../../components/Button'

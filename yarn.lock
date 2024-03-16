@@ -9595,9 +9595,9 @@ kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-lampros_dex_sdk@^3.0.3:
+udonswap-v2@^3.0.3:
   version "3.0.3"
-  resolved "https://registry.yarnpkg.com/lampros_dex_sdk/-/lampros_dex_sdk-3.0.3.tgz#97448b193705702ed0f228681793befb3c6b5404"
+  resolved "https://registry.yarnpkg.com/udonswap-v2/-/udonswap-v2-3.0.3.tgz#97448b193705702ed0f228681793befb3c6b5404"
   integrity sha512-nnqmsZ0Nu4bTA5eBlRuypCrIQv0H6CtRKJtZ5f7NQaa/qPtZmUY033KwUog4p16usFlsXWOVLTNaYYqyAIGbOg==
   dependencies:
     "@uniswap/v2-core" "^1.0.0"
@@ -14531,6 +14531,19 @@ ua-parser-js@^0.7.21:
   version "0.7.21"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.21.tgz#853cf9ce93f642f67174273cc34565ae6f308777"
   integrity sha512-+O8/qh/Qj8CgC6eYBVBykMrNtp5Gebn4dlGD/kKXVkJNDwyrAwSIqwz8CDf+tsAIWVycKcku6gIXJ0qwx/ZXaQ==
+
+udonswap-v2@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/udonswap-v2/-/udonswap-v2-1.0.4.tgz#a3454c32faf2ec10830b06faee941dae7cb3d698"
+  integrity sha512-ht0hq0zPesZ5UbtPiaduuHXg+ILs8h/dawZfQzvAtqbbQ2WPDrqf7ezO7w1ON8DGasZszzHrDMQQrSiYV2HwXg==
+  dependencies:
+    "@uniswap/v2-core" "^1.0.0"
+    big.js "^5.2.2"
+    decimal.js-light "^2.5.0"
+    jsbi "^3.1.1"
+    tiny-invariant "^1.1.0"
+    tiny-warning "^1.0.3"
+    toformat "^2.0.0"
 
 uint8arrays@1.0.0:
   version "1.0.0"

@@ -1,4 +1,4 @@
-import { Trade, TradeType } from 'lampros_dex_sdk'
+import { Trade, TradeType } from 'udonswap-v2'
 import React from 'react'
 // import { ThemeContext } from 'styled-components'
 import { Field } from '../../state/swap/actions'

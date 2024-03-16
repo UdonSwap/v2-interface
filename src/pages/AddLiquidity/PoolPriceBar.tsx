@@ -1,4 +1,4 @@
-import { Currency, Percent, Price } from 'lampros_dex_sdk'
+import { Currency, Percent, Price } from 'udonswap-v2'
 import React from 'react'
 import { Text } from 'rebass'
 // import { ThemeContext } from 'styled-components'

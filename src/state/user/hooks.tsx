@@ -1,4 +1,4 @@
-import { ChainId, Pair, Token } from 'lampros_dex_sdk'
+import { ChainId, Pair, Token } from 'udonswap-v2'
 import flatMap from 'lodash.flatmap'
 import { useCallback, useMemo } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'

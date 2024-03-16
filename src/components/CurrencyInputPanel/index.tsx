@@ -1,4 +1,4 @@
-import { Currency, Pair } from 'lampros_dex_sdk'
+import { Currency, Pair } from 'udonswap-v2'
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
 import { darken } from 'polished'

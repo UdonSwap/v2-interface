@@ -1,4 +1,4 @@
-import { Token, TokenAmount } from 'lampros_dex_sdk'
+import { Token, TokenAmount } from 'udonswap-v2'
 import { useMemo } from 'react'
 import { useAllTokenBalances } from '../../state/wallet/hooks'
 

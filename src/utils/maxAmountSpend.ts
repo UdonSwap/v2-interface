@@ -1,4 +1,4 @@
-import { CurrencyAmount, ETHER, JSBI } from 'lampros_dex_sdk'
+import { CurrencyAmount, ETHER, JSBI } from 'udonswap-v2'
 import { MIN_ETH } from '../constants'
 
 /**

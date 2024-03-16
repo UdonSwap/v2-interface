@@ -1,4 +1,4 @@
-import { Currency, ETHER, JSBI, TokenAmount } from 'lampros_dex_sdk'
+import { Currency, ETHER, JSBI, TokenAmount } from 'udonswap-v2'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Plus } from 'react-feather'
 import { Text } from 'rebass'

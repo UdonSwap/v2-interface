@@ -1,4 +1,4 @@
-import { CurrencyAmount, JSBI, Token, Trade } from 'lampros_dex_sdk'
+import { CurrencyAmount, JSBI, Token, Trade } from 'udonswap-v2'
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { Repeat } from 'react-feather'
 import ReactGA from 'react-ga'

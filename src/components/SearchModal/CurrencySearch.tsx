@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from 'lampros_dex_sdk'
+import { Currency, ETHER, Token } from 'udonswap-v2'
 import React, { KeyboardEvent, RefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import ReactGA from 'react-ga'
 import { useTranslation } from 'react-i18next'

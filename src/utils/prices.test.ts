@@ -1,4 +1,4 @@
-import { ChainId, JSBI, Pair, Route, Token, TokenAmount, Trade, TradeType } from 'lampros_dex_sdk'
+import { ChainId, JSBI, Pair, Route, Token, TokenAmount, Trade, TradeType } from 'udonswap-v2'
 import { computeTradePriceBreakdown } from './prices'
 
 describe('prices', () => {

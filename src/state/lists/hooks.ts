@@ -1,4 +1,4 @@
-import { ChainId, Token } from 'lampros_dex_sdk'
+import { ChainId, Token } from 'udonswap-v2'
 import { Tags, TokenInfo, TokenList } from '@uniswap/token-lists'
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
