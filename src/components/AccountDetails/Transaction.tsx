@@ -9,7 +9,9 @@ import { useAllTransactions } from '../../state/transactions/hooks'
 import { RowFixed } from '../Row'
 import Loader from '../Loader'
 
-const TransactionWrapper = styled.div``
+const TransactionWrapper = styled.div`
+
+`
 
 const TransactionStatusText = styled.div`
   margin-right: 0.5rem;

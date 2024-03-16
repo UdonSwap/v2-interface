@@ -21,6 +21,7 @@ const StyledLogo = styled(Logo)<{ size: string }>`
   width: ${({ size }) => size};
   height: ${({ size }) => size};
   stroke: #ffffff;
+ 
 `
 
 export default function CurrencyLogo({
