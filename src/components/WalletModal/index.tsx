@@ -249,7 +249,7 @@ export default function WalletModal({
               />
             )
           } else {
-            return null //dont want to return install twice
+            return null 
           }
         }
         // don't return metamask if injected provider isn't metamask
