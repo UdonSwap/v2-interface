@@ -12,21 +12,17 @@ function Footer() {
         <div className="f-sec1">
           <div>
             <h2>Resources</h2>
-            <a href={''} className="footerlink" target="_blank">
-              <div className="sec-link ">Audit</div>
-            </a>
-            <a href={''} className="footerlink" target="_blank">
-              <div className="sec-link ">Contracts</div>
-            </a>
-            <a href={''} className="footerlink" target="_blank">
-              <div className="sec-link ">Documentation</div>
-            </a>
-            <a href={''} className="footerlink" target="_blank">
-              <div className="sec-link ">Leaderboard</div>
-            </a>
+
+            <div className="sec-link ">Audit</div>
+
+            <div className="sec-link ">Contracts</div>
+
+            <div className="sec-link ">Documentation</div>
+
+            <div className="sec-link ">Leaderboard</div>
           </div>
           <div>
-            <h2>hrefols</h2>
+            <h2>Tools</h2>
             <a href="https://app.mode.network/" className="footerlink" target="_blank">
               <div className="sec-link ">Mode Bridge</div>
             </a>
@@ -63,14 +59,14 @@ function Footer() {
 
         <div className="f-sec2">
           <div className="socialMain">
-            <a href='https://mirror.xyz/0xC99C6ec8f5096B1E8D984aF857F9267A4041864F'>
+            <a href="https://mirror.xyz/0xC99C6ec8f5096B1E8D984aF857F9267A4041864F">
               <img src={X} alt="x" className="fImg1" />
             </a>
             <a>
               <img src={web} alt="web" className="fImg1" />
             </a>
-            <a href='https://discord.gg/K9wMF5vWfN'>
-              <img src={discord} alt="discord" className="fImg1"style={{padding:"3"}} />
+            <a href="https://discord.gg/K9wMF5vWfN">
+              <img src={discord} alt="discord" className="fImg1" style={{ padding: '3' }} />
             </a>
           </div>
           <div className="socialMain2">

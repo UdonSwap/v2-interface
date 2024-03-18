@@ -1,7 +1,8 @@
 import { ChainId } from 'udonswap-v2'
-import React, { useState } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { isMobile } from 'react-device-detect'
 import { Text } from 'rebass'
+
 import styled from 'styled-components'
 // import { ButtonHeader } from '../Button'
 import Udonswap from '../../assets/images/UdonSwapLogo.png'
@@ -160,6 +161,7 @@ const BalanceText = styled(Text)`
     font-size:8px;
     padding: 8px 9px;
     border-radius: 8px;
+    
   `};
 `
 
@@ -178,9 +180,20 @@ export default function Header() {
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   // const [isDark] = useDarkModeManager()
-
+  const headerRef = useRef<HTMLDivElement>(null)
   const [toggle, setToggle] = useState(false)
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
+        setToggle(false)
+      }
+    }
 
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
   return (
     <HeaderFrame>
       <RowBetween style={{ alignItems: 'flex-start' }} padding="1rem 1rem 0 1rem">
@@ -227,7 +240,7 @@ export default function Header() {
                 />
               </div>
 
-              <div className={toggle ? sidebar.flex : sidebar.hidden}>
+              <div ref={headerRef} className={toggle ? sidebar.flex : sidebar.hidden}>
                 <ToggleHeader />
               </div>
             </div>
