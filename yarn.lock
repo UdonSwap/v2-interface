@@ -9595,19 +9595,6 @@ kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-udonswap-v2@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/udonswap-v2/-/udonswap-v2-3.0.3.tgz#97448b193705702ed0f228681793befb3c6b5404"
-  integrity sha512-nnqmsZ0Nu4bTA5eBlRuypCrIQv0H6CtRKJtZ5f7NQaa/qPtZmUY033KwUog4p16usFlsXWOVLTNaYYqyAIGbOg==
-  dependencies:
-    "@uniswap/v2-core" "^1.0.0"
-    big.js "^5.2.2"
-    decimal.js-light "^2.5.0"
-    jsbi "^3.1.1"
-    tiny-invariant "^1.1.0"
-    tiny-warning "^1.0.3"
-    toformat "^2.0.0"
-
 last-call-webpack-plugin@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/last-call-webpack-plugin/-/last-call-webpack-plugin-3.0.0.tgz#9742df0e10e3cf46e5c0381c2de90d3a7a2d7555"
