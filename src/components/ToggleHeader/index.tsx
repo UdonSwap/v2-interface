@@ -59,7 +59,7 @@ const ButtonHeaderBorder = styled(ButtonHeader)`
 export default function ToggleHeader() {
   return (
     <HeaderElementWrap style={{ margin: '0px auto' }} className={header.toggleMenuMain}>
-      <ButtonHeaderBorder exact activeClassName="active" to="/swap" >
+      <ButtonHeaderBorder exact activeClassName="active" to="/swap">
         Swap
       </ButtonHeaderBorder>
       <ButtonHeaderBorder exact activeClassName="active" to="/liquidity">

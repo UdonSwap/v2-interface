@@ -44,13 +44,14 @@ export const LinkStyledButton = styled.button<{ disabled?: boolean }>`
   border: none;
   text-decoration: none;
   background: none;
-
-  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
-  color: ${({ theme, disabled }) => (disabled ? theme.text2 : theme.primary1)};
+  font-size: 16px;
+  cursor: pointer;
+  color: #ffffff;
   font-weight: 500;
 
   :hover {
-    text-decoration: ${({ disabled }) => (disabled ? null : 'underline')};
+    text-decoration: underline;
+    color: #e9e002;
   }
 
   :focus {
@@ -87,11 +88,12 @@ export const StyledInternalLink = styled(Link)`
 const StyledLink = styled.a`
   text-decoration: none;
   cursor: pointer;
-  color: #9657eb;
+  color: #ffffff;
   font-weight: 500;
 
   :hover {
     text-decoration: underline;
+    color: #e9e002;
   }
 
   :focus {

@@ -38,19 +38,44 @@ const Base = styled(RebassButton)<{
 `
 
 export const ButtonPrimary = styled(Base)`
-  background-color: #FEF100;
+  background-color: #fef100;
   color: #000000;
   font-size: 20px;
   &:focus {
-    background-color: #FEF100;
+    background-color: #fef100;
   }
   &:hover {
     box-shadow: 0px 0px 14px 0px rgba(233, 224, 2, 0.62);
-    background-color: #FEF100;
+    background-color: #fef100;
   }
 
   &:active {
-    background-color: #FEF100 ;
+    background-color: #fef100;
+  }
+  &:disabled {
+    background-color: #878787;
+    color: #c5c5c5;
+    font-weight: 600;
+    cursor: auto;
+    box-shadow: none;
+    border: 1px solid transparent;
+    outline: none;
+    opacity: ${({ altDisabledStyle }) => (altDisabledStyle ? '0.7' : '1')};
+  }
+`
+export const ButtonPrimarySelect = styled(Base)`
+  background-color: #fef100;
+  color: #000000;
+  font-size: 15px;
+  &:focus {
+    background-color: #fef100;
+  }
+  &:hover {
+    border: 1px solid #ffffff;
+  }
+
+  &:active {
+    background-color: #fef100;
   }
   &:disabled {
     background-color: #878787;
@@ -189,10 +214,10 @@ export const ButtonPink = styled(Base)`
 `
 
 export const ButtonOutlined = styled(Base)`
-  background-color:white ;
+  background-color: white;
   color: rgb(150, 87, 235);
   border-radius: 12px;
-border:1px solid white;
+  border: 1px solid white;
 
   &:hover {
     box-shadow: 0 0 0 1px ${({ theme }) => theme.bg4};
