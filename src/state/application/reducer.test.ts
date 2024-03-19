@@ -1,4 +1,4 @@
-import { ChainId } from 'lampros_dex_sdk'
+import { ChainId } from 'udonswap-v2'
 import { createStore, Store } from 'redux'
 import { addPopup, removePopup, toggleSettingsMenu, toggleWalletModal, updateBlockNumber } from './actions'
 import reducer, { ApplicationState } from './reducer'

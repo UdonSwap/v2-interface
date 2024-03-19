@@ -1,4 +1,4 @@
-import { ChainId, JSBI, Percent, Token, WETH } from 'lampros_dex_sdk'
+import { ChainId, JSBI, Percent, Token, WETH } from 'udonswap-v2'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
 import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'

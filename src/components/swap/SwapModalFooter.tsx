@@ -1,4 +1,4 @@
-import { Trade, TradeType } from 'lampros_dex_sdk'
+import { Trade, TradeType } from 'udonswap-v2'
 import React, { useMemo, useState } from 'react'
 import { Repeat } from 'react-feather'
 import { Text } from 'rebass'

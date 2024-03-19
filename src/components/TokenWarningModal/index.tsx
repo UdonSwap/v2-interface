@@ -1,4 +1,4 @@
-import { Token } from 'lampros_dex_sdk'
+import { Token } from 'udonswap-v2'
 // import { transparentize } from 'polished'
 import React, { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'

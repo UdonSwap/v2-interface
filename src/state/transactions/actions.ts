@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit'
-import { ChainId } from 'lampros_dex_sdk'
+import { ChainId } from 'udonswap-v2'
 
 export interface SerializableTransactionReceipt {
   to: string

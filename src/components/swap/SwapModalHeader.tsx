@@ -1,4 +1,4 @@
-import { Trade, TradeType } from 'lampros_dex_sdk'
+import { Trade, TradeType } from 'udonswap-v2'
 import React, { useContext, useMemo } from 'react'
 import { ArrowDown, AlertTriangle } from 'react-feather'
 import { Text } from 'rebass'

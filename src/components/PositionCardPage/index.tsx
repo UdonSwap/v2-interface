@@ -1,4 +1,4 @@
-import { JSBI, Pair } from 'lampros_dex_sdk'
+import { JSBI, Pair } from 'udonswap-v2'
 // import { darken } from 'polished'
 import React, { useState } from 'react'
 import positioncard from './positioncard.module.css'

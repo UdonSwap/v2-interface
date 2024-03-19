@@ -14,22 +14,31 @@ import { AppDispatch, AppState } from '../../state'
 import { acceptListUpdate, removeList, selectList } from '../../state/lists/actions'
 import { useSelectedListUrl } from '../../state/lists/hooks'
 import { CloseIcon, ExternalLink, LinkStyledButton, TYPE } from '../../theme'
-import listVersionLabel from '../../utils/listVersionLabel'
+// import listVersionLabel from '../../utils/listVersionLabel'
 import { parseENSAddress } from '../../utils/parseENSAddress'
 import uriToHttp from '../../utils/uriToHttp'
-import { ButtonOutlined, ButtonPrimary, ButtonSecondary } from '../Button'
+import { ButtonOutlined, ButtonPrimarySelect, ButtonSecondary } from '../Button'
 
 import Column from '../Column'
 import ListLogo from '../ListLogo'
 import QuestionHelper from '../QuestionHelper'
 import Row, { RowBetween } from '../Row'
-import { PaddedColumn, SearchInput, Separator, SeparatorDark } from './styleds'
+import { PaddedColumn, SearchInput, Separator } from './styleds'
 // import { border } from 'polished'
 
 const UnpaddedLinkStyledButton = styled(LinkStyledButton)`
   padding: 0;
   font-size: 1rem;
   opacity: ${({ disabled }) => (disabled ? '0.4' : '1')};
+  text-decoration: none;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: 500;
+
+  :hover {
+    text-decoration: underline;
+    color: #e9e002;
+  }
 `
 
 const PopoverContainer = styled.div<{ show: boolean }>`
@@ -37,7 +46,7 @@ const PopoverContainer = styled.div<{ show: boolean }>`
   visibility: ${props => (props.show ? 'visible' : 'hidden')};
   opacity: ${props => (props.show ? 1 : 0)};
   transition: visibility 150ms linear, opacity 150ms linear;
-  background: #ffffffff;
+  background: #131118;
   border: 1px solid ${({ theme }) => theme.bg3};
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
     0px 24px 32px rgba(0, 0, 0, 0.01);
@@ -189,9 +198,10 @@ const ListRow = memo(function ListRow({ listUrl, onBack }: { listUrl: string; on
           style={{
             width: '2rem',
             padding: '.8rem .35rem',
-            borderRadius: '12px',
+            border: 'none',
             fontSize: '14px',
-            marginRight: '0.5rem'
+            marginRight: '0.5rem',
+            background: 'transparent'
           }}
           onClick={toggle}
           ref={setReferenceElement}
@@ -201,8 +211,8 @@ const ListRow = memo(function ListRow({ listUrl, onBack }: { listUrl: string; on
 
         {open && (
           <PopoverContainer show={true} ref={setPopperElement as any} style={styles.popper} {...attributes.popper}>
-            <div>{list && listVersionLabel(list.version)}</div>
-            <SeparatorDark />
+            {/* <div>{list && listVersionLabel(list.version)}</div> */}
+            {/* <SeparatorDark /> */}
             <ExternalLink href={`https://tokenlists.org/token-list?url=${listUrl}`}>View list</ExternalLink>
             <UnpaddedLinkStyledButton onClick={handleRemoveList} disabled={Object.keys(listsByUrl).length === 1}>
               Remove list
@@ -214,7 +224,7 @@ const ListRow = memo(function ListRow({ listUrl, onBack }: { listUrl: string; on
         )}
       </StyledMenu>
       {isSelected ? (
-        <ButtonPrimary
+        <ButtonPrimarySelect
           disabled={true}
           className="select-button"
           style={{
@@ -222,29 +232,30 @@ const ListRow = memo(function ListRow({ listUrl, onBack }: { listUrl: string; on
             minWidth: '5rem',
             padding: '0.5rem .35rem',
             borderRadius: '12px',
-            fontSize: '14px',
+
             backgroundColor: '#FFFFFF',
             color: '#525252'
           }}
         >
           Selected
-        </ButtonPrimary>
+        </ButtonPrimarySelect>
       ) : (
         <>
-          <ButtonPrimary
+          <ButtonPrimarySelect
             className="select-button"
             style={{
               width: '5rem',
               minWidth: '4.5rem',
               padding: '0.5rem .35rem',
               borderRadius: '12px',
-              fontSize: '14px',
+              color: '#FFFFFF',
+
               backgroundColor: '#9657EB'
             }}
             onClick={selectThisList}
           >
             Select
-          </ButtonPrimary>
+          </ButtonPrimarySelect>
         </>
       )}
     </Row>
@@ -257,9 +268,13 @@ const AddListButton = styled(ButtonSecondary)`
   margin-left: 1rem;
   border-radius: 12px;
   padding: 10px 18px;
-  // position: absolute;
-  // right: 30px;
-}
+  background-color: #ffffff;
+  color: #000000;
+
+  :hover {
+    background-color: #9657eb;
+    color: #ffffff;
+  }
 `
 
 const ListContainer = styled.div`
@@ -372,11 +387,7 @@ export function ListSelect({ onDismiss, onBack }: { onDismiss: () => void; onBac
             onKeyDown={handleEnterKey}
             style={{ height: '2.75rem', borderRadius: 12, padding: '12', border: '1px solid #ACB1C6' }}
           />
-          <AddListButton
-            onClick={handleAddList}
-            disabled={!validUrl}
-            style={{ backgroundColor: '#FFFFFF', color: 'black' }}
-          >
+          <AddListButton onClick={handleAddList} disabled={!validUrl}>
             Add
           </AddListButton>
         </Row>

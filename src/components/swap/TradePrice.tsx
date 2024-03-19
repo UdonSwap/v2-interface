@@ -1,5 +1,5 @@
 import React from 'react'
-import { Price } from 'lampros_dex_sdk'
+import { Price } from 'udonswap-v2'
 import { useContext } from 'react'
 import { Repeat } from 'react-feather'
 import { Text } from 'rebass'

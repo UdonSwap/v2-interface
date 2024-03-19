@@ -56,7 +56,7 @@ const UpperSection = styled.div`
 const InfoCard = styled.div`
   padding: 1rem;
   border: 1px solid #8a8f9d;
-  border-radius: 20px;
+  border-radius: 15px;
   position: relative;
   display: grid;
   grid-row-gap: 12px;
@@ -163,9 +163,11 @@ const CloseColor = styled(Close)`
 
 const WalletName = styled.div`
   width: initial;
-  font-size: 0.825rem;
+  font-size: 20px;
   font-weight: 500;
-  color: ${({ theme }) => theme.text3};
+  color: #8A8F9D;
+  line-heigth:38.78px;
+  
 `
 
 const IconWrapper = styled.div<{ size?: number }>`
@@ -311,7 +313,7 @@ export default function AccountDetails({
                     style={{
                       fontSize: '.825rem',
                       fontWeight: 600,
-                      backgroundColor: 'rgb(255 62 62 / 55%)',
+                      background: '#EB454538',
                       color: '#FF3E3E',
                       padding: '10px 20px',
                       border: 'none',

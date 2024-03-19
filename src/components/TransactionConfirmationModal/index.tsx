@@ -1,4 +1,4 @@
-import { ChainId } from 'lampros_dex_sdk'
+import { ChainId } from 'udonswap-v2'
 import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import Modal from '../Modal'

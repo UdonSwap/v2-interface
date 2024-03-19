@@ -1,4 +1,4 @@
-import { CurrencyAmount, JSBI, Token, Trade } from 'lampros_dex_sdk'
+import { CurrencyAmount, JSBI, Token, Trade } from 'udonswap-v2'
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { Repeat } from 'react-feather'
 import ReactGA from 'react-ga'
@@ -44,18 +44,11 @@ import { computeTradePriceBreakdown, warningSeverity } from '../../utils/prices'
 import AppBody from '../AppBody'
 import { ClickableText } from '../Pool/styleds'
 import Loader from '../../components/Loader'
-
-// custom import
-// import { ethers } from 'ethers'
-// import { fetch } from 'node-fetch'
-
-// const USDCapiUrl = 'https://min-api.cryptocompare.com/data/price?fsym=USDC&tsyms=USD'
-// const USDTapiUrl = 'https://min-api.cryptocompare.com/data/price?fsym=USDT&tsyms=USD'
-// const WBTCapiUrl = 'https://min-api.cryptocompare.com/data/price?fsym=WBTC&tsyms=USD'
+import dotenv from 'dotenv'
+import axios from 'axios'
+dotenv.config()
 
 export default function Swap() {
-  const ETHapiUrl = process.env.REACT_APP_USDCAPIURL
-  console.log('eth api url', ETHapiUrl)
   const loadedUrlParams = useDefaultsFromURLSearch()
 
   // token warning stuff
@@ -133,12 +126,9 @@ export default function Swap() {
   const dependentField: Field = independentField === Field.INPUT ? Field.OUTPUT : Field.INPUT
 
   // usestate to store the user input
-  const [enteredValue, setEnteredValue] = useState<string>('')
-
   const handleTypeInput = useCallback(
     (value: string) => {
-      setEnteredValue(value)
-      console.log('field input...', Field.INPUT)
+      // setEnteredValue(value)
 
       onUserInput(Field.INPUT, value)
     },
@@ -146,6 +136,7 @@ export default function Swap() {
   )
   const handleTypeOutput = useCallback(
     (value: string) => {
+      // setEnteredOutputValue(value)
       onUserInput(Field.OUTPUT, value)
     },
     [onUserInput]
@@ -193,9 +184,104 @@ export default function Swap() {
   }, [approval, approvalSubmitted])
 
   // function to get the dollar value
+  const [token0DollarPrice, setToken0DollarPrice] = useState<number>()
 
-  // const getDollarPrice = async () => {}
-  useEffect(() => {}, [enteredValue])
+  const [token1DollarPrice, setToken1DollarPrice] = useState<number>()
+
+  const getDollarPriceToken0 = async () => {
+    console.log("token0....",currencies[Field.INPUT]);
+    console.log(loadedInputCurrency);
+    
+    const api_url = process.env.REACT_APP_ETHAPIURL
+    let ethPriceDollar: number
+    if (api_url) {
+      const response = await fetch(api_url)
+      const data = await response.json()
+      ethPriceDollar = data.USD
+
+      if (currencies[Field.INPUT]?.symbol === 'ETH' || currencies[Field.INPUT]?.symbol === 'WETH') {
+        setToken0DollarPrice(Number(formattedAmounts[Field.INPUT]) * ethPriceDollar)
+      } else {
+        const graphURL =
+          'https://api.goldsky.com/api/public/project_clth71vucl2l701uu07ha0im7/subgraphs/udonswap/0.0.1/gn'
+        const tokenId = currencies[Field.INPUT]?.address?.toLowerCase()
+
+        console.log(tokenId);
+        
+        const priceQuery = `
+            query MyQuery {
+              token(id: "${tokenId}") {
+                derivedETH
+              }
+            }
+          `
+        axios({
+          url: graphURL,
+          method: 'post',
+          data: {
+            query: priceQuery
+          }
+        }).then(result => {
+          const derivedETH = result?.data?.data?.token?.derivedETH
+          const tokenEth = Number(formattedAmounts[Field.INPUT]) * derivedETH
+          setToken0DollarPrice(tokenEth * ethPriceDollar)
+        })
+      }
+    }
+  }
+
+  useEffect(() => {
+
+    getDollarPriceToken0()
+    getDollarPriceToken1()
+    console.log(formattedAmounts[Field.INPUT]);
+    console.log(currencies[Field.INPUT]);
+    
+    
+  }, [formattedAmounts[Field.INPUT], formattedAmounts[Field.OUTPUT]])
+
+  const getDollarPriceToken1 = async () => {
+    console.log("token1....",currencies[Field.OUTPUT]);
+    
+    const api_url = process.env.REACT_APP_ETHAPIURL
+    let ethPriceDollar: number
+    if (api_url) {
+      const response = await fetch(api_url)
+      const data = await response.json()
+      ethPriceDollar = data.USD
+      console.log('ethPriceDollar', ethPriceDollar)
+      if (currencies[Field.OUTPUT]?.symbol == 'ETH' || currencies[Field.OUTPUT]?.symbol == 'WETH') {
+        console.log('inside if')
+        console.log('price eth ', Number(formattedAmounts[Field.OUTPUT]) * ethPriceDollar)
+        setToken1DollarPrice(Number(formattedAmounts[Field.OUTPUT]) * ethPriceDollar)
+      } else {
+        console.log('inside else')
+        const graphURL =
+          'https://api.goldsky.com/api/public/project_clth71vucl2l701uu07ha0im7/subgraphs/udonswap/0.0.1/gn'
+        const tokenId = currencies[Field.OUTPUT]?.address?.toLowerCase()
+
+        const priceQuery = `
+      query MyQuery{
+        token(id: "${tokenId}") {
+          derivedETH
+        }
+      }`
+        axios({
+          url: graphURL,
+          method: 'post',
+          data: {
+            query: priceQuery
+          }
+        }).then(result => {
+          const derivedETH = result?.data?.data?.token?.derivedETH
+
+          const tokenEth = Number(formattedAmounts[Field.OUTPUT]) * derivedETH
+          console.log('price other token', Number(formattedAmounts[Field.OUTPUT]) * derivedETH)
+          setToken1DollarPrice(tokenEth * ethPriceDollar)
+        })
+      }
+    }
+  }
 
   const maxAmountInput: CurrencyAmount | undefined = maxAmountSpend(currencyBalances[Field.INPUT])
   const atMaxAmountInput = Boolean(maxAmountInput && parsedAmounts[Field.INPUT]?.equalTo(maxAmountInput))
@@ -276,11 +362,8 @@ export default function Swap() {
   }, [attemptingTxn, showConfirm, swapErrorMessage, trade, txHash])
 
   // usestate for selected input token
-  // const [inputTokenAddress, setInputTokenAddress] = useState<string>('0x4200000000000000000000000000000000000006')
   const handleInputSelect = useCallback(
     inputCurrency => {
-      // setInputTokenAddress(inputCurrency['address'])
-      console.log('input currency', inputCurrency)
       setApprovalSubmitted(false) // reset 2 step UI for approvals
       onCurrencySelection(Field.INPUT, inputCurrency)
     },
@@ -291,9 +374,14 @@ export default function Swap() {
     maxAmountInput && onUserInput(Field.INPUT, maxAmountInput.toExact())
   }, [maxAmountInput, onUserInput])
 
-  const handleOutputSelect = useCallback(outputCurrency => onCurrencySelection(Field.OUTPUT, outputCurrency), [
-    onCurrencySelection
-  ])
+  const handleOutputSelect = useCallback(
+    outputCurrency => {
+      onCurrencySelection(Field.OUTPUT, outputCurrency)
+
+      // onUserInput(Field.OUTPUT, '0')
+    },
+    [onCurrencySelection]
+  )
 
   return (
     <>
@@ -331,7 +419,9 @@ export default function Swap() {
               otherCurrency={currencies[Field.OUTPUT]}
               id="swap-currency-input"
             />
-            {/* <div style={{ color: 'white' }}>$Value {enteredValue}</div> */}
+            <div style={{ color: '#8A8F9D', padding: '0 0.75rem 0 1rem', fontSize: '14px' }}>
+              {token0DollarPrice === 0 ? '-' : '$ ' + token0DollarPrice}
+            </div>
             <AutoColumn justify="space-between" style={{ margin: '10px 0px' }}>
               <AutoRow
                 justify={isExpertMode ? 'space-between' : 'center'}
@@ -367,7 +457,9 @@ export default function Swap() {
               otherCurrency={currencies[Field.INPUT]}
               id="swap-currency-output"
             />
-
+            <div style={{ color: '#8A8F9D', padding: '0 0.75rem 0 1rem', fontSize: '14px' }}>
+              {token1DollarPrice === 0 ? '-' : '$ ' + token1DollarPrice}
+            </div>
             {recipient !== null && !showWrap ? (
               <>
                 <AutoRow justify="space-between" style={{ padding: '0 1rem' }}>
@@ -398,7 +490,7 @@ export default function Swap() {
                     </RowBetween>
                   )}
                   {allowedSlippage !== INITIAL_ALLOWED_SLIPPAGE && (
-                    <RowBetween align="center" style={{backgroundColor:"transparent"}}>
+                    <RowBetween align="center" style={{ backgroundColor: 'transparent' }}>
                       <ClickableText fontWeight={500} fontSize={14} color={theme.text2} onClick={toggleSettings}>
                         Slippage Tolerance
                       </ClickableText>

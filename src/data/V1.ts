@@ -14,7 +14,7 @@ import {
   Trade,
   TradeType,
   WETH
-} from 'lampros_dex_sdk'
+} from 'udonswap-v2'
 import { useMemo } from 'react'
 import { useActiveWeb3React } from '../hooks'
 import { useAllTokens } from '../hooks/Tokens'
@@ -94,7 +94,7 @@ export function useUserHasLiquidityInAllTokens(): boolean | undefined {
     [balances]
   )
 }
-
+ 
 /**
  * Returns the trade to execute on V1 to go between input and output token
  */

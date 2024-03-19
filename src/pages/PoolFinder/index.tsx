@@ -1,4 +1,4 @@
-import { Currency, ETHER, JSBI, TokenAmount } from 'lampros_dex_sdk'
+import { Currency, ETHER, JSBI, TokenAmount } from 'udonswap-v2'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Plus } from 'react-feather'
 import { Text } from 'rebass'
@@ -85,6 +85,7 @@ export default function PoolFinder() {
             setShowSearch(true)
             setActiveField(Fields.TOKEN0)
           }}
+          style={{ backgroundColor: currency0 ? 'transparent' : '#9657EB',color: currency0 ? 'white' : 'white' }}
         >
           {currency0 ? (
             <Row>
@@ -109,6 +110,7 @@ export default function PoolFinder() {
             setShowSearch(true)
             setActiveField(Fields.TOKEN1)
           }}
+          style={{ backgroundColor: currency1 ? 'transparent' : 'white',color: currency1 ? 'white' : '#9657EB'  }}
         >
           {currency1 ? (
             <Row>

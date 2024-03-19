@@ -1,7 +1,8 @@
-import { ChainId } from 'lampros_dex_sdk'
-import React from 'react'
+import { ChainId } from 'udonswap-v2'
+import React, { useRef, useEffect, useState } from 'react'
 import { isMobile } from 'react-device-detect'
 import { Text } from 'rebass'
+
 import styled from 'styled-components'
 // import { ButtonHeader } from '../Button'
 import Udonswap from '../../assets/images/UdonSwapLogo.png'
@@ -17,6 +18,10 @@ import Row, { RowBetween } from '../Row'
 import Web3Status from '../Web3Status'
 import ToggleHeader from '../ToggleHeader'
 // import VersionSwitch from './VersionSwitch'
+import sidebar from './header.module.css'
+
+import menu from '../../assets/images/menu.svg'
+import close from '../../assets/images/close.svg'
 
 const HeaderFrame = styled.div`
   display: flex;
@@ -37,7 +42,16 @@ const HeaderFrame = styled.div`
 const HeaderElement = styled.div`
   display: flex;
   align-items: center;
-  margin-top:10px;
+  margin-top: 10px;
+`
+const Headericon = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+
+  ${({ theme }) => theme.mediaWidth.upToMedium`
+    margin-top: -30px;
+`};
 `
 
 // const HeaderElementWrap = styled.div`
@@ -63,7 +77,7 @@ const TitleText = styled(Row)`
   width: fit-content;
   white-space: nowrap;
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    width:200px;
+    width:50vw;
   `};
 `
 
@@ -83,6 +97,10 @@ const TestnetWrapper = styled.div`
   width: fit-content;
   margin-left: 10px;
   pointer-events: auto;
+  ${({ theme }) => theme.mediaWidth.upToMedium`
+    margin-top: 10px;
+    margin-left: 115px;
+`};
 `
 
 const NetworkCard = styled(YellowCard)`
@@ -91,6 +109,18 @@ const NetworkCard = styled(YellowCard)`
   border-radius: 12px;
   padding: 8px 12px;
   background-color: #1c1924;
+
+  ${({ theme }) => theme.mediaWidth.upToLarge`
+  font-size:7px;
+  padding: 13px 9px;
+  border-radius: 11px;
+  margin-right: 2px;
+`};
+  ${({ theme }) => theme.mediaWidth.upToMedium`
+  font-size: 10px;
+    padding: 7px 11px;
+    border-radius: 6px;
+`};
 `
 
 const UniIcon = styled.div`
@@ -110,18 +140,30 @@ const HeaderControls = styled.div`
   flex-direction: row;
   align-items: center;
 
-  ${({ theme }) => theme.mediaWidth.upToSmall`
+  ${({ theme }) => theme.mediaWidth.upToMedium`
     flex-direction: column;
     align-items: flex-end;
   `};
 `
+const Headermode = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
-const BalanceText = styled(Text)`
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    display: block;
+  ${({ theme }) => theme.mediaWidth.upToMedium`
+    flex-direction: column-reverse;
+    align-items: flex-start;
   `};
 `
 
+const BalanceText = styled(Text)`
+  ${({ theme }) => theme.mediaWidth.upToLarge`
+    font-size:8px;
+    padding: 8px 9px;
+    border-radius: 8px;
+    
+  `};
+`
 
 const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
   [ChainId.MAINNET]: null,
@@ -138,38 +180,71 @@ export default function Header() {
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   // const [isDark] = useDarkModeManager()
+  const headerRef = useRef<HTMLDivElement>(null)
+  const [toggle, setToggle] = useState(false)
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
+        setToggle(false)
+      }
+    }
 
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
   return (
     <HeaderFrame>
       <RowBetween style={{ alignItems: 'flex-start' }} padding="1rem 1rem 0 1rem">
-        <div>
+        <div style={{ width: '33.33%' }}>
           <Title href="https://beatswap-eta.vercel.app/">
             <UniIcon>{/* <img src={isDark ? LogoDark : Logo} alt="logo" /> */}</UniIcon>
             <TitleText>
-              <img style={{ marginLeft: '4px', width: '200px' }} src={Udonswap} alt="logo" />
+              <img className={sidebar.logo} src={Udonswap} alt="logo" />
             </TitleText>
           </Title>
         </div>
-        <HeaderElement>
-          <ToggleHeader/>
+
+        <HeaderElement className={sidebar.center} style={{ width: '33.33%' }}>
+          <ToggleHeader />
         </HeaderElement>
-        <HeaderControls>
+
+        <HeaderControls style={{ width: '33.33%', justifyContent: 'flex-end' }}>
           <HeaderElement>
-            <TestnetWrapper>
-              {!isMobile && chainId && NETWORK_LABELS[chainId] && <NetworkCard>{NETWORK_LABELS[chainId]}</NetworkCard>}
-            </TestnetWrapper>
-            <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
-              {account && userEthBalance ? (
-                <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                  {userEthBalance?.toSignificant(4)} ETH
-                </BalanceText>
-              ) : null}
-              <Web3Status />
-            </AccountElement>
+            <Headermode>
+              <TestnetWrapper className={sidebar.modebutton}>
+                {!isMobile && chainId && NETWORK_LABELS[chainId] && (
+                  <NetworkCard>{NETWORK_LABELS[chainId]}</NetworkCard>
+                )}
+              </TestnetWrapper>
+              <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
+                {account && userEthBalance ? (
+                  <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
+                    {userEthBalance?.toSignificant(4)} ETH
+                  </BalanceText>
+                ) : null}
+                <Web3Status />
+              </AccountElement>
+            </Headermode>
           </HeaderElement>
-          <HeaderElement>
+
+          <Headericon>
             <Settings />
-          </HeaderElement>
+            <div className={sidebar.right}>
+              <div className={sidebar.menu}>
+                <img
+                  src={`${toggle ? close : menu}`}
+                  className={sidebar.imgmenu}
+                  onClick={() => setToggle(prev => !prev)}
+                />
+              </div>
+
+              <div ref={headerRef} className={toggle ? sidebar.flex : sidebar.hidden}>
+                <ToggleHeader />
+              </div>
+            </div>
+          </Headericon>
         </HeaderControls>
       </RowBetween>
     </HeaderFrame>

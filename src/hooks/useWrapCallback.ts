@@ -1,4 +1,4 @@
-import { Currency, currencyEquals, ETHER, WETH } from 'lampros_dex_sdk'
+import { Currency, currencyEquals, ETHER, WETH } from 'udonswap-v2'
 import { useMemo } from 'react'
 import { tryParseAmount } from '../state/swap/hooks'
 import { useTransactionAdder } from '../state/transactions/hooks'

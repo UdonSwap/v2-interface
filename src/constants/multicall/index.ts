@@ -1,4 +1,4 @@
-import { ChainId } from 'lampros_dex_sdk'
+import { ChainId } from 'udonswap-v2'
 import MULTICALL_ABI from './abi.json'
 
 const MULTICALL_NETWORKS: { [chainId in ChainId]: string } = {

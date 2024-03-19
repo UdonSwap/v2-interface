@@ -1,5 +1,5 @@
 import { parseBytes32String } from '@ethersproject/strings'
-import { Currency, ETHER, Token, currencyEquals } from 'lampros_dex_sdk'
+import { Currency, ETHER, Token, currencyEquals } from 'udonswap-v2'
 import { useMemo } from 'react'
 import { useSelectedTokenList } from '../state/lists/hooks'
 import { NEVER_RELOAD, useSingleCallResult } from '../state/multicall/hooks'
@@ -13,6 +13,7 @@ export function useAllTokens(): { [address: string]: Token } {
   const { chainId } = useActiveWeb3React()
   const userAddedTokens = useUserAddedTokens()
   const allTokens = useSelectedTokenList()
+  console.log('Alltokens obj', allTokens)
 
   return useMemo(() => {
     if (!chainId) return {}

@@ -1,4 +1,4 @@
-import { Currency } from 'lampros_dex_sdk'
+import { Currency } from 'udonswap-v2'
 import React, { useCallback, useEffect, useState } from 'react'
 import ReactGA from 'react-ga'
 import useLast from '../../hooks/useLast'

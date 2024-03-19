@@ -38,20 +38,47 @@ const Base = styled(RebassButton)<{
 `
 
 export const ButtonPrimary = styled(Base)`
-  background-color: #ffffff;
+  background-color: #fef100;
   color: #000000;
   font-size: 20px;
   &:focus {
+    background-color: #fef100;
   }
   &:hover {
     box-shadow: 0px 0px 14px 0px rgba(233, 224, 2, 0.62);
-    background-color: #e9e002;
+    background-color: #fef100;
   }
 
   &:active {
+    background-color: #fef100;
   }
   &:disabled {
-    background-color: #ffffff;
+    background-color: #878787;
+    color: #c5c5c5;
+    font-weight: 600;
+    cursor: auto;
+    box-shadow: none;
+    border: 1px solid transparent;
+    outline: none;
+    opacity: ${({ altDisabledStyle }) => (altDisabledStyle ? '0.7' : '1')};
+  }
+`
+export const ButtonPrimarySelect = styled(Base)`
+  background-color: #fef100;
+  color: #000000;
+  font-size: 15px;
+  &:focus {
+    background-color: #fef100;
+  }
+  &:hover {
+    border: 1px solid #ffffff;
+  }
+
+  &:active {
+    background-color: #fef100;
+  }
+  &:disabled {
+    background-color: #878787;
     color: #c5c5c5;
     font-weight: 600;
     cursor: auto;
@@ -187,15 +214,15 @@ export const ButtonPink = styled(Base)`
 `
 
 export const ButtonOutlined = styled(Base)`
-  background-color: rgb(150, 87, 235);
-  color: white;
+  background-color: white;
+  color: rgb(150, 87, 235);
   border-radius: 12px;
-  box-shadow: rgba(0, 0, 0, 0.075) 0px 6px 10px;
+  border: 1px solid white;
 
-  &:focus {
-    box-shadow: 0 0 0 1px ${({ theme }) => theme.bg4};
-  }
   &:hover {
+    box-shadow: 0 0 0 1px ${({ theme }) => theme.bg4};
+    // background-color:rgb(150, 87, 235) ;
+    // color:white ;
   }
   &:active {
   }

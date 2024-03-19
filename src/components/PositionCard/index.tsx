@@ -1,4 +1,4 @@
-import { JSBI, Pair, Percent } from 'lampros_dex_sdk'
+import { JSBI, Pair, Percent } from 'udonswap-v2'
 // import { darken } from 'polished'
 import React, { useState } from 'react'
 import { ChevronDown, ChevronUp } from 'react-feather'

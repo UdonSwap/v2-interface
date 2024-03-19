@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from 'lampros_dex_sdk'
+import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from 'udonswap-v2'
 import React, { CSSProperties, MutableRefObject, useCallback, useMemo } from 'react'
 import { FixedSizeList } from 'react-window'
 import { Text } from 'rebass'

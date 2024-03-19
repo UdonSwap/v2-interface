@@ -1,4 +1,4 @@
-import { Currency } from 'lampros_dex_sdk'
+import { Currency } from 'udonswap-v2'
 import React from 'react'
 import styled from 'styled-components'
 import CurrencyLogo from '../CurrencyLogo'

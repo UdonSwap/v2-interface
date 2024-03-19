@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from 'lampros_dex_sdk'
+import { Currency, ETHER, Token } from 'udonswap-v2'
 
 export function currencyId(currency: Currency): string {
   if (currency === ETHER) return 'ETH'
