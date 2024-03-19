@@ -1,0 +1,373 @@
+{
+  "name": "UdonSwap Token List",
+  "logoURI": "https://defiprime.com/images/defiprime-logo-hires2.png",
+  "keywords": ["Defi", "defiprime", "curated"],
+  "tags": {
+    "defi": {
+      "name": "DeFi Tokens",
+      "description": "Tokens associated with the products listed at defiprime.com"
+    }
+  },
+  "timestamp": "2023-07-04T00:00:00+00:00",
+  "tokens": [
+    {
+      "chainId": 919,
+      "address": "0x4Bd692dbA81074BC2FA9abDcffE7324680d7A1c1",
+      "symbol": "PIX",
+      "name": "Pixar peeps",
+      "decimals": 18,
+      "logoURI": "https://tryroll.com/wp-content/uploads/2018/11/cropped-icon-270x270.png",
+      "tags": ["defi"]
+    },
+    {
+      "chainId": 919,
+      "address": "0xF7ca2401709BC01Eba07d46c8d59e865C983e1AC",
+      "symbol": "LAMP",
+      "name": "Pixar Lamps",
+      "decimals": 18,
+      "logoURI": "https://roll-token.s3.amazonaws.com/AIN/b588d1ee-ea2f-47fe-a591-94f12622bc63",
+      "tags": ["defi"]
+    },
+    {
+      "address": "0x4557D5f50828302DB39D9530F6d3648d48bEC04A",
+      "decimals": 18,
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "chainId": 919
+    },
+    {
+      "address": "0xFB1Ab43D09E4e787cB8e303Ceb904220565429be",
+      "decimals": 18,
+      "name": "Wrapped XRP",
+      "symbol": "WXRP",
+      "chainId": 919
+    },
+    {
+      "address": "0x5CE359Ff65f8bc3c874c16Fa24A2c1fd26bB57CD",
+      "decimals": 18,
+      "name": "Wrapped Ethereum",
+      "symbol": "WETH",
+      "chainId": 919
+    },
+    {
+      "address": "0x00D84e62a854e54Ba7289ab6506F95000Bb4B008",
+      "decimals": 18,
+      "name": "Wrapped Bitcoin",
+      "symbol": "WBTC",
+      "chainId": 919
+    },
+    {
+      "address": "0x62F4f7A2B4C25321A258997b2C5876044b86F15d",
+      "decimals": 18,
+      "name": "Mode Dex Week NFT",
+      "symbol": "Mode Dex Week",
+      "chainId": 919
+    },
+    {
+      "address": "0xCa3a57e014937C29526De98e4A8A334a7D04792b",
+      "decimals": 18,
+      "name": "SPACE ID Name Service",
+      "symbol": "mode",
+      "chainId": 919
+    },
+    {
+      "address": "0x757D51d2B987d8f33efD0B5c1dCCc4ed283b31e3",
+      "decimals": 18,
+      "name": "Atos",
+      "symbol": "ATS",
+      "chainId": 919
+    },
+    {
+      "address": "0xc7b06F55FBCD31cd691504f3DFc4efa9082616B7",
+      "decimals": 18,
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "chainId": 919
+    },
+    {
+      "address": "0x28269908e15409678326d854BBEC601154265c80",
+      "decimals": 18,
+      "name": "Mode Tutorial Week NFT",
+      "symbol": "Mode Tutorial Week",
+      "chainId": 919
+    },
+    {
+      "address": "0xD63e5B81C68142B4901AbecF3fb0dB31E2789090",
+      "decimals": 18,
+      "name": "Mode",
+      "symbol": "Mode",
+      "chainId": 919
+    },
+    {
+      "address": "0xC945456d07bced7FF5570e179Ee500b1F72aD0b4",
+      "decimals": 18,
+      "name": "ModeAbah",
+      "symbol": "MAH",
+      "chainId": 919
+    },
+    {
+      "address": "0x042A85C889B8624756A96F38157b45C542A4Bb15",
+      "decimals": 18,
+      "name": "Kizuna LP",
+      "symbol": "KZNA-LP",
+      "chainId": 919
+    },
+    {
+      "address": "0xfe4b27d969Ec94dff7F87E4255676bb1E7b2Ac7e",
+      "decimals": 18,
+      "name": "Ignition",
+      "symbol": "Ignition",
+      "chainId": 919
+    },
+    {
+      "address": "0xBeD04e7d55e04f730dc584F28651E0bf2cE6cE3c",
+      "decimals": 18,
+      "name": "Mode Referral Week NFT",
+      "symbol": "Mode Referral Week",
+      "chainId": 919
+    },
+    {
+      "address": "0x9fa509bCA8734540D61064075fe2Ee1D0350B980",
+      "decimals": 18,
+      "name": "Skillytics",
+      "symbol": "$SKILL",
+      "chainId": 919
+    },
+    {
+      "address": "0x28E523Cd795714f76a0bAD30a501101Db3685bD5",
+      "decimals": 18,
+      "name": "arn token",
+      "symbol": "arn",
+      "chainId": 919
+    },
+    {
+      "address": "0xb0605fdEB21A07F0F0354f084343a28138C3B91A",
+      "decimals": 18,
+      "name": "Mode NFT",
+      "symbol": "MNFT",
+      "chainId": 919
+    },
+    {
+      "address": "0xA0Aa0DaAd7eDd5d10B8b9d91975f51AcBe56CAE0",
+      "decimals": 18,
+      "name": "Yang",
+      "symbol": "YANG",
+      "chainId": 919
+    },
+    {
+      "address": "0x047D496B4DAFE62D28CE680862e62B0Fa55dBEf4",
+      "decimals": 18,
+      "name": "Yin",
+      "symbol": "YIN",
+      "chainId": 919
+    },
+    {
+      "address": "0xc718588639F6c18137251e6afa4111924C70b738",
+      "decimals": 18,
+      "name": "airdrop",
+      "symbol": "air",
+      "chainId": 919
+    },
+    {
+      "address": "0x38faCeD410B3D36a0256d7500283af3225CB654A",
+      "decimals": 18,
+      "name": "BLOOD",
+      "symbol": "BLD",
+      "chainId": 919
+    },
+    {
+      "address": "0xd461B10d675cC400F9C6047208aF00894F564aE2",
+      "decimals": 18,
+      "name": "Yamato",
+      "symbol": "YMT",
+      "chainId": 919
+    },
+    {
+      "address": "0xfb6Fb70427d2ffCF66cE84ADa39F256EE68b0E01",
+      "decimals": 18,
+      "name": "SYCHONIX",
+      "symbol": "SYCHONIX",
+      "chainId": 919
+    },
+    {
+      "address": "0x9e5AAC1Ba1a2e6aEd6b32689DFcF62A509Ca96f3",
+      "decimals": 18,
+      "name": "DAI",
+      "symbol": "DAI",
+      "chainId": 919
+    },
+    {
+      "address": "0xE51c65055e1488079A35F286c09EDb9Ae955B608",
+      "decimals": 18,
+      "name": "halo",
+      "symbol": "halomode",
+      "chainId": 919
+    },
+    {
+      "address": "0x1339b6AC2D7d0324cB4E0C6C0f2Feb8749073d99",
+      "decimals": 18,
+      "name": "CemS Mode Token",
+      "symbol": "CMS",
+      "chainId": 919
+    },
+    {
+      "address": "0x3ea6E7ef84A2de31535b9A2d06b6f1e70Af30B75",
+      "decimals": 18,
+      "name": "sei",
+      "symbol": "sei",
+      "chainId": 919
+    },
+    {
+      "address": "0x415977bA8AC7400856e179409E4e9cc819CB6DB5",
+      "decimals": 18,
+      "name": "MARVEL MODE",
+      "symbol": "MM",
+      "chainId": 919
+    },
+    {
+      "address": "0xD92F71c4b412936594965c26245380Da4d4ed681",
+      "decimals": 18,
+      "name": "yavuz",
+      "symbol": "xyvz",
+      "chainId": 919
+    },
+    {
+      "address": "0x36E8628aCac27e4618E8d88389872971353Da2ca",
+      "decimals": 18,
+      "name": "PEPE",
+      "symbol": "PEPE",
+      "chainId": 919
+    },
+    {
+      "address": "0xb70ba58Ea69f07D7A0555fDd6Fe5B037964A27Ea",
+      "decimals": 18,
+      "name": "MODEX",
+      "symbol": "MDX",
+      "chainId": 919
+    },
+    {
+      "address": "0x1bA5ea6cd40D87fD5C1Ccb2606cDae91233A76Bd",
+      "decimals": 18,
+      "name": "gamerwarfare",
+      "symbol": "GMWF",
+      "chainId": 919
+    },
+    {
+      "address": "0x39bc7aD09925296d2E5e91648c22293525840860",
+      "decimals": 18,
+      "name": "VORPAL Token",
+      "symbol": "VORPAL",
+      "chainId": 919
+    },
+    {
+      "address": "0xE56e625660330dCE2236851083cBE96e332DFDb3",
+      "decimals": 18,
+      "name": "VORPAL Token",
+      "symbol": "VORPAL",
+      "chainId": 919
+    },
+    {
+      "address": "0x0a315B3691Bc6e8Db4d37D17358a754c358941B2",
+      "decimals": 18,
+      "name": "VORPAL Token",
+      "symbol": "VORPAL",
+      "chainId": 919
+    },
+    {
+      "address": "0x97B9aC71E12604550D8Bc7cDB6B0a7e7877bb72F",
+      "decimals": 18,
+      "name": "VORPAL Token",
+      "symbol": "VORPAL",
+      "chainId": 919
+    },
+    {
+      "address": "0x9649f18ad3aE6E614F80c4F57399B8033138410a",
+      "decimals": 18,
+      "name": "VORPAL Token",
+      "symbol": "VORPAL",
+      "chainId": 919
+    },
+    {
+      "address": "0x2cA6ef49F8BCEE9641aE1bD36BfeA588aFe91348",
+      "decimals": 18,
+      "name": "VORPAL Token",
+      "symbol": "VORPAL",
+      "chainId": 919
+    },
+    {
+      "address": "0x6eF325b3E60f53657e4124544F55396042ebc292",
+      "decimals": 18,
+      "name": "VORPAL Token",
+      "symbol": "VORPAL",
+      "chainId": 919
+    },
+    {
+      "address": "0x87bc4525cB3bCd8504a3cb0FE087Fc62878D8919",
+      "decimals": 18,
+      "name": "VORPAL Token",
+      "symbol": "VORPAL",
+      "chainId": 919
+    },
+    {
+      "address": "0x77F12f5bCD649fcE145000DD5960cAABeEF4Df79",
+      "decimals": 18,
+      "name": "VORPAL Token",
+      "symbol": "VORPAL",
+      "chainId": 919
+    },
+    {
+      "address": "0xa045953016324a3aA056788553A07Af00c65fe54",
+      "decimals": 18,
+      "name": "VORPAL Token",
+      "symbol": "VORPAL",
+      "chainId": 919
+    },
+    {
+      "address": "0xC26047FAB14C467692B5B15447Dd025aCf0E5855",
+      "decimals": 18,
+      "name": "Drophunter",
+      "symbol": "DPH",
+      "chainId": 919
+    },
+    {
+      "address": "0xF956A0A2A2d38F48C140AaabE0D19EEd139A7227",
+      "decimals": 18,
+      "name": "mrcetin",
+      "symbol": "mrc",
+      "chainId": 919
+    },
+    {
+      "address": "0x8B55E732916C4A108ea28e310220A2Dc30a3A014",
+      "decimals": 18,
+      "name": "MODE KONTOL",
+      "symbol": "MOKON",
+      "chainId": 919
+    },
+    {
+      "address": "0x450572df188B83E7bA124E6917f4D81Df26e6736",
+      "decimals": 18,
+      "name": "MODERODOG TOKEN",
+      "symbol": "MDRG",
+      "chainId": 919
+    },
+    {
+      "address": "0x33306f09F3b5e317788ca05384c98e2298b3aB70",
+      "decimals": 18,
+      "name": "Stellar Vibe",
+      "symbol": "STV",
+      "chainId": 919
+    },
+    {
+      "address": "0xb99c3954a7Ca68C18DCcb0F9EB1f55b9C20D112A",
+      "decimals": 18,
+      "name": "modes",
+      "symbol": "mds",
+      "chainId": 919
+    }
+  ],
+  "version": {
+    "major": 1,
+    "minor": 46,
+    "patch": 0
+  }
+}
