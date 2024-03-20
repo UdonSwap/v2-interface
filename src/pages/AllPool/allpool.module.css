@@ -117,7 +117,8 @@
 .head .column3,
 .head .column4 {
   font-weight: 600;
-  font-size: 1.2vw;
+  font-size: 1vw;
+  letter-spacing: 1px;
 }
 .column1,
 .column2,

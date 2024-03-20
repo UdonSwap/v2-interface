@@ -1,6 +1,3 @@
-.PosSec1 {
-  display: flex;
-}
 .posMain {
   display: flex;
   color: white;
@@ -13,12 +10,166 @@
   box-shadow: 0px 0px 14px 0px rgba(233, 224, 2, 0.62);
   margin-top: 30px;
 }
+.left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 40%;
+}
+.PosSec1 {
+  display: flex;
+  align-items: center;
+}
 
 .bFlex {
   display: flex;
+  align-items: center;
   padding: 3px 0px;
 }
+.text1 {
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+.text2 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 6px;
+  letter-spacing: 1px;
+}
+.logo2 {
+  size: 20px;
+  margin-left: 8px;
+}
+.text3 {
+  font-size: 16px;
+  padding: 3px 0px;
+  letter-spacing: 1px;
+}
+
 .BtnFlex {
   display: flex;
   gap: 10px;
+}
+.button4 {
+  width: 50px;
+}
+
+@media screen and (max-width: 937px) and (min-width: 680px) {
+  .posMain {
+    width: 80vw;
+    margin: 0 auto;
+  }
+
+  .text1 {
+    font-weight: 500;
+    font-size: 15px;
+    margin-left: 2px;
+  }
+  .text2 {
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .text3 {
+    font-size: 12px;
+    padding: 3px 0px;
+  }
+  .BtnFlex {
+    display: flex;
+    gap: 4px;
+  }
+  .button4 {
+    width: 5vw;
+  }
+}
+
+@media screen and (max-width: 680px) and (min-width: 600px) {
+  .posMain {
+    width: 80vw;
+    margin: 0 auto;
+  }
+  .left {
+    width: 55%;
+  }
+  .text1 {
+    font-weight: 500;
+    font-size: 2vw;
+  }
+  .text2 {
+    font-size: 1.7vw;
+    font-weight: 500;
+  }
+  .text3 {
+    font-size: 1.7vw;
+    padding: 3px 0px;
+  }
+  .BtnFlex {
+    display: flex;
+    gap: 4px;
+  }
+  .button4 {
+    width: 5vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .posMain {
+    padding: 10px 20px;
+  }
+  .left {
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    width: max-content;
+  }
+  .PosSec1 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  .bFlex {
+    margin-left: 2px;
+  }
+  .text1 {
+    font-weight: 500;
+    font-size: 13px;
+  }
+  .text2 {
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .text3 {
+    font-size: 12px;
+    padding: 3px 0px;
+  }
+  .BtnFlex {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .button4 {
+    width: 10vw;
+  }
+
+  @media screen and (max-width: 375px) {
+    .text1 {
+      font-weight: 500;
+      font-size: 11px;
+    }
+    .text2 {
+      font-size: 10px;
+      font-weight: 500;
+    }
+    .text3 {
+      font-size: 10px;
+      padding: 3px 0px;
+    }
+    .button4 {
+      width: 30px;
+      height: 30px;
+    }
+    .third {
+      margin-top: 17px;
+    }
+  }
 }

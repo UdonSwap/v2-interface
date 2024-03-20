@@ -189,9 +189,9 @@ export default function Swap() {
   const [token1DollarPrice, setToken1DollarPrice] = useState<number>()
 
   const getDollarPriceToken0 = async () => {
-    console.log("token0....",currencies[Field.INPUT]);
-    console.log(loadedInputCurrency);
-    
+    console.log('token0....', currencies[Field.INPUT])
+    console.log(loadedInputCurrency)
+
     const api_url = process.env.REACT_APP_ETHAPIURL
     let ethPriceDollar: number
     if (api_url) {
@@ -206,8 +206,8 @@ export default function Swap() {
           'https://api.goldsky.com/api/public/project_clth71vucl2l701uu07ha0im7/subgraphs/udonswap/0.0.1/gn'
         const tokenId = currencies[Field.INPUT]?.address?.toLowerCase()
 
-        console.log(tokenId);
-        
+        console.log(tokenId)
+
         const priceQuery = `
             query MyQuery {
               token(id: "${tokenId}") {
@@ -231,18 +231,15 @@ export default function Swap() {
   }
 
   useEffect(() => {
-
     getDollarPriceToken0()
     getDollarPriceToken1()
-    console.log(formattedAmounts[Field.INPUT]);
-    console.log(currencies[Field.INPUT]);
-    
-    
+    console.log(formattedAmounts[Field.INPUT])
+    console.log(currencies[Field.INPUT])
   }, [formattedAmounts[Field.INPUT], formattedAmounts[Field.OUTPUT]])
 
   const getDollarPriceToken1 = async () => {
-    console.log("token1....",currencies[Field.OUTPUT]);
-    
+    console.log('token1....', currencies[Field.OUTPUT])
+
     const api_url = process.env.REACT_APP_ETHAPIURL
     let ethPriceDollar: number
     if (api_url) {
@@ -420,8 +417,11 @@ export default function Swap() {
               id="swap-currency-input"
             />
             <div style={{ color: '#8A8F9D', padding: '0 0.75rem 0 1rem', fontSize: '14px' }}>
-              {token0DollarPrice === 0 ? '-' : '$ ' + token0DollarPrice}
+              {token0DollarPrice == null || isNaN(token0DollarPrice) || token0DollarPrice === 0
+                ? '-'
+                : '$ ' + token0DollarPrice}
             </div>
+
             <AutoColumn justify="space-between" style={{ margin: '10px 0px' }}>
               <AutoRow
                 justify={isExpertMode ? 'space-between' : 'center'}
@@ -458,8 +458,12 @@ export default function Swap() {
               id="swap-currency-output"
             />
             <div style={{ color: '#8A8F9D', padding: '0 0.75rem 0 1rem', fontSize: '14px' }}>
-              {token1DollarPrice === 0 ? '-' : '$ ' + token1DollarPrice}
+              {token1DollarPrice == null || isNaN(token1DollarPrice) || token1DollarPrice === 0
+                ? '-'
+                : '$ ' + token1DollarPrice}
             </div>
+
+            {console.log(token1DollarPrice)}
             {recipient !== null && !showWrap ? (
               <>
                 <AutoRow justify="space-between" style={{ padding: '0 1rem' }}>

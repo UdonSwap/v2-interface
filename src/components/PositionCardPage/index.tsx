@@ -252,42 +252,44 @@ export default function FullPositionCardPage({ pair }: any): JSX.Element {
 
   return (
     <div className={positioncard.posMain}>
-      <div className={positioncard.PosSec1}>
-        <Text fontWeight={500} fontSize={20}>
-          {`${displayToken0Symbol}/${displayToken1Symbol}`}
-        </Text>
-      </div>
-      <div>
-        <div className={positioncard.bFlex}>
-          <Text fontSize={16} fontWeight={500}>
-            {displayToken0Symbol || '-'}:
-          </Text>
-          <Text fontSize={16} fontWeight={500} marginLeft={'6px'}>
-            {ans1}
-          </Text>
+      <div className={positioncard.left}>
+        <div className={positioncard.PosSec1}>
+          <Text className={positioncard.text1}>{`${displayToken0Symbol}/${displayToken1Symbol}`}</Text>
         </div>
-        <div className={positioncard.bFlex}>
-          <Text fontSize={16} fontWeight={500}>
-            {displayToken1Symbol || '-'}:
-          </Text>
-          <Text fontSize={16} fontWeight={500} marginLeft={'6px'}>
-            {ans2}
-          </Text>
+        <div>
+          <div className={positioncard.bFlex}>
+            <Text className={positioncard.text2}>{displayToken0Symbol || '-'}:</Text>
+            <Text marginLeft={'6px'} className={positioncard.text2}>
+              {ans1}
+            </Text>
+          </div>
+          <div className={positioncard.bFlex}>
+            <Text className={positioncard.text2}>{displayToken1Symbol || '-'}:</Text>
+            <Text className={positioncard.text2} marginLeft={'6px'}>
+              {ans2}
+            </Text>
+          </div>
         </div>
       </div>
-      <div>
-        <div style={{ fontSize: '16px', padding: '3px 0px' }}>
-          Tokens: <span style={{ color: 'green' }}>{truncateDecimals(pair.liquidityTokenBalance, 4)}</span>
+      <div className={positioncard.third}>
+        <div className={positioncard.text3}>
+          Tokens:{' '}
+          <span style={{ color: 'green', fontWeight: 600 }}>{truncateDecimals(pair.liquidityTokenBalance, 4)}</span>
         </div>
-        <div style={{ fontSize: '16px', padding: '3px 0px' }}>
-          Pool Shares: <span style={{ color: 'green' }}>{poolShares}%</span>
+        <div className={positioncard.text3}>
+          Pool Shares: <span style={{ color: 'green', fontWeight: 600 }}>{poolShares}%</span>
         </div>
       </div>
       <div className={positioncard.BtnFlex}>
-        <ButtonSecondaryPage as={Link} to={`/add/${token0UrlPart}/${token1UrlPart}`} width="50px">
+        <ButtonSecondaryPage as={Link} to={`/add/${token0UrlPart}/${token1UrlPart}`} className={positioncard.button4}>
           +
         </ButtonSecondaryPage>
-        <ButtonSecondaryPage as={Link} width="50px" to={`/remove/${token0UrlPart}/${token1UrlPart}`}>
+        <ButtonSecondaryPage
+          as={Link}
+          width="50px"
+          to={`/remove/${token0UrlPart}/${token1UrlPart}`}
+          className={positioncard.button4}
+        >
           −
         </ButtonSecondaryPage>
       </div>

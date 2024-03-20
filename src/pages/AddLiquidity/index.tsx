@@ -446,8 +446,11 @@ export default function AddLiquidity({
               id="add-liquidity-input-tokena"
               showCommonBases
             />
+
             <div style={{ color: '#8A8F9D', padding: '0 0.75rem 0 1rem', fontSize: '14px' }}>
-              {token0DollarPrice === 0 ? '-' : '$ ' + token0DollarPrice}
+              {token0DollarPrice == null || isNaN(token0DollarPrice) || token0DollarPrice === 0
+                ? '-'
+                : '$ ' + token0DollarPrice}
             </div>
             <AutoColumn justify="space-between" style={{ margin: '10px 0px' }}>
               <AutoRow
@@ -480,8 +483,11 @@ export default function AddLiquidity({
               id="add-liquidity-input-tokenb"
               showCommonBases
             />
+
             <div style={{ color: '#8A8F9D', padding: '0 0.75rem 0 1rem', fontSize: '14px' }}>
-              {token1DollarPrice === 0 ? '-' : '$ ' + token1DollarPrice}
+              {token1DollarPrice == null || isNaN(token1DollarPrice) || token1DollarPrice === 0
+                ? '-'
+                : '$ ' + token1DollarPrice}
             </div>
             {currencies[Field.CURRENCY_A] && currencies[Field.CURRENCY_B] && pairState !== PairState.INVALID && (
               <>
