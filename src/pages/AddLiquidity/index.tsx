@@ -447,7 +447,7 @@ export default function AddLiquidity({
               showCommonBases
             />
 
-            <div style={{ color: '#8A8F9D', padding: '0 0.75rem 0 1rem', fontSize: '14px' }}>
+            <div style={{ color: '#8A8F9D', textAlign: 'left', padding: '0 0.75rem 0 1rem', fontSize: '14px' }}>
               {token0DollarPrice == null || isNaN(token0DollarPrice) || token0DollarPrice === 0
                 ? '-'
                 : '$ ' + token0DollarPrice}
@@ -484,7 +484,7 @@ export default function AddLiquidity({
               showCommonBases
             />
 
-            <div style={{ color: '#8A8F9D', padding: '0 0.75rem 0 1rem', fontSize: '14px' }}>
+            <div style={{ color: '#8A8F9D', textAlign: 'left', padding: '0 0.75rem 0 1rem', fontSize: '14px' }}>
               {token1DollarPrice == null || isNaN(token1DollarPrice) || token1DollarPrice === 0
                 ? '-'
                 : '$ ' + token1DollarPrice}

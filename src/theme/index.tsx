@@ -204,7 +204,7 @@ body {
 --sb-thumb-color: #ffffff;
 --sb-size: 5px;
 
-text-align: center !important;
+
 scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
 }
 

@@ -407,11 +407,11 @@ export function ListSelect({ onDismiss, onBack }: { onDismiss: () => void; onBac
       </ListContainer>
       <Separator />
 
-      <div style={{ padding: '16px', textAlign: 'center', color: 'white' }}>
+      {/* <div style={{ padding: '16px', textAlign: 'center', color: 'white' }}>
         <ExternalLink href="https://tokenlists.org" style={{ color: '#E9E002' }}>
           Browse lists
         </ExternalLink>
-      </div>
+      </div> */}
     </Column>
   )
 }
