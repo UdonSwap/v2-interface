@@ -256,7 +256,7 @@ export default function FullPositionCardPage({ pair }: any): JSX.Element {
         <div className={positioncard.PosSec1}>
           <Text className={positioncard.text1}>{`${displayToken0Symbol}/${displayToken1Symbol}`}</Text>
         </div>
-        <div>
+        <div className={positioncard.second}>
           <div className={positioncard.bFlex}>
             <Text className={positioncard.text2}>{displayToken0Symbol || '-'}:</Text>
             <Text marginLeft={'6px'} className={positioncard.text2}>
@@ -271,6 +271,7 @@ export default function FullPositionCardPage({ pair }: any): JSX.Element {
           </div>
         </div>
       </div>
+
       <div className={positioncard.third}>
         <div className={positioncard.text3}>
           Tokens:{' '}
@@ -286,7 +287,7 @@ export default function FullPositionCardPage({ pair }: any): JSX.Element {
         </ButtonSecondaryPage>
         <ButtonSecondaryPage
           as={Link}
-          width="50px"
+          // width="50px"
           to={`/remove/${token0UrlPart}/${token1UrlPart}`}
           className={positioncard.button4}
         >
