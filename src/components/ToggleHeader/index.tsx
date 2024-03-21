@@ -31,6 +31,9 @@ const ButtonHeader = styled(NavLink)`
     color: #e9e002;
     /* Additional active styles if needed */
   }
+  &:hover {
+    color: #e9e002;
+  }
   ${({ theme }) => theme.mediaWidth.upToLarge`
   font-size: 11px;  
   font-weight: 600;
