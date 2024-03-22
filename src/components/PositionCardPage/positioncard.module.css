@@ -14,17 +14,23 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 40%;
+  width: 50%;
 }
 .PosSec1 {
   display: flex;
   align-items: center;
+  width: 50%;
 }
-
+.second {
+  width: 50%;
+}
 .bFlex {
   display: flex;
   align-items: center;
   padding: 3px 0px;
+}
+.third {
+  width: 25%;
 }
 .text1 {
   font-weight: 500;
@@ -46,21 +52,21 @@
   padding: 3px 0px;
   letter-spacing: 1px;
 }
-
 .BtnFlex {
   display: flex;
+  justify-content: flex-end;
   gap: 10px;
+  width: 25%;
 }
 .button4 {
   width: 50px;
 }
-
 @media screen and (max-width: 937px) and (min-width: 680px) {
   .posMain {
     width: 80vw;
     margin: 0 auto;
+    margin-top: 30px;
   }
-
   .text1 {
     font-weight: 500;
     font-size: 15px;
@@ -82,14 +88,26 @@
     width: 5vw;
   }
 }
-
 @media screen and (max-width: 680px) and (min-width: 600px) {
   .posMain {
     width: 80vw;
     margin: 0 auto;
+    margin-top: 30px;
   }
   .left {
     width: 55%;
+  }
+  .PosSec1 {
+    width: 100%;
+  }
+  .second {
+    width: 100%;
+  }
+  .third {
+    width: 49%;
+  }
+  .text3 {
+    width: 100%;
   }
   .text1 {
     font-weight: 500;
@@ -111,7 +129,6 @@
     width: 5vw;
   }
 }
-
 @media screen and (max-width: 600px) {
   .posMain {
     padding: 10px 20px;
@@ -120,7 +137,19 @@
     flex-direction: column;
     align-items: start;
     justify-content: space-between;
-    width: max-content;
+    width: 40%;
+  }
+  .PosSec1 {
+    width: 100%;
+  }
+  .second {
+    width: 100%;
+  }
+  .third {
+    width: 49%;
+  }
+  .text3 {
+    width: 100%;
   }
   .PosSec1 {
     display: flex;
@@ -145,12 +174,15 @@
   .BtnFlex {
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
     gap: 10px;
+  }
+  .BtnFlex {
+    width: 12%;
   }
   .button4 {
     width: 10vw;
   }
-
   @media screen and (max-width: 375px) {
     .text1 {
       font-weight: 500;
@@ -170,6 +202,9 @@
     }
     .third {
       margin-top: 17px;
+    }
+    .BtnFlex {
+      width: 10%;
     }
   }
 }
