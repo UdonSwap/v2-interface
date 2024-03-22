@@ -5,7 +5,6 @@ import { DEFAULT_LIST_OF_LISTS, DEFAULT_TOKEN_LIST_URL } from '../../constants/l
 import { updateVersion } from '../global/actions'
 import { acceptListUpdate, addList, fetchTokenList, removeList, selectList } from './actions'
 import UNISWAP_DEFAULT_LIST from '@uniswap/default-token-list'
-import MtokenList from '../../constants/MtokenList.json'
 
 export interface ListsState {
   readonly byUrl: {
@@ -58,13 +57,13 @@ export default createReducer(initialState, builder =>
         error: null
       }
     })
-    .addCase(fetchTokenList.fulfilled, (state, { payload: { requestId, url } }) => {
+    .addCase(fetchTokenList.fulfilled, (state, { payload: { requestId, tokenList, url } }) => {
       const current = state.byUrl[url]?.current
       const loadingRequestId = state.byUrl[url]?.loadingRequestId
 
       // no-op if update does nothing
       if (current) {
-        const upgradeType = getVersionUpgrade(current.version, MtokenList.version)
+        const upgradeType = getVersionUpgrade(current.version, tokenList.version)
         if (upgradeType === VersionUpgrade.NONE) return
         if (loadingRequestId === null || loadingRequestId === requestId) {
           state.byUrl[url] = {
@@ -72,7 +71,7 @@ export default createReducer(initialState, builder =>
             loadingRequestId: null,
             error: null,
             current: current,
-            pendingUpdate: MtokenList
+            pendingUpdate: tokenList
           }
         }
       } else {
@@ -80,11 +79,10 @@ export default createReducer(initialState, builder =>
           ...state.byUrl[url],
           loadingRequestId: null,
           error: null,
-          current: MtokenList,
+          current: tokenList,
           pendingUpdate: null
         }
       }
-      console.log('Final JSON object fetched:', MtokenList)
     })
     .addCase(fetchTokenList.rejected, (state, { payload: { url, requestId, errorMessage } }) => {
       if (state.byUrl[url]?.loadingRequestId !== requestId) {

@@ -17,8 +17,9 @@ export const StyledClose = styled(X)`
     cursor: pointer;
   }
 `
+// display: inline-block;
 export const Popup = styled.div`
-  display: inline-block;
+  display: none;
   width: 100%;
   padding: 1em;
   background-color: rgb(28, 25, 36);
@@ -81,6 +82,7 @@ export default function PopupItem({
     } = content
     popupContent = <ListUpdatePopup popKey={popKey} listUrl={listUrl} oldList={oldList} newList={newList} auto={auto} />
   }
+  
 
   const faderStyle = useSpring({
     from: { width: '100%' },
