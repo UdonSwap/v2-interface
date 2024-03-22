@@ -40,10 +40,11 @@ export const PinkCard = styled(Card)`
 `
 
 const BlueCardStyled = styled(Card)`
-  background-color: ${({ theme }) => theme.primary5};
+  background-color: #211f28;
   color: ${({ theme }) => theme.primary1};
-  border-radius: 12px;
+  border-radius: 10px;
   width: fit-content;
+  font-family: 'Poppins', sans-serif;
 `
 
 export const BlueCard = ({ children, ...rest }: CardProps) => {

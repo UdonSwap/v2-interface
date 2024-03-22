@@ -421,13 +421,13 @@ export default function AddLiquidity({
               <ColumnCenter>
                 <BlueCard>
                   <AutoColumn gap="10px">
-                    <TYPE.link fontWeight={600} color={'white'}>
+                    <TYPE.link fontWeight={600} color={'white'} fontSize={12}>
                       You are the first liquidity provider.
                     </TYPE.link>
-                    <TYPE.link fontWeight={400} color={'white'}>
+                    <TYPE.link fontWeight={400} color={'white'} fontSize={12}>
                       The ratio of tokens you add will set the price of this pool.
                     </TYPE.link>
-                    <TYPE.link fontWeight={400} color={'white'}>
+                    <TYPE.link fontWeight={400} color={'white'} fontSize={12}>
                       Once you are happy with the rate click supply to review.
                     </TYPE.link>
                   </AutoColumn>

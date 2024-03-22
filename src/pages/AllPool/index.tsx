@@ -5,6 +5,7 @@ import axios from 'axios'
 
 export default function Home() {
   const [poolData, setPoolData] = useState([])
+  const [totalTVL, setTotalTVL] = useState<number>()
   const getPoolDetails = async () => {
     // ETH price in dollar
     const api_url = process.env.REACT_APP_ETHAPIURL
@@ -42,15 +43,16 @@ export default function Home() {
     }).then(async result => {
       // Changed to async
       const data = result.data.data.pairs
-
+      let addTVL = 0
       // Calculate TVL price in dollar
       for (let i = 0; i < data.length; i++) {
         const token0InEth = data[i].reserve0 * data[i].token0.derivedETH
         const token1InEth = data[i].reserve1 * data[i].token1.derivedETH
         const TVL = (token0InEth + token1InEth) * ethPriceDollar
         data[i]['TVL'] = TVL
+        addTVL += TVL
       }
-
+      setTotalTVL(addTVL)
       // Get the daily volume
       const sevenDaysEpoch = 604800
       const currentTimestamp = Math.floor(Date.now() / 1000)
@@ -109,7 +111,7 @@ export default function Home() {
           </div>
           <div className={allpool.total}>
             <h4>Total TVL</h4>
-            <p>$7,403,262.61</p>
+            <p style={{ textAlign: 'center' }}>{totalTVL ? '$' + totalTVL : '-'}</p>
           </div>
         </div>
         <div className={allpool.right}>
