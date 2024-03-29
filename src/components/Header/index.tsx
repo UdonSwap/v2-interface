@@ -198,7 +198,7 @@ export default function Header() {
     <HeaderFrame>
       <RowBetween style={{ alignItems: 'flex-start' }} padding="1rem 1rem 0 1rem">
         <div style={{ width: '33.33%' }}>
-          <Title href="https://beatswap-eta.vercel.app/">
+          <Title href="https://udonswap.org/">
             <UniIcon>{/* <img src={isDark ? LogoDark : Logo} alt="logo" /> */}</UniIcon>
             <TitleText>
               <img className={sidebar.logo} src={Udonswap} alt="logo" />
