@@ -3,7 +3,6 @@ import flatMap from 'lodash.flatmap'
 import { useCallback, useMemo } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { BASES_TO_TRACK_LIQUIDITY_FOR, PINNED_PAIRS } from '../../constants'
-
 import { useActiveWeb3React } from '../../hooks'
 import { useAllTokens } from '../../hooks/Tokens'
 import { AppDispatch, AppState } from '../index'
@@ -112,11 +111,13 @@ export function useUserDeadline(): [number, (slippage: number) => void] {
   return [userDeadline, setUserDeadline]
 }
 
-export function useAddUserToken(): (token: Token) => void {
+export function useAddUserToken(): (token: Token, apiData?: any) => void {
   const dispatch = useDispatch<AppDispatch>()
   return useCallback(
-    (token: Token) => {
+    (token: Token, apiData?: any) => {
       dispatch(addSerializedToken({ serializedToken: serializeToken(token) }))
+      // console.log('Adding token:', token)
+      // console.log('API response data:', apiData)
     },
     [dispatch]
   )
