@@ -1,5 +1,5 @@
 import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from 'udonswap-v2'
-import React, { CSSProperties, MutableRefObject, useCallback, useMemo } from 'react'
+import React, { CSSProperties, MutableRefObject, useCallback, useMemo, useState } from 'react'
 import { FixedSizeList } from 'react-window'
 import { Text } from 'rebass'
 import styled from 'styled-components'
@@ -103,6 +103,31 @@ function CurrencyRow({
   const removeToken = useRemoveUserAddedToken()
   const addToken = useAddUserToken()
 
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleAddToken = async () => {
+    setIsLoading(true)
+    try {
+      if (currency instanceof Token) {
+        const response = await fetch('https://api.udonswap.org/tokenAddress', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ address: currency.address })
+        })
+        const data = await response.json()
+        // Handle the API response data and perform any necessary actions
+        console.log(data)
+        addToken(currency, data)
+      }
+    } catch (error) {
+      console.error('Error calling API:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   // only show add or remove buttons if not on selected list
   return (
     <MenuItem
@@ -138,11 +163,12 @@ function CurrencyRow({
               <LinkStyledButton
                 onClick={event => {
                   event.stopPropagation()
-                  if (currency instanceof Token) addToken(currency)
+                  handleAddToken()
                 }}
                 style={{ color: 'red' }}
+                disabled={isLoading}
               >
-                (Add)
+                {isLoading ? 'Loading...' : '(Add)'}
               </LinkStyledButton>
             </TYPE.main>
           ) : null}
