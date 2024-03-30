@@ -150,9 +150,14 @@ export default function AddLiquidity({
             query: priceQuery
           }
         }).then(result => {
-          const derivedETH = result.data.data.token.derivedETH
-          const tokenEth = Number(formattedAmounts[Field.CURRENCY_A]) * derivedETH
-          setToken0DollarPrice(tokenEth * ethPriceDollar)
+          const derivedETH = result?.data?.data?.token?.derivedETH
+
+          if (derivedETH !== null && derivedETH !== undefined) {
+            const tokenEth = Number(formattedAmounts[Field.CURRENCY_A]) * derivedETH
+            setToken0DollarPrice(tokenEth * ethPriceDollar)
+          } else {
+            console.log('undefine')
+          }
         })
       }
     }

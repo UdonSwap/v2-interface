@@ -70,7 +70,7 @@ function Footer() {
             </a>
           </div>
           <div className="socialMain2">
-            <a href="https://beatswap-eta.vercel.app/">
+            <a href="https://udonswap.org/">
               <img src={logo} alt="x" />
             </a>
           </div>
