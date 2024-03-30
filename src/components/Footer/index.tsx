@@ -16,9 +16,9 @@ function Footer() {
             <div className="sec-link ">Audit</div>
 
             <div className="sec-link ">Contracts</div>
-
-            <div className="sec-link ">Documentation</div>
-
+            <a href="https://docs.udonswap.org/" className="footerlink" target="_blank">
+              <div className="sec-link ">Documentation</div>
+            </a>
             <div className="sec-link ">Leaderboard</div>
           </div>
           <div>
