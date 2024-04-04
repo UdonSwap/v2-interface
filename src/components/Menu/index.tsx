@@ -9,7 +9,7 @@ import { ExternalLink } from '../../theme'
 
 const StyledMenuIcon = styled(MenuIcon)`
   path {
-    stroke: #FFFFFF;
+    stroke: #ffffff;
   }
 `
 
@@ -21,7 +21,7 @@ const StyledMenuButton = styled.button`
   margin: 0;
   padding: 0;
   height: 35px;
-  background-color: #1C1924;
+  background-color: #1c1924;
 
   padding: 0.15rem 0.5rem;
   border-radius: 0.5rem;
@@ -30,7 +30,6 @@ const StyledMenuButton = styled.button`
   :focus {
     cursor: pointer;
     outline: none;
-  
   }
 
   svg {
@@ -62,13 +61,12 @@ const MenuFlyout = styled.span`
   top: 3rem;
   right: 0rem;
   z-index: 100;
-  
 `
 
 const MenuItem = styled(ExternalLink)`
   flex: 1;
   padding: 0.5rem 0.5rem;
-  color:white;
+  color: white;
   :hover {
     color: white;
     cursor: pointer;
@@ -95,7 +93,7 @@ export default function Menu() {
       </StyledMenuButton>
       {open && (
         <MenuFlyout>
-          <MenuItem id="link" href="https://uniswap.org/">
+          <MenuItem id="link" href="https://udonswap.org/">
             <Info size={14} />
             About
           </MenuItem>

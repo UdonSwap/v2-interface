@@ -249,7 +249,7 @@ export default function WalletModal({
               />
             )
           } else {
-            return null 
+            return null
           }
         }
         // don't return metamask if injected provider isn't metamask
@@ -350,7 +350,9 @@ export default function WalletModal({
           {walletView !== WALLET_VIEWS.PENDING && (
             <Blurb>
               <span>New to Ethereum? &nbsp;</span>{' '}
-              <ExternalLink href="https://ethereum.org/wallets/">Learn more about wallets</ExternalLink>
+              <ExternalLink href="https://ethereum.org/wallets/" style={{ color: 'black' }}>
+                Learn more about wallets
+              </ExternalLink>
             </Blurb>
           )}
         </ContentWrapper>
