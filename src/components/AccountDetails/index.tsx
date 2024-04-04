@@ -165,9 +165,8 @@ const WalletName = styled.div`
   width: initial;
   font-size: 20px;
   font-weight: 500;
-  color: #8A8F9D;
-  line-heigth:38.78px;
-  
+  color: #8a8f9d;
+  line-heigth: 38.78px;
 `
 
 const IconWrapper = styled.div<{ size?: number }>`
@@ -232,7 +231,7 @@ export default function AccountDetails({
   ENSName,
   openOptions
 }: AccountDetailsProps) {
-  const { chainId, account, connector,deactivate } = useActiveWeb3React()
+  const { chainId, account, connector, deactivate } = useActiveWeb3React()
   const theme = useContext(ThemeContext)
   const dispatch = useDispatch<AppDispatch>()
 
@@ -321,7 +320,7 @@ export default function AccountDetails({
                     }}
                     onClick={() => {
                       if (connector) {
-                        deactivate(); // Disconnect the current connector
+                        deactivate() // Disconnect the current connector
                       }
                     }}
                   >

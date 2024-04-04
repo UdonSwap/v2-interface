@@ -16,7 +16,6 @@ const VersionLabel = styled.span<{ enabled: boolean }>`
   :hover {
     user-select: ${({ enabled }) => (enabled ? 'none' : 'initial')};
     background: ${({ theme, enabled }) => (enabled ? '#E9E002' : 'none')};
-    
   }
 `
 
@@ -29,7 +28,7 @@ const VersionToggle = styled(({ enabled, ...rest }: VersionToggleProps) => <Link
   border-radius: 12px;
   opacity: ${({ enabled }) => (enabled ? 1 : 0.5)};
   cursor: ${({ enabled }) => (enabled ? 'pointer' : 'default')};
-  background: #1C1924;
+  background: #1c1924;
   color: white;
   display: flex;
   width: fit-content;
@@ -64,13 +63,13 @@ export default function VersionSwitch() {
 
   const toggle = (
     <VersionToggle enabled={versionSwitchAvailable} to={toggleDest} onClick={handleClick}>
-      <VersionLabel enabled={version === Version.v2 || !versionSwitchAvailable} >V2</VersionLabel>
+      <VersionLabel enabled={version === Version.v2 || !versionSwitchAvailable}>V2</VersionLabel>
       <VersionLabel enabled={version === Version.v1 && versionSwitchAvailable}>V1</VersionLabel>
     </VersionToggle>
   )
   return versionSwitchAvailable ? (
     toggle
   ) : (
-    <MouseoverTooltip text="This page is only compatible with Uniswap V2.">{toggle}</MouseoverTooltip>
+    <MouseoverTooltip text="This page is only compatible with UdonSwap.">{toggle}</MouseoverTooltip>
   )
 }
