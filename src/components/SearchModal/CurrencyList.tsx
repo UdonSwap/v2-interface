@@ -20,7 +20,6 @@ import { isTokenOnList } from '../../utils'
 function currencyKey(currency: Currency): string {
   return currency instanceof Token ? currency.address : currency === ETHER ? 'ETHER' : ''
 }
-
 const StyledBalanceText = styled(Text)`
   white-space: nowrap;
   overflow: hidden;
@@ -93,6 +92,9 @@ function CurrencyRow({
   otherSelected: boolean
   style: CSSProperties
 }) {
+  console.log('call')
+  console.log(currency)
+
   const { account, chainId } = useActiveWeb3React()
   const key = currencyKey(currency)
   const selectedTokenList = useSelectedTokenList()
@@ -203,7 +205,12 @@ export default function CurrencyList({
 
   const Row = useCallback(
     ({ data, index, style }) => {
+      console.log('called')
+      console.log(data)
+      console.log(index)
+      console.log(data[index])
       const currency: Currency = data[index]
+      console.log(currency)
       const isSelected = Boolean(selectedCurrency && currencyEquals(selectedCurrency, currency))
       const otherSelected = Boolean(otherCurrency && currencyEquals(otherCurrency, currency))
       const handleSelect = () => onCurrencySelect(currency)

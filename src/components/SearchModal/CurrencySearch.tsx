@@ -78,12 +78,16 @@ export function CurrencySearch({
   }, [isAddressSearch, searchToken, allTokens, searchQuery])
 
   const filteredSortedTokens: Token[] = useMemo(() => {
+    console.log('searchToken', searchToken)
     if (searchToken) return [searchToken]
     const sorted = filteredTokens.sort(tokenComparator)
+    console.log('sorted', sorted)
+    console.log('searchQuery', searchQuery)
     const symbolMatch = searchQuery
       .toLowerCase()
       .split(/\s+/)
       .filter(s => s.length > 0)
+    console.log('symbolMatch', symbolMatch)
     if (symbolMatch.length > 1) return sorted
 
     return [
@@ -93,7 +97,7 @@ export function CurrencySearch({
       ...sorted.filter(token => token.symbol?.toLowerCase() !== symbolMatch[0])
     ]
   }, [filteredTokens, searchQuery, searchToken, tokenComparator])
-
+  console.log('filteredSortedTokens.....', filteredSortedTokens)
   const handleCurrencySelect = useCallback(
     (currency: Currency) => {
       onCurrencySelect(currency)
@@ -123,6 +127,7 @@ export function CurrencySearch({
         if (s === 'eth') {
           handleCurrencySelect(ETHER)
         } else if (filteredSortedTokens.length > 0) {
+          console.log('filteredSortedTokens', filteredSortedTokens)
           if (
             filteredSortedTokens[0].symbol?.toLowerCase() === searchQuery.trim().toLowerCase() ||
             filteredSortedTokens.length === 1

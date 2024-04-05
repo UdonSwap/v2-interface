@@ -1,13 +1,13 @@
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'tokens.uniswap.eth'
-// export const DEFAULT_TOKEN_LIST_URL = 'https://api.udonswap.org/tokens'
+// export const DEFAULT_TOKEN_LIST_URL = 'tokens.uniswap.eth'
+export const DEFAULT_TOKEN_LIST_URL = 'https://api.udonswap.org/tokens'
 
 export const DEFAULT_LIST_OF_LISTS: string[] = [
   DEFAULT_TOKEN_LIST_URL,
   // 'https://ipfs.io/ipfs/QmSi3W99q68E8xPrgshiPDgfwxNCGL35htJ1fvaNfKz5D8?filename=modeTokens.json',
   // 'https://sepolia.explorer.mode.network/api/v2/tokens?type=ERC-20/',
   // 'tokens.1inch.eth', // 1inch
-  'https://api.udonswap.org/tokens',
+  'https://api.udonswap.org/tokens'
   // 'synths.snx.eth',
   // 'tokenlist.dharma.eth',
   // 'defi.cmc.eth',

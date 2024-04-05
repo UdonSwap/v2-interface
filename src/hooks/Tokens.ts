@@ -55,9 +55,7 @@ function parseStringOrBytes32(str: string | undefined, bytes32: string | undefin
 export function useToken(tokenAddress?: string): Token | undefined | null {
   const { chainId } = useActiveWeb3React()
   const tokens = useAllTokens()
-
   const address = isAddress(tokenAddress)
-
   const tokenContract = useTokenContract(address ? address : undefined, false)
   const tokenContractBytes32 = useBytes32TokenContract(address ? address : undefined, false)
   const token: Token | undefined = address ? tokens[address] : undefined
@@ -72,17 +70,19 @@ export function useToken(tokenAddress?: string): Token | undefined | null {
   const symbol = useSingleCallResult(token ? undefined : tokenContract, 'symbol', undefined, NEVER_RELOAD)
   const symbolBytes32 = useSingleCallResult(token ? undefined : tokenContractBytes32, 'symbol', undefined, NEVER_RELOAD)
   const decimals = useSingleCallResult(token ? undefined : tokenContract, 'decimals', undefined, NEVER_RELOAD)
-
+  console.log('symbol....', symbol)
   return useMemo(() => {
+    ''
     if (token) return token
     if (!chainId || !address) return undefined
     if (decimals.loading || symbol.loading || tokenName.loading) return null
     if (decimals.result) {
+      const tokenSymbol = symbol.result?.[0] || tokenName.result?.[0] || 'UNKNOWN'
       return new Token(
         chainId,
         address,
         decimals.result[0],
-        parseStringOrBytes32(symbol.result?.[0], symbolBytes32.result?.[0], 'UNKNOWN'),
+        parseStringOrBytes32(tokenSymbol, symbolBytes32.result?.[0], 'UNKNOWN'),
         parseStringOrBytes32(tokenName.result?.[0], tokenNameBytes32.result?.[0], 'Unknown Token')
       )
     }
