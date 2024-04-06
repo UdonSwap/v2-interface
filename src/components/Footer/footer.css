@@ -77,6 +77,9 @@
     font-weight: 600;
     font-size: 3vw;
   }
+  .sec-link {
+    font-size: 2.2vw;
+  }
   .footerlink {
     font-size: 2vw;
   }
@@ -116,6 +119,9 @@
     padding-top: 10px;
     font-weight: 600;
     font-size: 3vw;
+  }
+  .sec-link {
+    font-size: 2.2vw;
   }
   .footerlink {
     font-size: 2vw;

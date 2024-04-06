@@ -153,6 +153,8 @@ const Headermode = styled.div`
   ${({ theme }) => theme.mediaWidth.upToMedium`
     flex-direction: column-reverse;
     align-items: flex-start;
+    height: 75px;
+    justify-content: flex-end;
   `};
 `
 

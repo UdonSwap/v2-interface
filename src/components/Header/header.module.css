@@ -21,8 +21,8 @@
 
 @media screen and (max-width: 768px) and (min-width: 601px) {
   .modebutton {
-    margin-left: 75px;
-    margin-top: 8px;
+    margin-left: 87px;
+    margin-top: 15px;
   }
   .center {
     display: none;
@@ -50,8 +50,8 @@
 
 @media screen and (max-width: 601px) {
   .modebutton {
-    margin-left: 75px;
-    margin-top: 8px;
+    margin-left: 87px;
+    margin-top: 15px;
   }
   .center {
     display: none;
