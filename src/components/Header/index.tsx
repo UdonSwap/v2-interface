@@ -1,5 +1,5 @@
 import { ChainId } from 'udonswap-v2'
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { isMobile } from 'react-device-detect'
 import { Text } from 'rebass'
 
@@ -184,18 +184,7 @@ export default function Header() {
   // const [isDark] = useDarkModeManager()
   const headerRef = useRef<HTMLDivElement>(null)
   const [toggle, setToggle] = useState(false)
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
-        setToggle(false)
-      }
-    }
 
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [])
   return (
     <HeaderFrame>
       <RowBetween style={{ alignItems: 'flex-start' }} padding="1rem 1rem 0 1rem">
