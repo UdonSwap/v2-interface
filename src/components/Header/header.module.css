@@ -25,7 +25,7 @@
     margin-top: 15px;
   }
   .center {
-    display: none;
+    display: none !important;
   }
   .flex {
     display: flex;
@@ -54,7 +54,7 @@
     margin-top: 15px;
   }
   .center {
-    display: none;
+    display: none !important;
   }
   .menu {
     display: flex;
